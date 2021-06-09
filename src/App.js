@@ -6,6 +6,7 @@ import { SingIn } from './components/SingIn';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { ModalHome } from './components/ModalHome';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Row>
           <Col><SingUp /></Col>
           <Col><SingIn /></Col>
+          <ModalHome />
         </Row>
       </Container>
       <Carouselph />
