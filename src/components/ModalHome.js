@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import { SingUp } from './SingUp'
 
 export const ModalHome = () => {
 
@@ -44,10 +45,10 @@ export const ModalHome = () => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" type="submit" onClick={handleClose}>
+            <Button variant="secondary" type="submit" onClick={handleClose}>
                     Submit
                 </Button>
-
+          <SingUp />
           </Modal.Footer>
         </Modal>
       </>
