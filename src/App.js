@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home } from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
+import { Advertisements } from "./views/Advertisement";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUpForm} />
+          <Route exact path="/advertisements" component={Advertisements} />
         </Switch>
       </Router>
     </div>

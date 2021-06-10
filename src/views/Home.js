@@ -7,6 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { ModalHome } from "../components/ModalHome";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -28,6 +30,11 @@ export const Home = () => {
               <Breadcrumb.Item>Checkin</Breadcrumb.Item>
               <Breadcrumb.Item>Checkout</Breadcrumb.Item>
               <Breadcrumb.Item>Guests</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/advertisements">
+                  <Button>Search</Button>
+                </Link>
+              </Breadcrumb.Item>
             </Breadcrumb>
           </Col>
         </Row>
