@@ -1,11 +1,11 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-
+//let arr = [{title: "first", content: "nulla", img: "https", alt: "lo que sea",  }]
 export const Carouselph = () => {
   return (
     <div>
       <Carousel>
-        <Carousel.Item>
+        <Carousel.Item> 
           <img
             className="d-block w-100"
             src="https://images.adsttc.com/media/images/5d34/e507/284d/d109/5600/0240/newsletter/_FI.jpg?1563747560"

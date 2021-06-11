@@ -1,7 +1,7 @@
 import React from "react";
 import { Carouselph } from "../components/Carousel";
 import { SingUp } from "../components/SingUp";
-import { SingIn } from "../components/SingIn";
+import { BeHost } from "../components/BeHost";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +19,7 @@ export const Home = () => {
             <SingUp />
           </Col>
           <Col>
-            <SingIn />
+            <BeHost />
           </Col>
           <ModalHome />
         </Row>

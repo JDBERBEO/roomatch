@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home } from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
-import { Advertisements } from "./views/Advertisement";
+import { Advertisements } from "./views/Advertisements";
 
 function App() {
   return (
