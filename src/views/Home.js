@@ -70,14 +70,7 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      {/* {imgAddsHome.map(el => ( */}
-        
-    
-     {imgAddsHome.map(el => (
-        <Carouselph key={el.title} src={el.src} alt={el.alt}/>
-
-       
-     ))} 
+      <Carouselph array={imgAddsHome}/>
  
     </div>
   );
