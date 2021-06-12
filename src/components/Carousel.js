@@ -1,21 +1,22 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 //let arr = [{title: "first", content: "nulla", img: "https", alt: "lo que sea",  }]
-export const Carouselph = () => {
+export const Carouselph = ({src,alt,key,price}) => {
+  console.log(`destructuring desde map ${src}`)
   return (
     <div>
-      <Carousel>
-        <Carousel.Item> 
+      <Carousel> 
+        <Carousel.Item > 
           <img
             className="d-block w-100"
-            src="https://images.adsttc.com/media/images/5d34/e507/284d/d109/5600/0240/newsletter/_FI.jpg?1563747560"
+            src={src}
             alt="First slide"
           />
           <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
-        </Carousel.Item>
+        </Carousel.Item> 
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -41,7 +42,7 @@ export const Carouselph = () => {
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
           </Carousel.Caption>
-        </Carousel.Item>
+        </Carousel.Item> 
       </Carousel>
     </div>
   );

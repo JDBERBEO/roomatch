@@ -32,13 +32,13 @@ export const Advertisements = () => {
   return (
     <div>
       <h1>calma</h1>
-     {imgAdds.map(el => (
+      {imgAdds.map(el => (
       <Carouselph
         key={el.title}
         src= {el.src}
         alt= {el.alt}
        />
-     ))} 
+     ))}  
     </div>
   );
 };

@@ -9,8 +9,39 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { ModalHome } from "../components/ModalHome";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Carousel from "react-bootstrap/Carousel";
+
+
+const imgAddsHome = [{
+
+  title: 1,
+  src: "https://images.adsttc.com/media/images/5d34/e507/284d/d109/5600/0240/newsletter/_FI.jpg?1563747560",
+  alt: "First slide", 
+  price: 4,
+  ranking: 0 
+},
+{
+  title: 2,
+  src: "https://i.pinimg.com/originals/a6/60/9d/a6609d6a10f843c59734616accae5a89.jpg", 
+  alt: "Second slide", 
+  price: 5,
+  ranking: 0 
+},
+{
+  title: 3,
+  src: "https://soyarquitectura.mx/wp-content/uploads/2020/09/Fachada-Casa-moderna-dos-pisos-Nogal-blogc7-edited.jpg", 
+  alt: "Third slide",
+  price: 6,
+  ranking: 0  
+},
+]
+
+  
 
 export const Home = () => {
+  //const [{ title, src, alt }] = imgAddsHome
+  //console.log("this is destructuring home: ",title, src, alt)
+
   return (
     <div className="App">
       <Container>
@@ -39,7 +70,15 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Carouselph />
+      {/* {imgAddsHome.map(el => ( */}
+        
+    
+     {imgAddsHome.map(el => (
+        <Carouselph key={el.title} src={el.src} alt={el.alt}/>
+
+       
+     ))} 
+ 
     </div>
   );
 };
