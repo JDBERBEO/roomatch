@@ -27,18 +27,8 @@ const imgAdds = [{
 
 export const Advertisements = () => {
 
-  // const [{ title, src, alt }] = imgAdds
-  // console.log(title, src, alt)
   return (
     <div>
-      <h1>calma</h1>
-      {/* {imgAdds.map(el => (
-      <Carouselph
-        key={el.title}
-        src= {el.src}
-        alt= {el.alt}
-       />
-     ))}   */}
      <Carouselph array={imgAdds} />
     </div>
   );

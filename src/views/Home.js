@@ -9,7 +9,6 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { ModalHome } from "../components/ModalHome";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import Carousel from "react-bootstrap/Carousel";
 
 
 const imgAddsHome = [{
@@ -39,8 +38,6 @@ const imgAddsHome = [{
   
 
 export const Home = () => {
-  //const [{ title, src, alt }] = imgAddsHome
-  //console.log("this is destructuring home: ",title, src, alt)
 
   return (
     <div className="App">
@@ -71,7 +68,6 @@ export const Home = () => {
         </Row>
       </Container>
       <Carouselph array={imgAddsHome}/>
- 
     </div>
   );
 };
