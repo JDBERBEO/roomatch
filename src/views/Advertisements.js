@@ -7,10 +7,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import addsInfo from "../Mock_data/ads_info.json";
-import ListGroup from "react-bootstrap/ListGroup";
 import { AddsLists } from "../components/AddsLists";
-
-// const ads_info = ads_info;
 
 const imgAdds = [
   {
@@ -74,21 +71,16 @@ export const Advertisements = () => {
             </Breadcrumb>
           </Col>
         </Row>
-        <Row>
-          <Col className="col-4">
-            <Carouselph array={imgAdds} />
-          </Col>
-          <Col className="col-4">
-            {addsInfo.map((el) => (
-              <AddsLists
-                id={el.id}
-                price={el.price}
-                living_space_type={el.living_space_type}
-                description={el.description}
-              />
-            ))}
-          </Col>
-        </Row>
+
+        {addsInfo.map((el) => (
+          <AddsLists
+            id={el.id}
+            price={el.price}
+            living_space_type={el.living_space_type}
+            description={el.description}
+            array={imgAdds}
+          />
+        ))}
       </Container>
     </div>
   );
