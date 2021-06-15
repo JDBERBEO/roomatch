@@ -1,0 +1,31 @@
+[
+    {
+        "living_space_type":"apartment",
+        "price":180000,
+        "description":"lorem ipsum",
+        "rooms": 2,
+        "bathroom": 2,
+        "parking": 1
+
+    },
+
+    {
+        "living_space_type":"house",
+        "price":75000,
+        "description":"lorem ipsum bla bla bla",
+        "rooms": 1,
+        "bathroom": 1,
+        "parking": 0
+
+    },
+
+    {
+        "living_space_type":"room",
+        "price":20000,
+        "description":"lorem ipsum dolor",
+        "rooms": 1,
+        "bathroom": 1,
+        "parking": 1
+
+    }
+]
