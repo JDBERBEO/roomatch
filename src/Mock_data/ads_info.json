@@ -1,5 +1,10 @@
+
+
+
 [
+    
     {
+        "id":1,
         "living_space_type":"apartment",
         "price":180000,
         "description":"lorem ipsum",
@@ -10,6 +15,7 @@
     },
 
     {
+        "id":2,
         "living_space_type":"house",
         "price":75000,
         "description":"lorem ipsum bla bla bla",
@@ -20,6 +26,7 @@
     },
 
     {
+        "id":3,
         "living_space_type":"room",
         "price":20000,
         "description":"lorem ipsum dolor",
