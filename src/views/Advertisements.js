@@ -1,5 +1,4 @@
 import React from "react";
-import { Carouselph } from "../components/Carousel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
