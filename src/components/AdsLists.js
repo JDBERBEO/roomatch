@@ -3,7 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Col, Container, Row } from "react-bootstrap";
 import { Carouselph } from "./Carousel";
 
-export const AddsLists = ({
+export const AdsLists = ({
   id,
   price,
   living_space_type,

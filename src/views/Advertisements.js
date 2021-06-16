@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import addsInfo from "../Mock_data/ads_info.json";
-import { AddsLists } from "../components/AddsLists";
+import {AdsLists } from "../components/AdsLists";
 
 const imgAdds = [
   {
@@ -72,7 +72,8 @@ export const Advertisements = () => {
         </Row>
 
         {addsInfo.map((el) => (
-          <AddsLists
+          <AdsLists
+            key={el.id}
             id={el.id}
             price={el.price}
             living_space_type={el.living_space_type}
