@@ -7,9 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { ModalHome } from "../components/ModalHome";
-import Button from "../components/Button";
-import Counter from "../components/Counter";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 const imgAddsHome = [
   {
@@ -41,8 +40,6 @@ export const Home = () => {
       <Container>
         <Row className="justify-content-right">
           <Col>
-            <Button />
-            <Counter />
             <SingUp />
           </Col>
           <Col>
