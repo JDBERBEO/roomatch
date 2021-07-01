@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const SingUp = () => {
   return (
     <div>
-      <Link to="/signup">
+      <Link to="/roomie/signup">
         <Button variant="dark">SignUp</Button>{" "}
       </Link>
     </div>
