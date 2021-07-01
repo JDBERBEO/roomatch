@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import addsInfo from "../Mock_data/ads_info.json";
 import { AdsLists } from "../components/AdsLists";
+import AdvertisementsMain from "./AdvertisementsMain";
 
 const imgAdds = [
   {
@@ -79,6 +80,7 @@ export const Advertisements = () => {
             array={imgAdds}
           />
         ))}
+        <AdvertisementsMain />
       </Container>
     </div>
   );
