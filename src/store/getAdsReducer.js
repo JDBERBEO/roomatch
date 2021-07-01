@@ -13,8 +13,8 @@ export function getAds() {
 
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000/advertisements",
-        url: "/getAds",
+        baseURL: "http://localhost:8000",
+        url: "/advertisements/getAds",
       });
       console.log("esto es data: ", data);
       dispatch({ type: ADS_SUCCESS, payload: data });
