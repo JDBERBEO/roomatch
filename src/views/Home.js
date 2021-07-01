@@ -6,9 +6,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
-import { ModalHome } from "../components/ModalHome";
-import { Link } from "react-router-dom";
+import ModalHome from "../components/ModalHome";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { render } from "react-dom/cjs/react-dom.development";
 
 const imgAddsHome = [
   {
@@ -34,36 +36,75 @@ const imgAddsHome = [
   },
 ];
 
-export const Home = () => {
-  return (
-    <div className="App">
-      <Container>
-        <Row className="justify-content-right">
-          <Col>
-            <SingUp />
-          </Col>
-          <Col>
-            <BeHost />
-          </Col>
-          <ModalHome />
-        </Row>
-        <Row className="justify-content-center">
-          <Col className="col-7">
-            <Breadcrumb>
-              <Breadcrumb.Item>City</Breadcrumb.Item>
-              <Breadcrumb.Item>Checkin</Breadcrumb.Item>
-              <Breadcrumb.Item>Checkout</Breadcrumb.Item>
-              <Breadcrumb.Item>Guests</Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="/advertisements">
-                  <Button>Search</Button>
-                </Link>
-              </Breadcrumb.Item>
-            </Breadcrumb>
-          </Col>
-        </Row>
-      </Container>
-      <Carouselph array={imgAddsHome} />
-    </div>
-  );
-};
+class Home extends React.Component {
+  state = {
+    email: "",
+    password: "",
+    login: false,
+    error: "",
+  };
+
+  home = async (userData) => {
+    try {
+      this.setState({ loading: true });
+
+      const { data } = await axios({
+        method: "POST",
+        baseURL: "http://localhost:8000",
+        url: "/host/signin",
+        data: userData,
+      });
+
+      this.setState({ loading: false });
+
+      localStorage.setItem("token", data.token);
+
+      this.props.history.push("/advertisements");
+    } catch (error) {
+      this.setState({
+        error: error.response.data.message,
+        loading: false,
+      });
+    }
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Container>
+          <Row className="justify-content-right">
+            <Col>
+              <SingUp />
+            </Col>
+            <Col>
+              <BeHost />
+            </Col>
+            <ModalHome
+              buttonText="Sign in"
+              handleSubmit={this.home}
+              disabled={this.state.loading}
+            />
+          </Row>
+          <Row className="justify-content-center">
+            <Col className="col-7">
+              <Breadcrumb>
+                <Breadcrumb.Item>City</Breadcrumb.Item>
+                <Breadcrumb.Item>Checkin</Breadcrumb.Item>
+                <Breadcrumb.Item>Checkout</Breadcrumb.Item>
+                <Breadcrumb.Item>Guests</Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <Link to="/advertisements">
+                    <Button>Search</Button>
+                  </Link>
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            </Col>
+          </Row>
+        </Container>
+        <Carouselph array={imgAddsHome} />
+      </div>
+    );
+  }
+}
+
+export default Home;
