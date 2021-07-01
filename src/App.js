@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { Home } from "./views/Home";
+import Home from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
 import { Advertisements } from "./views/Advertisements";
 import BeHost from "./views/BeHost";
