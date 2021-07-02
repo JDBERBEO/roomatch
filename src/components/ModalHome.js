@@ -4,51 +4,86 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { SingUp } from "./SingUp";
 
-export const ModalHome = () => {
-  const [show, setShow] = useState(false);
+class ModalHome extends React.Component {
+  state = {
+    email: "",
+    password: "",
+    show: false,
+  };
+  handleChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    this.setState({ [name]: value });
+  };
 
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Sign In
-      </Button>
+  // const [show, setShow] = useState(false);
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>SIGN IN</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
+  handleClose = () => {
+    this.setState({ show: false });
+  };
+  handleShow = () => {
+    this.setState({ show: true });
+  };
+  render() {
+    const { email, password, show } = this.state;
+    const { buttonText, disabled, handleSubmit } = this.props;
+    return (
+      <>
+        <Button variant="primary" onClick={this.handleShow}>
+          Sign In
+        </Button>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="secondary" type="submit" onClick={handleClose}>
-            Submit
-          </Button>
-          <SingUp />
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-};
+        <Modal show={show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>SIGN IN</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit(this.state);
+              }}
+            >
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
+                />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Check me out" />
+              </Form.Group>
+              <Button type="submit">{buttonText}</Button>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <SingUp />
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+}
+
+export default ModalHome;
