@@ -16,7 +16,6 @@ export function getAds() {
         baseURL: "http://localhost:8000",
         url: "/advertisements/getAds",
       });
-      console.log("esto es data: ", data);
       dispatch({ type: ADS_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: ADS_ERROR, payload: error });
