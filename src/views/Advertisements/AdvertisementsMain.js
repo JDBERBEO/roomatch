@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAds } from "../store/getAdsReducer";
+import { getAds } from "../../store/getAdsReducer";
 import { Advertisements } from "./Advertisements";
 
 function AdvertisementsMain() {

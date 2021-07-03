@@ -1,13 +1,13 @@
 import React from "react";
-import { Carouselph } from "../components/Carousel";
+import { Carouselph } from "../../components/Carousel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import addsInfo from "../Mock_data/ads_info.json";
-import { AdsLists } from "../components/AdsLists";
+//import addsInfo from "../Mock_data/ads_info.json";
+import { AdsLists } from "../../components/AdsLists";
 import AdvertisementsMain from "./AdvertisementsMain";
 
 const imgAdds = [
