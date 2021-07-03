@@ -35,7 +35,6 @@ const imgAdds = [
 ];
 
 export const Advertisements = ({ ads }) => {
-  console.log("this is ads: ", ads);
   return (
     <div>
       <Container>
@@ -70,18 +69,16 @@ export const Advertisements = ({ ads }) => {
             </Breadcrumb>
           </Col>
         </Row>
-
         {ads.map((el) => (
           <AdsLists
-            key={el.id}
-            id={el.id}
+            key={el._id}
+            id={el._id}
             price={el.price}
-            living_space_type={el.living_space_type}
+            living_space_type={el.living_space}
             description={el.description}
             array={imgAdds}
           />
         ))}
-        <AdvertisementsMain />
       </Container>
     </div>
   );

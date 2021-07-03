@@ -1,11 +1,11 @@
 import React from "react";
-import { Carouselph } from "../components/Carousel";
+import { Carouselph } from "../../components/Carousel";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-export const Publication = () => {
+export const Advertisement = () => {
   return (
     <div>
       <Container>

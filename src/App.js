@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
 import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
-import { Publication } from "./views/Publication";
+import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={AdvertisementsMain} />
-          <Route exact path="/reservation" component={Publication} />
+          <Route exact path="/reservation" component={Advertisement} />
           <Route exact path="/behost" component={BeHost} />
         </Switch>
       </Router>
