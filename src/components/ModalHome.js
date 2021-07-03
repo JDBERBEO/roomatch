@@ -9,14 +9,19 @@ class ModalHome extends React.Component {
     email: "",
     password: "",
     show: false,
+    switch: false,
+    disabledRoomie: false,
+    disabledHost: false
   };
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleChangeHost = () => {
+    this.setState({disabledHost: true, disabledRoomie: false}, () => {
+    console.log('this.state.host after setState', this.state.disabledHost, this.state.disabledRoomie)});
 
-    this.setState({ [name]: value });
+    };
+  handleChangeRoomie = () => {
+    this.setState({disabledRoomie: true, disabledHost:false}, () => {
+    console.log('this.state.romie after setState', this.state.disabledHost, this.state.disabledRoomie)});
   };
-
-  // const [show, setShow] = useState(false);
 
   handleClose = () => {
     this.setState({ show: false });
@@ -38,6 +43,8 @@ class ModalHome extends React.Component {
             <Modal.Title>SIGN IN</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <Button onClick={this.handleChangeRoomie}  disabled={this.state.disabledRoomie}>As a roomie</Button>{" "}
+            <Button onClick={this.handleChangeHost} disabled={this.state.disabledHost}>As a host</Button>
             <Form
               onSubmit={(e) => {
                 e.preventDefault();
