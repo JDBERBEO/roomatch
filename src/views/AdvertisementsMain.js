@@ -20,8 +20,11 @@ function AdvertisementsMain() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
 
+
+  console.log('this is ads', ads)
   return (
     <main>
+      sdsd
       {!!ads &&
         ads.length > 0 &&
         ads.map((ad) => {

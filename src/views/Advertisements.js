@@ -34,6 +34,8 @@ const imgAdds = [
   },
 ];
 
+
+
 export const Advertisements = () => {
   return (
     <div>
