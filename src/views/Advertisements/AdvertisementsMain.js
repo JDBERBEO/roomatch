@@ -1,6 +1,7 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAds } from "../store/getAdsReducer";
+import { Advertisements } from "./Advertisements";
 
 function AdvertisementsMain() {
   const dispatch = useDispatch();
@@ -20,25 +21,8 @@ function AdvertisementsMain() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
 
-
-  console.log('this is ads', ads)
-  return (
-    <main>
-      sdsd
-      {!!ads &&
-        ads.length > 0 &&
-        ads.map((ad) => {
-          return (
-            <article key={ad.id}>
-              <h1>{ad.description}</h1>
-              <p>{ad.price}</p>
-              <p>{ad.living_space}</p>
-              <p>{ad.house_rules}</p>
-            </article>
-          );
-        })}
-    </main>
-  );
+  console.log("this is ads", ads);
+  return <>{/* <Advertisements ads={ads} /> */}</>;
 }
 
 export default AdvertisementsMain;
