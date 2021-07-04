@@ -11,16 +11,18 @@ class ModalHome extends React.Component {
     show: false,
     switch: false,
     disabledRoomie: false,
-    disabledHost: false
+    disabledHost: false,
+  };
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({ [name]: value });
   };
   handleChangeHost = () => {
-    this.setState({disabledHost: true, disabledRoomie: false}, () => {
-    console.log('this.state.host after setState', this.state.disabledHost, this.state.disabledRoomie)});
-
-    };
+    this.setState({ disabledHost: true, switch: false, disabledRoomie: false });
+  };
   handleChangeRoomie = () => {
-    this.setState({disabledRoomie: true, disabledHost:false}, () => {
-    console.log('this.state.romie after setState', this.state.disabledHost, this.state.disabledRoomie)});
+    this.setState({ disabledRoomie: true, switch: true, disabledHost: false });
   };
 
   handleClose = () => {
@@ -31,7 +33,8 @@ class ModalHome extends React.Component {
   };
   render() {
     const { email, password, show } = this.state;
-    const { buttonText, disabled, handleSubmit } = this.props;
+    const { buttonText, disabled, handleSubmitHost, handleSubmitRoomie } =
+      this.props;
     return (
       <>
         <Button variant="primary" onClick={this.handleShow}>
@@ -43,12 +46,24 @@ class ModalHome extends React.Component {
             <Modal.Title>SIGN IN</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Button onClick={this.handleChangeRoomie}  disabled={this.state.disabledRoomie}>As a roomie</Button>{" "}
-            <Button onClick={this.handleChangeHost} disabled={this.state.disabledHost}>As a host</Button>
+            <Button
+              onClick={this.handleChangeRoomie}
+              disabled={this.state.disabledRoomie}
+            >
+              As a roomie
+            </Button>{" "}
+            <Button
+              onClick={this.handleChangeHost}
+              disabled={this.state.disabledHost}
+            >
+              As a host
+            </Button>
             <Form
               onSubmit={(e) => {
                 e.preventDefault();
-                handleSubmit(this.state);
+                this.state.switch
+                  ? handleSubmitRoomie(this.state)
+                  : handleSubmitHost(this.state);
               }}
             >
               <Form.Group className="mb-3" controlId="formBasicEmail">
