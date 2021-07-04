@@ -1,6 +1,6 @@
 import React from "react";
 import { Carouselph } from "../components/Carousel";
-import { SingUp } from "../components/SingUp";
+import { SignUp } from "../components/SignUp";
 import { BeHost } from "../components/BeHost";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -40,7 +40,7 @@ export const Home = () => {
       <Container>
         <Row className="justify-content-right">
           <Col>
-            <SingUp />
+            <SignUp />
           </Col>
           <Col>
             <BeHost />

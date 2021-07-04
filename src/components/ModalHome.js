@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { SingUp } from "./SingUp";
+import { SignUp } from "./SignUp";
 
 export const ModalHome = () => {
   const [show, setShow] = useState(false);
@@ -46,7 +46,7 @@ export const ModalHome = () => {
           <Button variant="secondary" type="submit" onClick={handleClose}>
             Submit
           </Button>
-          <SingUp />
+          <SignUp />
         </Modal.Footer>
       </Modal>
     </>

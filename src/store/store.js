@@ -1,5 +1,6 @@
 import { createStore, combineReducers , applyMiddleware} from "redux";
 import roomieSignUpReducer from './roomieSignUpReducer'
+import roomieSignInReducer from './roomieSignInReducer'
 import thunk from 'redux-thunk'
 
 function logger(store) {
@@ -20,7 +21,8 @@ function logger(store) {
 }
 
 const rootReducer = combineReducers({
-    roomieSignUpReducer: roomieSignUpReducer
+    roomieSignUpReducer: roomieSignUpReducer,
+    roomieSignInReducer: roomieSignInReducer
 });
 
 const middlewares = applyMiddleware(logger, thunk)

@@ -6,7 +6,7 @@ import { register, changeName, changeLastName, changeEmail, changePassword, chan
 import { useHistory } from 'react-router-dom'
 
 
-function SingUpRoomie() {
+function SignUpRoomie() {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -26,15 +26,16 @@ function SingUpRoomie() {
    
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(register(name, lastName, email, password, age, history))
+        dispatch(register( name, lastName, email, password, age, history))
    }
     useEffect(() => {
         dispatch(register())
     },[])
     
     if (loading) return <p>loding...</p>
+
     //if (error) return <p>user can not be created</p>
-    console.log(error)
+
      return(
         <div>
       <Container>
@@ -118,4 +119,4 @@ function SingUpRoomie() {
     </div>
     )
 }
-export default SingUpRoomie
+export default SignUpRoomie

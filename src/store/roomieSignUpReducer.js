@@ -115,7 +115,7 @@ function reducer(state = initialState, action) {
         } case REGISTER_ERROR: {
                 return {
                 ...state,
-                error: true,
+                error: false,
                 }
         }case REGISTER_FINISHED: {
                 return {
