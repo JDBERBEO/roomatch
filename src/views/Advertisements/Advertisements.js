@@ -34,7 +34,7 @@ const imgAdds = [
   },
 ];
 
-export const Advertisements = ({ ads }) => {
+export const Advertisements = ({ ads, handleSelect }) => {
   return (
     <div>
       <Container>
@@ -58,7 +58,7 @@ export const Advertisements = ({ ads }) => {
               </Breadcrumb.Item>
               <Breadcrumb.Item>
                 <Link to="">
-                  <Button>Reserve now</Button>
+                  <Button >Reserve now</Button>
                 </Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
@@ -77,6 +77,7 @@ export const Advertisements = ({ ads }) => {
             living_space_type={el.living_space}
             description={el.description}
             array={imgAdds}
+            handleSelect={handleSelect}
           />
         ))}
       </Container>
