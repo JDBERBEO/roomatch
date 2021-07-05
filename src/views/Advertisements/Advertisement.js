@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BreadCrumb } from "../../components/BreadCrumb";
 import { imgAdds } from "../../Mock_data/imgsAdd";
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
 
 export const Advertisement = () => {
 
@@ -42,8 +44,9 @@ export const Advertisement = () => {
               </ListGroup.Item>
               <ListGroup.Item as="li">{adobj[0].price}</ListGroup.Item>
               <ListGroup.Item as="li">{adobj[0].description}</ListGroup.Item>
-            </ListGroup> 
-            <Button>Match Host!</Button>
+          </ListGroup>
+          <DayPicker /> 
+          <Button>Match Host!</Button>
           </Col>
         </Row>
       </Container>
