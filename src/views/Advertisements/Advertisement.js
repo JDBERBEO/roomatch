@@ -13,21 +13,15 @@ import { imgAdds } from "../../Mock_data/imgsAdd";
 export const Advertisement = () => {
 
   let { id } = useParams();
-  // console.log('id desde ad: ', id)
 
   const {ads} = useSelector(({getAdsReducer})=> {
-    console.log('getreducer_ ', getAdsReducer)
+
     return {
       ads: getAdsReducer.ads
     }
   })
 
-  console.log(ads)
   const adobj = ads.filter(ad => ad._id === id);
-  // console.log('ad: ', ad[0].photo)
-  // [adobj] = ad
-  
-  console.log('ad photo', adobj[0].photo)
 
   return (
     <div>
@@ -44,12 +38,12 @@ export const Advertisement = () => {
           <Col className="col-6">
           <ListGroup as="ul" key={adobj[0]._id}>
               <ListGroup.Item as="li" active>
-             fferfe
+             {adobj[0].living_space}
               </ListGroup.Item>
               <ListGroup.Item as="li">{adobj[0].price}</ListGroup.Item>
               <ListGroup.Item as="li">{adobj[0].description}</ListGroup.Item>
             </ListGroup> 
-            <Button>Book Now!</Button>
+            <Button>Match Host!</Button>
           </Col>
         </Row>
       </Container>

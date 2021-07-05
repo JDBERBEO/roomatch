@@ -24,7 +24,6 @@ function AdvertisementsMain() {
   if (error) return <p>Oops Something went wrong</p>;
 
   const handleSelect = (id) => {
-    console.log('this is id: ', id)
 		history.push(`/advertisement/${id}`)
 	}
 
