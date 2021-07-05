@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
 import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";

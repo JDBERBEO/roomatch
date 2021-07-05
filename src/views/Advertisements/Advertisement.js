@@ -4,9 +4,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { Breadcrumb,ListGroup } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { ListGroup } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BreadCrumb } from "../../components/BreadCrumb";
+import { imgAdds } from "../../Mock_data/imgsAdd";
 
 export const Advertisement = () => {
 
@@ -30,40 +32,14 @@ export const Advertisement = () => {
   return (
     <div>
       <Container>
-        <Row>
+        <Row className="justify-content-center">
         <Col className="col-7">
-            <Breadcrumb>
-              <Breadcrumb.Item>
-                <Link to="">
-                  <Button>price</Button>
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="">
-                  <Button>Type of accommodation</Button>
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="">
-                  <Button>Free cancellation</Button>
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="">
-                  <Button>Reserve now</Button>
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="">
-                  <Button>More filters</Button>
-                </Link>
-              </Breadcrumb.Item>
-            </Breadcrumb>
-          </Col>
+          <BreadCrumb />
+        </Col>
         </Row>
         <Row>
           <Col className="col-6">
-            <Carouselph array={adobj[0].photo}/>
+            <Carouselph array={imgAdds}/>
           </Col>
           <Col className="col-6">
           <ListGroup as="ul" key={adobj[0]._id}>
