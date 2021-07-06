@@ -37,61 +37,6 @@ const imgAddsHome = [
 ];
 
 class Home extends React.Component {
-  state = {
-    email: "",
-    password: "",
-    loading: false,
-    error: "",
-  };
-
-  signInHost = async (userData) => {
-    try {
-      this.setState({ loading: true });
-
-      const { data } = await axios({
-        method: "POST",
-        baseURL: "http://localhost:8000",
-        url: "/host/signin",
-        data: userData,
-      });
-
-      this.setState({ loading: false });
-
-      localStorage.setItem("token", data.token);
-
-      this.props.history.push("/advertisements");
-    } catch (error) {
-      this.setState({
-        error: error.response.data.message,
-        loading: false,
-      });
-    }
-  };
-
-  signInRoomie = async (userData) => {
-    try {
-      this.setState({ loading: true });
-
-      const { data } = await axios({
-        method: "POST",
-        baseURL: "http://localhost:8000",
-        url: "/host/signin",
-        data: userData,
-      });
-
-      this.setState({ loading: false });
-
-      localStorage.setItem("token", data.token);
-
-      this.props.history.push("/signup");
-    } catch (error) {
-      this.setState({
-        error: error.response.data.message,
-        loading: false,
-      });
-    }
-  };
-
   render() {
     return (
       <div className="App">
@@ -103,12 +48,7 @@ class Home extends React.Component {
             <Col>
               <BeHost />
             </Col>
-            <ModalHome
-              buttonText="Sign in"
-              handleSubmitHost={this.signInHost}
-              handleSubmitRoomie={this.signInRoomie}
-              disabled={this.state.loading}
-            />
+            <ModalHome />
           </Row>
           <Row className="justify-content-center">
             <Col className="col-7">
