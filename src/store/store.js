@@ -1,5 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import getAdsReducer from "./getAdsReducer";
+import reservationReducer from "./ReservationReducer";
+import getOneAdReducer from "./getOneAdsReducer";
 import formHostReducer from "./formHostReducer";
 import hostSignInReducer from "./hostSignInReducer";
 import thunk from "redux-thunk";
@@ -24,6 +26,8 @@ function logger(store) {
 
 const rootReducer = combineReducers({
   getAdsReducer,
+  reservationReducer,
+  getOneAdReducer,
   formHostReducer,
   hostSignInReducer,
 });
