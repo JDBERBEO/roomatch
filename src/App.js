@@ -6,6 +6,7 @@ import { SignUpForm } from "./views/SignUpForm";
 import { Advertisements } from "./views/Advertisements";
 import { Publication } from "./views/Publication";
 import BeHost from "./views/BeHost";
+import { HostProfile } from "./views/HostProfile";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route exact path="/advertisements" component={Advertisements} />
           <Route exact path="/reservation" component={Publication} />
           <Route exact path="/behost" component={BeHost} />
+          <Route exact path="/behost" component={BeHost} />
+          <Route exact path="/host/profile" component={HostProfile} />
         </Switch>
       </Router>
     </div>
