@@ -1,8 +1,4 @@
 import React from "react";
-// import Nav from "react-bootstrap/Nav";
-// import Button from "react-bootstrap/Button";
-// import Card from "react-bootstrap/Card"
-// import Card from "react-bootstrap/Card"
 import { Card, Button, Nav, Row, Col } from "react-bootstrap"
 export const CardProfile = () => {
   return (

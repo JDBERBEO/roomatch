@@ -1,26 +1,23 @@
 import  React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { register, changeName, changeLastName, changeEmail, changePassword, changeAge } from '../store/roomieSignUpReducer'
+import { register, changeName, changeLastName, changeEmail, changePassword, changeAge } from '../store/roomieReducer'
 import { useHistory } from 'react-router-dom'
-
 
 function SignUpRoomie() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const {  loading, error, name, lastName, email, password, age } = useSelector(({ roomieSignUpReducer }) => {
+    const {  loading, error, name, lastName, email, password, age } = useSelector(({ roomieReducer }) => {
         return  {
 
-            loading: roomieSignUpReducer.loading,
-            error: roomieSignUpReducer.error,
-            name: roomieSignUpReducer.name,
-            lastName: roomieSignUpReducer.lastName,
-            email: roomieSignUpReducer.email,
-            password: roomieSignUpReducer.password,  
-            age: roomieSignUpReducer.age,
-            //description: roomieSignUpReducer. description,
+            loading: roomieReducer.loading,
+            error: roomieReducer.error,
+            name: roomieReducer.name,
+            lastName: roomieReducer.lastName,
+            email: roomieReducer.email,
+            password: roomieReducer.password,  
+            age: roomieReducer.age, 
         } 
     })
    
@@ -28,13 +25,9 @@ function SignUpRoomie() {
         e.preventDefault()
         dispatch(register( name, lastName, email, password, age, history))
    }
-    useEffect(() => {
-        dispatch(register())
-    },[])
     
     if (loading) return <p>loding...</p>
-
-    //if (error) return <p>user can not be created</p>
+    if (error) return <p>user can not be created</p>
 
      return(
         <div>
@@ -93,20 +86,9 @@ function SignUpRoomie() {
                 />
               </Form.Group>
              
-              
-              {/* <Form.Group controlId="formBasicEmail">
-                <Form.Label>Personal Description</Form.Label>
-                <Form.Control 
-                onChange={handleChangeDescription}
-                type="text" 
-                placeholder="Enter Description" 
-                value={description} 
-                name="description"
-                /> 
-              </Form.Group> */}
-              { <Form.Group controlId="formBasicCheckbox">
+               <Form.Group controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="accept terms" />
-              </Form.Group> }
+              </Form.Group> 
               <Button 
                 variant="primary" 
                 type="submit">

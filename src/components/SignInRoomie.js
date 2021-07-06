@@ -1,6 +1,5 @@
 import  React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { login, changeEmail, changePassword } from '../store/roomieSignInReducer'
 import { useHistory } from 'react-router-dom'
@@ -10,12 +9,12 @@ function SignInRoomie() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const { loading, error, email, password } = useSelector(({ roomieSignInReducer }) => {
+    const { loading, error, email, password } = useSelector(({ roomieReducer }) => {
         return  {
-            loading: roomieSignInReducer.loading,
-            error: roomieSignInReducer.error,
-            email: roomieSignInReducer.email,
-            password: roomieSignInReducer.password,  
+            loading: roomieReducer.loading,
+            error: roomieReducer.error,
+            email: roomieReducer.email,
+            password: roomieReducer.password,  
         } 
     })
    
@@ -23,14 +22,9 @@ function SignInRoomie() {
         e.preventDefault()
         dispatch(login( email, password, history))
    }
-    useEffect(() => {
-        dispatch(login())
-    },[])
     
     if (loading) return <p>loding...</p>
-    console.log(loading)
-    //if (error) return <p>User can`t login...</p>
-    console.log(error)
+    if (error) return <p>User can`t login...</p>
      return(
         <div>
       <Container>

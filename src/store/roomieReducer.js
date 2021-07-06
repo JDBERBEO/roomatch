@@ -9,6 +9,10 @@ export const CHANGE_LAST_NAME = 'CHANGE_LAST_NAME'
 export const CHANGE_EMAIL = 'CHANGE_EMAIL'
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
 export const CHANGE_AGE = 'CHANGE_AGE'
+export const LOGIN_LOADING = 'LOGIN_LOADING'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const LOGIN_FINISHED = 'LOGIN_FINISHED'
 
 
 export function changeName(name) {
@@ -115,9 +119,80 @@ function reducer(state = initialState, action) {
         } case REGISTER_ERROR: {
                 return {
                 ...state,
-                error: false,
+                error: true,
                 }
         }case REGISTER_FINISHED: {
+                return {
+                ...state,
+                loading: false,
+                }
+            }
+        default:{
+            return state
+        }
+    }
+}
+
+export function login( email, password , history) {
+   return async function(dispatch) {
+       try {
+        dispatch({ type: LOGIN_LOADING})
+        const { data } = await axios ({
+        method: 'POST',
+        baseURL: 'http://localhost:8000',
+        url:'/roomie/signin', 
+        data: { email,  password }
+    })
+  
+    dispatch({type: LOGIN_SUCCESS, payload: data })
+    history.push('/roomie/profile')    
+    } catch(error) {
+    dispatch({ type: LOGIN_ERROR, payload: error })           
+    } finally {
+    dispatch ({type : LOGIN_FINISHED })
+    }
+     } 
+}
+
+const initialState = { 
+
+    email: '',
+    password: '',
+    loading: false,
+    error: false,
+
+}
+
+function reducer(state = initialState, action) {
+ 
+    switch(action.type) {
+
+         case CHANGE_EMAIL: {
+            return {
+                ...state,
+                email:action.payload,
+                }            
+        } case CHANGE_PASSWORD: {
+            return {
+                ...state,
+                password:action.payload,
+                }            
+        } case LOGIN_LOADING:{
+            return {
+                ...state,
+                loading: true,
+                }
+        } case LOGIN_SUCCESS: {
+            return {
+                ...state,
+                loading: false,
+            }
+        } case LOGIN_ERROR: {
+                return {
+                ...state,
+                error: true,
+                }
+        }case LOGIN_FINISHED: {
                 return {
                 ...state,
                 loading: false,
