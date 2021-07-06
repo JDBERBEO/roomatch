@@ -24,7 +24,6 @@ export const Advertisement = () => {
 
   let { id } = useParams();
   const { ads, startDate, endDate, loading, error } = useSelector((state) => {
-    console.log("state", state);
     return {
       ads: state.getAdsReducer.ads,
       startDate: state.reservationReducer.startDate,
@@ -36,14 +35,6 @@ export const Advertisement = () => {
   const adobj = ads.filter((ad) => ad._id === id);
   const paidReservation = adobj[0].price;
 
-  console.log(
-    "state todo",
-    id,
-    startDate,
-    RoomieIdMocked,
-    endDate,
-    paidReservation
-  );
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -55,7 +46,6 @@ export const Advertisement = () => {
 
   if (loading) return <p>loading...</p>;
   //if (error) return <p>user can not be created</p>
-  console.log("error desde advertisement", error);
 
   return (
     <div>

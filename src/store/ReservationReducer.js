@@ -27,21 +27,7 @@ export function reserve(
   roomie,
   endDate,
   paidReservation
-  //   history
 ) {
-  console.log(
-    "roomie desde reserve: ",
-    roomie,
-    "advertisement id desde reserve: ",
-    AdvertisementId,
-    "startDate desde reserve: ",
-    startDate,
-    "endDate desde reserve: ",
-    endDate,
-    "paidReservation desde reserve: ",
-    paidReservation
-  );
-
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATION_LOADING });
@@ -57,10 +43,8 @@ export function reserve(
           paidReservation,
         },
       });
-      console.log("estoes data", data);
 
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
-      //   history.push("/advertisements");
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
     } finally {
