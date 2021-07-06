@@ -1,31 +1,41 @@
-import { createStore, combineReducers , applyMiddleware} from "redux";
-import roomieReducer from './roomieReducer'
-import thunk from 'redux-thunk'
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import getAdsReducer from "./getAdsReducer";
+import reservationReducer from "./ReservationReducer";
+import getOneAdReducer from "./getOneAdsReducer";
+import formHostReducer from "./formHostReducer";
+import hostSignInReducer from "./hostSignInReducer";
+import roomieReducer from "./hostSignInReducer";
+import thunk from "redux-thunk";
 
 function logger(store) {
-    return function (next) {
-        return function (action) {
-            const prevState = store.getState()
-            const result = next(action)
-            const nextState = store.getState()
+  return function (next) {
+    return function (action) {
+      const prevState = store.getState();
+      const result = next(action);
+      const nextState = store.getState();
 
-            console.log({
-                'Prev state': prevState,
-                action,
-                'Next state': nextState 
-            })
-            return result
-        }
-    } 
+      console.log({
+        "Prev state": prevState,
+        action,
+        "Next state": nextState,
+      });
+
+      return result;
+    };
+  };
 }
 
 const rootReducer = combineReducers({
-    roomieReducer: roomieReducer,
-   
+  roomieReducer,
+  getAdsReducer,
+  reservationReducer,
+  getOneAdReducer,
+  formHostReducer,
+  hostSignInReducer,
 });
 
-const middlewares = applyMiddleware(logger, thunk)
+const middlewares = applyMiddleware(thunk, logger);
 
-const store = createStore(rootReducer , middlewares);
+const store = createStore(rootReducer, middlewares);
 
 export default store;
