@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import getAdsReducer from "./getAdsReducer";
 import reservationReducer from "./ReservationReducer";
+import getOneAdReducer from "./getOneAdsReducer";
 import thunk from "redux-thunk";
 
 function logger(store) {
@@ -24,6 +25,7 @@ function logger(store) {
 const rootReducer = combineReducers({
   getAdsReducer,
   reservationReducer,
+  getOneAdReducer,
 });
 
 const middlewares = applyMiddleware(thunk, logger);

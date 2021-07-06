@@ -43,7 +43,7 @@ export function reserve(
           paidReservation,
         },
       });
-
+      console.log("data: ", data);
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
