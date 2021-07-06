@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { ListGroup, Form } from "react-bootstrap";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { BreadCrumb } from "../../components/BreadCrumb";
 import { imgAdds } from "../../Mock_data/imgsAdd";
@@ -21,18 +21,26 @@ import { getAd } from "../../store/getOneAdsReducer";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
-  const history = useHistory;
   const RoomieIdMocked = "60e0a38fc192a31d21bea52f";
 
   let { id } = useParams();
-  const { loading, error, ad, startDate, endDate } = useSelector((state) => {
-    console.log("state: ", state);
+  const {
+    loading,
+    error,
+    ad,
+    startDate,
+    endDate,
+    reserveLoading,
+    reserveError,
+  } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
       error: state.getOneAdReducer.error,
       ad: state.getOneAdReducer.ad,
       startDate: state.reservationReducer.startDate,
       endDate: state.reservationReducer.endDate,
+      reserveLoading: state.reservationReducer.reserveLoading,
+      reserveError: state.reservationReducer.reserveError,
     };
   });
 
@@ -40,14 +48,9 @@ export const Advertisement = () => {
     dispatch(getAd(id));
   }, []);
 
-  // const { ads, startDate, endDate, loading, error } = useSelector((state) => {
-  //   return {
-  //     ads: state.getAdsReducer.ads,
-  //     loading: state.reservationReducer.loading,
-  //     error: state.reservationReducer.error,
-  //   };
-  // });
-  // const adobj = ads.filter((ad) => ad._id === id);
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>oops, something went wrong </p>;
+
   const paidReservation = ad.price;
 
   function handleSubmit(e) {
@@ -55,10 +58,6 @@ export const Advertisement = () => {
     dispatch(reserve(id, startDate, RoomieIdMocked, endDate, paidReservation));
   }
 
-  if (loading) return <p>loading...</p>;
-  if (error) return <p>oops, something went wrong </p>;
-
-  console.log("esto es ad", ad);
   return (
     <div>
       <Container>
@@ -79,7 +78,7 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            {/* <DayPicker /> */}
+            <DayPicker />
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="startDate">
                 <Form.Label>StartDate</Form.Label>
@@ -87,7 +86,7 @@ export const Advertisement = () => {
                   onChange={(e) => dispatch(changeStartDate(e.target.value))}
                   type="text"
                   placeholder="Enter startDate"
-                  // value={startDate}
+                  value={startDate}
                   name="startDate"
                 />
               </Form.Group>
@@ -97,7 +96,7 @@ export const Advertisement = () => {
                   onChange={(e) => dispatch(changeEndDate(e.target.value))}
                   type="text"
                   placeholder="Enter endDate"
-                  // value={endDate}
+                  value={endDate}
                   name="endDate"
                 />
               </Form.Group>

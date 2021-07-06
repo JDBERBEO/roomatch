@@ -43,7 +43,6 @@ export function reserve(
           paidReservation,
         },
       });
-      console.log("data: ", data);
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
@@ -56,8 +55,8 @@ export function reserve(
 const initialState = {
   startDate: "",
   endDate: "",
-  loading: false,
-  error: false,
+  reserveLoading: false,
+  reserveError: false,
 };
 
 function reservationReducer(state = initialState, action) {
@@ -77,25 +76,25 @@ function reservationReducer(state = initialState, action) {
     case RESERVATION_LOADING: {
       return {
         ...state,
-        loading: true,
+        reserveLoading: true,
       };
     }
     case RESERVATION_SUCCESS: {
       return {
         ...state,
-        loading: false,
+        reserveLoading: false,
       };
     }
     case RESERVATION_ERROR: {
       return {
         ...state,
-        error: true,
+        reserveError: true,
       };
     }
     case RESERVATION_FINISHED: {
       return {
         ...state,
-        loading: false,
+        reserveLoading: false,
       };
     }
     default: {

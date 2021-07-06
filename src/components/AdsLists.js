@@ -26,11 +26,9 @@ export const AdsLists = ({
               <ListGroup.Item as="li">{price}</ListGroup.Item>
               <ListGroup.Item as="li">{description}</ListGroup.Item>
             </ListGroup>
-            {/* <Link to="/reservations/:id"> */}
             <Button variant="outline-success" onClick={() => handleSelect(id)}>
               Book this space
             </Button>
-            {/* </Link> */}
           </Col>
         </Row>
       </Container>
