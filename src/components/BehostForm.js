@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   register,
@@ -56,9 +55,7 @@ function Hostform() {
       )
     );
   }
-  useEffect(() => {
-    dispatch(register());
-  }, []);
+
   if (loading) return <p>loading...</p>;
   if (error) return <p>user can't be created</p>;
   return (
