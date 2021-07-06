@@ -6,6 +6,8 @@ import { SignUpForm } from "./views/SignUpForm";
 import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
 import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
+import { HostProfile } from "./views/HostProfile";
+import { RoomieProfile } from "./views/RoomieProfile";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route exact path="/advertisements" component={AdvertisementsMain} />
           <Route exact path={`/advertisement/:id`} component={Advertisement} />
           <Route exact path="/behost" component={BeHost} />
+          <Route exact path="/host/profile" component={HostProfile} />
+          <Route exact path="/Roomie/profile" component={RoomieProfile} />
         </Switch>
       </Router>
     </div>
