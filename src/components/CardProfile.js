@@ -1,9 +1,5 @@
 import React from "react";
-// import Nav from "react-bootstrap/Nav";
-// import Button from "react-bootstrap/Button";
-// import Card from "react-bootstrap/Card"
-// import Card from "react-bootstrap/Card"
-import { Card, Button, Nav, Row, Col } from "react-bootstrap";
+import { Card, Button, Nav, Row, Col } from "react-bootstrap"
 export const CardProfile = () => {
   return (
     <div>
@@ -19,10 +15,7 @@ export const CardProfile = () => {
                   <Nav.Link href="#link">Step 2</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href="#disabled" disabled>
-                    {" "}
-                    Step 3{" "}
-                  </Nav.Link>
+                  <Nav.Link href="#disabled" disabled> Step 3 </Nav.Link>
                 </Nav.Item>
               </Nav>
             </Card.Header>

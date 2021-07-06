@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { SingUp } from "./SingUp";
+import { SignUp } from "./SignUp";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -148,7 +148,7 @@ function ModalHome() {
           >
             Close
           </Button>
-          <SingUp />
+          <SignUp />
         </Modal.Footer>
       </Modal>
     </>
