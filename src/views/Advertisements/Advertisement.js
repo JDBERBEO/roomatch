@@ -15,6 +15,7 @@ import {
   reserve,
   changeStartDate,
   changeEndDate,
+  handleDayClick,
 } from "../../store/ReservationReducer";
 
 import { getAd } from "../../store/getOneAdsReducer";
@@ -32,6 +33,7 @@ export const Advertisement = () => {
     endDate,
     reserveLoading,
     reserveError,
+    selectedDay,
   } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
@@ -41,6 +43,7 @@ export const Advertisement = () => {
       endDate: state.reservationReducer.endDate,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
+      selectedDay: state.reservationReducer.selectedDay,
     };
   });
 
@@ -55,7 +58,16 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, startDate, RoomieIdMocked, endDate, paidReservation));
+    dispatch(
+      reserve(
+        id,
+        startDate,
+        RoomieIdMocked,
+        endDate,
+        paidReservation,
+        selectedDay
+      )
+    );
   }
 
   return (
@@ -78,7 +90,10 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            <DayPicker />
+            <DayPicker
+              onDayClick={(day) => dispatch(handleDayClick(day))}
+              selectedDays={selectedDay}
+            />
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="startDate">
                 <Form.Label>StartDate</Form.Label>

@@ -6,6 +6,7 @@ export const RESERVATION_ERROR = "RESERVATION_ERROR";
 export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
 export const CHANGE_STARTDATE = "CHANGE_STARTDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
+export const CHANGE_CALENDARDAY = "CHANGE_CALENDARDAY";
 
 export function changeStartDate(startDate) {
   return {
@@ -21,12 +22,20 @@ export function changeEndDate(endDate) {
   };
 }
 
+export function handleDayClick(day) {
+  return {
+    type: CHANGE_CALENDARDAY,
+    payload: day,
+  };
+}
+
 export function reserve(
   AdvertisementId,
   startDate,
   roomie,
   endDate,
-  paidReservation
+  paidReservation,
+  selectedDay
 ) {
   return async function (dispatch) {
     try {
@@ -41,9 +50,11 @@ export function reserve(
           roomie,
           endDate,
           paidReservation,
+          selectedDay,
         },
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
+      console.log("esto es data: ", data);
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
     } finally {
@@ -57,6 +68,7 @@ const initialState = {
   endDate: "",
   reserveLoading: false,
   reserveError: false,
+  selectedDay: undefined,
 };
 
 function reservationReducer(state = initialState, action) {
@@ -71,6 +83,12 @@ function reservationReducer(state = initialState, action) {
       return {
         ...state,
         endDate: action.payload,
+      };
+    }
+    case CHANGE_CALENDARDAY: {
+      return {
+        ...state,
+        selectedDay: action.payload,
       };
     }
     case RESERVATION_LOADING: {
