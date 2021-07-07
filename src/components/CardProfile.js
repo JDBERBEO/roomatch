@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Nav, Row, Col } from "react-bootstrap"
+import { Form, Button,  Row, Col } from "react-bootstrap"
 export const CardProfile = () => {
   return (
     <div>
@@ -8,13 +8,13 @@ export const CardProfile = () => {
           <Form>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Label>User Name</Form.Label>
+                <Form.Control type="email" placeholder="Enter Name" />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="email" />
               </Form.Group>
             </Form.Row>
 
@@ -53,7 +53,7 @@ export const CardProfile = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit
+              Edit profile
             </Button>
           </Form>
         </Col>

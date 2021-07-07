@@ -6,7 +6,7 @@ export const BeHost = () => {
     <div>
       <h1>Host Form Register</h1>
       <Hostform />
-    </div>
+     </div>
   );
 };
 
