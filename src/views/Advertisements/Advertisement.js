@@ -13,9 +13,9 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import {
   reserve,
-  changeStartDate,
+  // changeStartDate,
   changeEndDate,
-  handleDayClick,
+  handleStartDateClick,
 } from "../../store/ReservationReducer";
 
 import { getAd } from "../../store/getOneAdsReducer";
@@ -33,7 +33,7 @@ export const Advertisement = () => {
     endDate,
     reserveLoading,
     reserveError,
-    selectedDay,
+    // selectedDay,
   } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
@@ -43,7 +43,7 @@ export const Advertisement = () => {
       endDate: state.reservationReducer.endDate,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
-      selectedDay: state.reservationReducer.selectedDay,
+      // selectedDay: state.reservationReducer.selectedDay,
     };
   });
 
@@ -64,8 +64,8 @@ export const Advertisement = () => {
         startDate,
         RoomieIdMocked,
         endDate,
-        paidReservation,
-        selectedDay
+        paidReservation
+        // selectedDay
       )
     );
   }
@@ -91,20 +91,10 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
             <DayPicker
-              onDayClick={(day) => dispatch(handleDayClick(day))}
-              selectedDays={selectedDay}
+              onDayClick={(day) => dispatch(handleStartDateClick(day))}
+              selectedDays={startDate}
             />
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="startDate">
-                <Form.Label>StartDate</Form.Label>
-                <Form.Control
-                  onChange={(e) => dispatch(changeStartDate(e.target.value))}
-                  type="text"
-                  placeholder="Enter startDate"
-                  value={startDate}
-                  name="startDate"
-                />
-              </Form.Group>
               <Form.Group controlId="endDate">
                 <Form.Label>EndDate</Form.Label>
                 <Form.Control

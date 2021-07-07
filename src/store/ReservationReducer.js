@@ -6,14 +6,14 @@ export const RESERVATION_ERROR = "RESERVATION_ERROR";
 export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
 export const CHANGE_STARTDATE = "CHANGE_STARTDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
-export const CHANGE_CALENDARDAY = "CHANGE_CALENDARDAY";
+// export const CHANGE_CALENDARDAY = "CHANGE_CALENDARDAY";
 
-export function changeStartDate(startDate) {
-  return {
-    type: CHANGE_STARTDATE,
-    payload: startDate,
-  };
-}
+// export function changeStartDate(startDate) {
+//   return {
+//     type: CHANGE_STARTDATE,
+//     payload: startDate,
+//   };
+// }
 
 export function changeEndDate(endDate) {
   return {
@@ -22,10 +22,10 @@ export function changeEndDate(endDate) {
   };
 }
 
-export function handleDayClick(day) {
+export function handleStartDateClick(startDate) {
   return {
-    type: CHANGE_CALENDARDAY,
-    payload: day,
+    type: CHANGE_STARTDATE,
+    payload: startDate,
   };
 }
 
@@ -34,8 +34,8 @@ export function reserve(
   startDate,
   roomie,
   endDate,
-  paidReservation,
-  selectedDay
+  paidReservation
+  // selectedDay
 ) {
   return async function (dispatch) {
     try {
@@ -50,7 +50,7 @@ export function reserve(
           roomie,
           endDate,
           paidReservation,
-          selectedDay,
+          // selectedDay,
         },
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
@@ -64,11 +64,11 @@ export function reserve(
 }
 
 const initialState = {
-  startDate: "",
+  startDate: undefined,
   endDate: "",
   reserveLoading: false,
   reserveError: false,
-  selectedDay: undefined,
+  // selectedDay: undefined,
 };
 
 function reservationReducer(state = initialState, action) {
@@ -85,12 +85,12 @@ function reservationReducer(state = initialState, action) {
         endDate: action.payload,
       };
     }
-    case CHANGE_CALENDARDAY: {
-      return {
-        ...state,
-        selectedDay: action.payload,
-      };
-    }
+    // case CHANGE_CALENDARDAY: {
+    //   return {
+    //     ...state,
+    //     selectedDay: action.payload,
+    //   };
+    // }
     case RESERVATION_LOADING: {
       return {
         ...state,
