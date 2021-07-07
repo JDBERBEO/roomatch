@@ -9,7 +9,7 @@ import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
 import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
-import { RoomieProfile } from "./views/RoomieProfile";
+import { RoomieProfile } from "./views/RoomieProfile";;
 
 function App() {
   return (

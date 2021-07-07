@@ -6,6 +6,7 @@ export const HostProfile = () => {
     <div>
       <h3>Host Profile</h3>
       <CardProfile />
+      <FormAdSpace />
     </div>
   );
 };
