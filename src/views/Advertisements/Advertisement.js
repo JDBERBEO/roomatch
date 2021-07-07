@@ -13,9 +13,9 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import {
   reserve,
-  // changeStartDate,
   changeEndDate,
   handleStartDateClick,
+  handleEndDateClick,
 } from "../../store/ReservationReducer";
 
 import { getAd } from "../../store/getOneAdsReducer";
@@ -33,7 +33,6 @@ export const Advertisement = () => {
     endDate,
     reserveLoading,
     reserveError,
-    // selectedDay,
   } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
@@ -43,7 +42,6 @@ export const Advertisement = () => {
       endDate: state.reservationReducer.endDate,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
-      // selectedDay: state.reservationReducer.selectedDay,
     };
   });
 
@@ -58,31 +56,22 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(
-      reserve(
-        id,
-        startDate,
-        RoomieIdMocked,
-        endDate,
-        paidReservation
-        // selectedDay
-      )
-    );
+    dispatch(reserve(id, startDate, RoomieIdMocked, endDate, paidReservation));
   }
 
   return (
     <div>
       <Container>
         <Row className="justify-content-center">
-          <Col className="col-7">
+          <Col className="col-8">
             <BreadCrumb />
           </Col>
         </Row>
-        <Row>
-          <Col className="col-6">
+        <Row className="justify-content-center">
+          <Col className="col-5">
             <Carouselph array={imgAdds} />
           </Col>
-          <Col className="col-6">
+          <Col className="col-7">
             <ListGroup as="ul" key={ad._id}>
               <ListGroup.Item as="li" active>
                 {ad.living_space}
@@ -90,21 +79,17 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            <DayPicker
-              onDayClick={(day) => dispatch(handleStartDateClick(day))}
-              selectedDays={startDate}
-            />
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="endDate">
-                <Form.Label>EndDate</Form.Label>
-                <Form.Control
-                  onChange={(e) => dispatch(changeEndDate(e.target.value))}
-                  type="text"
-                  placeholder="Enter endDate"
-                  value={endDate}
-                  name="endDate"
-                />
-              </Form.Group>
+              <Form.Label>Arriving Date</Form.Label>
+              <DayPicker
+                onDayClick={(day) => dispatch(handleStartDateClick(day))}
+                selectedDays={startDate}
+              />
+              <Form.Label>Leaving Date</Form.Label>
+              <DayPicker
+                onDayClick={(day) => dispatch(handleEndDateClick(day))}
+                selectedDays={endDate}
+              />
               <Button type="submit">Match Host!</Button>
             </Form>
           </Col>
