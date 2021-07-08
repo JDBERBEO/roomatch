@@ -13,8 +13,9 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import {
   reserve,
-  changeStartDate,
   changeEndDate,
+  handleStartDateClick,
+  handleEndDateClick,
 } from "../../store/ReservationReducer";
 
 import { getAd } from "../../store/getOneAdsReducer";
@@ -62,15 +63,15 @@ export const Advertisement = () => {
     <div>
       <Container>
         <Row className="justify-content-center">
-          <Col className="col-7">
+          <Col className="col-8">
             <BreadCrumb />
           </Col>
         </Row>
-        <Row>
-          <Col className="col-6">
+        <Row className="justify-content-center">
+          <Col className="col-5">
             <Carouselph array={imgAdds} />
           </Col>
-          <Col className="col-6">
+          <Col className="col-7">
             <ListGroup as="ul" key={ad._id}>
               <ListGroup.Item as="li" active>
                 {ad.living_space}
@@ -78,28 +79,17 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            <DayPicker />
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="startDate">
-                <Form.Label>StartDate</Form.Label>
-                <Form.Control
-                  onChange={(e) => dispatch(changeStartDate(e.target.value))}
-                  type="text"
-                  placeholder="Enter startDate"
-                  value={startDate}
-                  name="startDate"
-                />
-              </Form.Group>
-              <Form.Group controlId="endDate">
-                <Form.Label>EndDate</Form.Label>
-                <Form.Control
-                  onChange={(e) => dispatch(changeEndDate(e.target.value))}
-                  type="text"
-                  placeholder="Enter endDate"
-                  value={endDate}
-                  name="endDate"
-                />
-              </Form.Group>
+              <Form.Label>Arriving Date</Form.Label>
+              <DayPicker
+                onDayClick={(day) => dispatch(handleStartDateClick(day))}
+                selectedDays={startDate}
+              />
+              <Form.Label>Leaving Date</Form.Label>
+              <DayPicker
+                onDayClick={(day) => dispatch(handleEndDateClick(day))}
+                selectedDays={endDate}
+              />
               <Button type="submit">Match Host!</Button>
             </Form>
           </Col>
