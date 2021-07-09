@@ -108,11 +108,10 @@ export function loginRoomie(
           disabledHost,
         },
       });
+      localStorage.setItem("token", data.token);
+
       console.log(data);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
-
-      await localStorage.setItem("token", response.data.token);
-      history.push("/roomie/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error });
     } finally {
