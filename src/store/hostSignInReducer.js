@@ -109,8 +109,9 @@ export function loginRoomie(
         },
       });
       console.log(data);
-
       dispatch({ type: REGISTER_SUCCESS, payload: data });
+
+      await localStorage.setItem("token", response.data.token);
       history.push("/roomie/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error });
@@ -129,6 +130,7 @@ const initialState = {
   disabledHost: false,
   loading: false,
   error: false,
+  isAuth: false,
 };
 
 function reducer(state = initialState, action) {
