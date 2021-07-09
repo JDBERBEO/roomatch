@@ -87,13 +87,14 @@ export function register(
         },
       });
       console.log(data);
-
+      localStorage.setItem('token',data.token)
       dispatch({ type: REGISTER_SUCCESS, payload: data });
-      history.push("/host/profile");
+      history.push("/");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error });
     } finally {
       dispatch({ type: REGISTER_FINISHED });
+ 
     }
   };
 }

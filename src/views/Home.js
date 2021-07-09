@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Carouselph } from "../components/Carousel";
 import { SignUp } from "../components/SignUp";
 import { BeHost } from "../components/BeHost";
@@ -37,6 +38,13 @@ const imgAddsHome = [
 ];
 
 export const Home = () => {
+
+const history = useHistory();
+  function Logout(){
+    localStorage.removeItem('token')
+    
+    history.push("/");
+  }
   return (
     <div className="App">
       <Container>
@@ -46,6 +54,16 @@ export const Home = () => {
           </Col>
           <Col>
             <BeHost />
+          </Col>
+          <Col>
+          <Button
+            variant={localStorage.token?"primary":"outline-light"}
+            type="button"
+            onClick={Logout}
+            disabled={!localStorage.token}
+          >
+            Logout
+          </Button>
           </Col>
           <ModalHome />
         </Row>
