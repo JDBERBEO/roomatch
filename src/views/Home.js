@@ -1,6 +1,6 @@
 import React from "react";
 import { Carouselph } from "../components/Carousel";
-import { SingUp } from "../components/SingUp";
+import { SignUp } from "../components/SignUp";
 import { BeHost } from "../components/BeHost";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -36,41 +36,36 @@ const imgAddsHome = [
   },
 ];
 
-class Home extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Container>
-          <Row className="justify-content-right">
-            <Col>
-              <SingUp />
-            </Col>
-            <Col>
-              <BeHost />
-            </Col>
-            <ModalHome />
-          </Row>
-          <Row className="justify-content-center">
-            <Col className="col-7">
-              <Breadcrumb>
-                <Breadcrumb.Item>City</Breadcrumb.Item>
-                <Breadcrumb.Item>Checkin</Breadcrumb.Item>
-                <Breadcrumb.Item>Checkout</Breadcrumb.Item>
-                <Breadcrumb.Item>Guests</Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  <Link to="/advertisements">
-                    <Button>Search</Button>
-                  </Link>
-                </Breadcrumb.Item>
-              </Breadcrumb>
-            </Col>
-          </Row>
-        </Container>
-        <Carouselph array={imgAddsHome} />
-        
-      </div>
-    );
-  }
-}
-
-export default Home;
+export const Home = () => {
+  return (
+    <div className="App">
+      <Container>
+        <Row className="justify-content-right">
+          <Col>
+            <SignUp />
+          </Col>
+          <Col>
+            <BeHost />
+          </Col>
+          <ModalHome />
+        </Row>
+        <Row className="justify-content-center">
+          <Col className="col-7">
+            <Breadcrumb>
+              <Breadcrumb.Item>City</Breadcrumb.Item>
+              <Breadcrumb.Item>Checkin</Breadcrumb.Item>
+              <Breadcrumb.Item>Checkout</Breadcrumb.Item>
+              <Breadcrumb.Item>Guests</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/advertisements">
+                  <Button>Search</Button>
+                </Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+          </Col>
+        </Row>
+      </Container>
+      <Carouselph array={imgAddsHome} />
+    </div>
+  );
+};

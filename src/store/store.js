@@ -4,6 +4,9 @@ import reservationReducer from "./ReservationReducer";
 import getOneAdReducer from "./getOneAdsReducer";
 import formHostReducer from "./formHostReducer";
 import hostSignInReducer from "./hostSignInReducer";
+import roomieReducer from "./roomieReducer";
+
+
 import thunk from "redux-thunk";
 
 function logger(store) {
@@ -25,6 +28,7 @@ function logger(store) {
 }
 
 const rootReducer = combineReducers({
+  roomieReducer,
   getAdsReducer,
   reservationReducer,
   getOneAdReducer,

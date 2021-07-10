@@ -7,14 +7,21 @@ export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
 export const CHANGE_STARTDATE = "CHANGE_STARTDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
 
-export function changeStartDate(startDate) {
+export function changeEndDate(endDate) {
+  return {
+    type: CHANGE_ENDDATE,
+    payload: endDate,
+  };
+}
+
+export function handleStartDateClick(startDate) {
   return {
     type: CHANGE_STARTDATE,
     payload: startDate,
   };
 }
 
-export function changeEndDate(endDate) {
+export function handleEndDateClick(endDate) {
   return {
     type: CHANGE_ENDDATE,
     payload: endDate,
@@ -53,8 +60,8 @@ export function reserve(
 }
 
 const initialState = {
-  startDate: "",
-  endDate: "",
+  startDate: undefined,
+  endDate: undefined,
   reserveLoading: false,
   reserveError: false,
 };
@@ -73,6 +80,7 @@ function reservationReducer(state = initialState, action) {
         endDate: action.payload,
       };
     }
+
     case RESERVATION_LOADING: {
       return {
         ...state,
