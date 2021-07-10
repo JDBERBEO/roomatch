@@ -71,7 +71,6 @@ export function loginHost(
           disabledHost,
         },
       });
-      console.log(data);
 
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
@@ -108,7 +107,6 @@ export function loginRoomie(
           disabledHost,
         },
       });
-      console.log(data);
 
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/roomie/profile");
