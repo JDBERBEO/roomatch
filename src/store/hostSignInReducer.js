@@ -72,7 +72,6 @@ export function loginHost(
         },
       });
       console.log(data);
-
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
@@ -111,6 +110,7 @@ export function loginRoomie(
       localStorage.setItem("token", data.token);
       console.log(data);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
+      history.push("/roomie/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error });
     } finally {
