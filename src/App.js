@@ -27,7 +27,8 @@ function App() {
           <Route exact path="/behost" component={BeHost} />
           <Route exact path="/host/profile" component={HostProfile} />
           <PrivateRouter
-            path={`/advertisement/$id`}
+            exact
+            path={`/advertisement/:id`}
             component={Advertisement}
           />
         </Switch>

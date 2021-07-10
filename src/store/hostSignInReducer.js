@@ -109,7 +109,6 @@ export function loginRoomie(
         },
       });
       localStorage.setItem("token", data.token);
-
       console.log(data);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
     } catch (error) {

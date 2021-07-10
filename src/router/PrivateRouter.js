@@ -8,7 +8,7 @@ export const PrivateRouter = (props) => {
     let token = localStorage.getItem("token");
     setstate(token);
   }, []);
-  console.log("isAllowed", isAllowed);
+
   if (!isAllowed) return <Redirect to="/" />;
-  return <Route props={props} />;
+  return <Route {...props} />;
 };
