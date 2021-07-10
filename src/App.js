@@ -17,7 +17,11 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/roomie/signup" component={SignUpForm} />
-          <Route exact path="/roomie/profile" component={RoomieProfile} />
+          <PrivateRouter
+            exact
+            path="/roomie/profile"
+            component={RoomieProfile}
+          />
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={AdvertisementsMain} />
           <Route exact path="/behost" component={BeHost} />
