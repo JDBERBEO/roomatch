@@ -25,7 +25,8 @@ function App() {
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={AdvertisementsMain} />
           <Route exact path="/behost" component={BeHost} />
-          <Route exact path="/host/profile" component={HostProfile} />
+
+          <PrivateRouter exact path="/host/profile" component={HostProfile} />
           <PrivateRouter
             exact
             path={`/advertisement/:id`}
