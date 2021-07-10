@@ -9,8 +9,8 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import ModalHome from "../components/ModalHome";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { render } from "react-dom/cjs/react-dom.development";
+
+
 
 const imgAddsHome = [
   {
