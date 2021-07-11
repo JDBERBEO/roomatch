@@ -71,7 +71,6 @@ export function loginHost(
           disabledHost,
         },
       });
-      console.log(data);
       localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
@@ -109,7 +108,6 @@ export function loginRoomie(
         },
       });
       localStorage.setItem("token", data.token);
-      console.log(data);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/roomie/profile");
     } catch (error) {
