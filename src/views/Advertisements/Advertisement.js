@@ -97,7 +97,7 @@ export const Advertisement = () => {
                 // numberOfMonths={this.props.numberOfMonths}
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
-                onDayClick={(day) => dispatch(handleDayClick(day))}
+                onDayClick={(day) => dispatch(handleDayClick(day, range))}
               />
               <Button type="submit">Match Host!</Button>
             </Form>

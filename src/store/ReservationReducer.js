@@ -7,12 +7,15 @@ export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
 export const CHANGE_RANGEDATE = "CHANGE_RANGEDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
 
-export function handleDayClick(day) {
-  console.log("day from handlereducer: ", day);
-  const state = getInitialState();
+export function handleDayClick(day, range) {
+  // console.log("day from handlereducer: ", day);
+  // const state = getInitialState();
   // const { range } = state;
-  console.log("state from handlereducer: ", state);
-  const newRange = DateUtils.addDayToRange(day, state);
+  // console.log("state from handlereducer: ", state);
+  const newRange = DateUtils.addDayToRange(day, {
+    from: undefined,
+    to: undefined,
+  });
   console.log("newrangeTO from handlereducer: ", newRange);
   return {
     type: CHANGE_RANGEDATE,
