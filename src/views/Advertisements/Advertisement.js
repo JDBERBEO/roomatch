@@ -11,14 +11,10 @@ import { BreadCrumb } from "../../components/BreadCrumb";
 import { imgAdds } from "../../Mock_data/imgsAdd";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
-import {
-  reserve,
-  changeEndDate,
-  handleStartDateClick,
-  handleEndDateClick,
-} from "../../store/ReservationReducer";
+import { reserve, handleDayClick } from "../../store/ReservationReducer";
 
 import { getAd } from "../../store/getOneAdsReducer";
+import FormFileLabel from "react-bootstrap/esm/FormFileLabel";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
@@ -29,8 +25,9 @@ export const Advertisement = () => {
     loading,
     error,
     ad,
-    startDate,
-    endDate,
+    // startDate,
+    // endDate,
+    range,
     reserveLoading,
     reserveError,
   } = useSelector((state) => {
@@ -38,8 +35,9 @@ export const Advertisement = () => {
       loading: state.getOneAdReducer.loading,
       error: state.getOneAdReducer.error,
       ad: state.getOneAdReducer.ad,
-      startDate: state.reservationReducer.startDate,
-      endDate: state.reservationReducer.endDate,
+      // startDate: state.reservationReducer.startDate,
+      // endDate: state.reservationReducer.endDate,
+      range: state.reservationReducer.range,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
     };
@@ -56,9 +54,23 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, startDate, RoomieIdMocked, endDate, paidReservation));
+    dispatch(
+      reserve(
+        id,
+        // startDate,
+        RoomieIdMocked,
+        // endDate,
+        range,
+        paidReservation
+      )
+    );
   }
 
+  const modifiers = {
+    start: range.from,
+    end: range.to,
+  };
+  const { from, to } = range;
   return (
     <div>
       <Container>
@@ -80,15 +92,12 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
             <Form onSubmit={handleSubmit}>
-              <Form.Label>Arriving Date</Form.Label>
               <DayPicker
-                onDayClick={(day) => dispatch(handleStartDateClick(day))}
-                selectedDays={startDate}
-              />
-              <Form.Label>Leaving Date</Form.Label>
-              <DayPicker
-                onDayClick={(day) => dispatch(handleEndDateClick(day))}
-                selectedDays={endDate}
+                className="Selectable"
+                // numberOfMonths={this.props.numberOfMonths}
+                selectedDays={[from, { from, to }]}
+                modifiers={modifiers}
+                onDayClick={(day) => dispatch(handleDayClick(day))}
               />
               <Button type="submit">Match Host!</Button>
             </Form>

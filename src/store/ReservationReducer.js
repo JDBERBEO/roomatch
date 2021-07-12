@@ -1,30 +1,22 @@
 import axios from "axios";
-
+import { DateUtils } from "react-day-picker";
 export const RESERVATION_LOADING = "RESERVATION_LOADING ";
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS";
 export const RESERVATION_ERROR = "RESERVATION_ERROR";
 export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
-export const CHANGE_STARTDATE = "CHANGE_STARTDATE";
+export const CHANGE_RANGEDATE = "CHANGE_RANGEDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
 
-export function changeEndDate(endDate) {
+export function handleDayClick(day) {
+  console.log("day from handlereducer: ", day);
+  const state = getInitialState();
+  // const { range } = state;
+  console.log("state from handlereducer: ", state);
+  const newRange = DateUtils.addDayToRange(day, state);
+  console.log("newrangeTO from handlereducer: ", newRange);
   return {
-    type: CHANGE_ENDDATE,
-    payload: endDate,
-  };
-}
-
-export function handleStartDateClick(startDate) {
-  return {
-    type: CHANGE_STARTDATE,
-    payload: startDate,
-  };
-}
-
-export function handleEndDateClick(endDate) {
-  return {
-    type: CHANGE_ENDDATE,
-    payload: endDate,
+    type: CHANGE_RANGEDATE,
+    payload: newRange,
   };
 }
 
@@ -33,9 +25,11 @@ export function reserve(
   startDate,
   roomie,
   endDate,
+  range,
   paidReservation
 ) {
   return async function (dispatch) {
+    console.log("range desde reducer: ", range);
     try {
       dispatch({ type: RESERVATION_LOADING });
       const { data } = await axios({
@@ -47,6 +41,7 @@ export function reserve(
           startDate,
           roomie,
           endDate,
+          range,
           paidReservation,
         },
       });
@@ -60,24 +55,24 @@ export function reserve(
 }
 
 const initialState = {
-  startDate: undefined,
-  endDate: undefined,
+  range: {
+    from: undefined,
+    to: undefined,
+  },
   reserveLoading: false,
   reserveError: false,
 };
 
+function getInitialState() {
+  return initialState.range;
+}
+
 function reservationReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_STARTDATE: {
+    case CHANGE_RANGEDATE: {
       return {
         ...state,
-        startDate: action.payload,
-      };
-    }
-    case CHANGE_ENDDATE: {
-      return {
-        ...state,
-        endDate: action.payload,
+        range: action.payload,
       };
     }
 
