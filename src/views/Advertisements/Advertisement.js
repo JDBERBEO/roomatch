@@ -11,7 +11,11 @@ import { BreadCrumb } from "../../components/BreadCrumb";
 import { imgAdds } from "../../Mock_data/imgsAdd";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
-import { reserve, handleDayClick } from "../../store/ReservationReducer";
+import {
+  reserve,
+  handleDayClick,
+  getBookedDays,
+} from "../../store/ReservationReducer";
 
 import { getAd } from "../../store/getOneAdsReducer";
 import FormFileLabel from "react-bootstrap/esm/FormFileLabel";
@@ -25,11 +29,11 @@ export const Advertisement = () => {
     loading,
     error,
     ad,
-    // startDate,
-    // endDate,
     range,
     reserveLoading,
     reserveError,
+    reservations,
+    reservationsError,
   } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
@@ -40,12 +44,21 @@ export const Advertisement = () => {
       range: state.reservationReducer.range,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
+      reservations: state.reservationReducer.reservations,
+      reservationsError: state.reservationReducer.reservationsError,
     };
   });
 
+  // useEffect(() => {
+  // }, []);
   useEffect(() => {
     dispatch(getAd(id));
+    dispatch(getBookedDays());
   }, []);
+
+  const BKDAYS = [];
+
+  reservations.map((reservation) => BKDAYS.push(reservation.range));
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
@@ -54,16 +67,7 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(
-      reserve(
-        id,
-        // startDate,
-        RoomieIdMocked,
-        // endDate,
-        range,
-        paidReservation
-      )
-    );
+    dispatch(reserve(id, range, RoomieIdMocked, paidReservation));
   }
 
   const modifiers = {
@@ -71,6 +75,7 @@ export const Advertisement = () => {
     end: range.to,
   };
   const { from, to } = range;
+
   return (
     <div>
       <Container>
@@ -98,6 +103,7 @@ export const Advertisement = () => {
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
                 onDayClick={(day) => dispatch(handleDayClick(day, range))}
+                // disabledDays={}
               />
               <Button type="submit">Match Host!</Button>
             </Form>

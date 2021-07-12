@@ -6,16 +6,13 @@ export const RESERVATION_ERROR = "RESERVATION_ERROR";
 export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
 export const CHANGE_RANGEDATE = "CHANGE_RANGEDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
+export const BOOKEDDAYS_LOADING = "BOOKEDDAYS_LOADING";
+export const BOOKEDDAYS_SUCCESS = "BOOKEDDAYS_SUCCESS";
+export const BOOKEDDAYS_ERROR = "BOOKEDDAYS_ERROR";
+export const BOOKEDDAYS_FINISHED = "BOOKEDDAYS_FINISHED";
 
 export function handleDayClick(day, range) {
-  // console.log("day from handlereducer: ", day);
-  // const state = getInitialState();
-  // const { range } = state;
-  // console.log("state from handlereducer: ", state);
-  const newRange = DateUtils.addDayToRange(day, {
-    from: undefined,
-    to: undefined,
-  });
+  const newRange = DateUtils.addDayToRange(day, range);
   console.log("newrangeTO from handlereducer: ", newRange);
   return {
     type: CHANGE_RANGEDATE,
@@ -23,14 +20,7 @@ export function handleDayClick(day, range) {
   };
 }
 
-export function reserve(
-  AdvertisementId,
-  startDate,
-  roomie,
-  endDate,
-  range,
-  paidReservation
-) {
+export function reserve(AdvertisementId, range, roomie, paidReservation) {
   return async function (dispatch) {
     console.log("range desde reducer: ", range);
     try {
@@ -41,10 +31,8 @@ export function reserve(
         url: "/reservations",
         data: {
           AdvertisementId,
-          startDate,
-          roomie,
-          endDate,
           range,
+          roomie,
           paidReservation,
         },
       });
@@ -57,6 +45,24 @@ export function reserve(
   };
 }
 
+export function getBookedDays() {
+  return async function (dispatch) {
+    try {
+      dispatch({ type: BOOKEDDAYS_LOADING });
+      const { data } = await axios({
+        method: "GET",
+        baseURL: "http://localhost:8000",
+        url: "/reservations",
+      });
+      dispatch({ type: BOOKEDDAYS_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({ type: BOOKEDDAYS_ERROR, payload: error });
+    } finally {
+      dispatch({ type: BOOKEDDAYS_FINISHED });
+    }
+  };
+}
+
 const initialState = {
   range: {
     from: undefined,
@@ -64,6 +70,8 @@ const initialState = {
   },
   reserveLoading: false,
   reserveError: false,
+  reservations: [],
+  reservationsError: false,
 };
 
 function getInitialState() {
@@ -103,6 +111,24 @@ function reservationReducer(state = initialState, action) {
         reserveLoading: false,
       };
     }
+    case BOOKEDDAYS_ERROR: {
+      return {
+        ...state,
+        reservationsError: true,
+      };
+    }
+    case BOOKEDDAYS_SUCCESS: {
+      return {
+        ...state,
+        reservations: action.payload,
+      };
+    }
+    // case BOOKEDDAYS_FINISHED: {
+    //   return {
+    //     ...state,
+    //     reservations: action.payload,
+    //   };
+    // }
     default: {
       return state;
     }
