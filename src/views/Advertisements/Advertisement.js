@@ -39,8 +39,6 @@ export const Advertisement = () => {
       loading: state.getOneAdReducer.loading,
       error: state.getOneAdReducer.error,
       ad: state.getOneAdReducer.ad,
-      // startDate: state.reservationReducer.startDate,
-      // endDate: state.reservationReducer.endDate,
       range: state.reservationReducer.range,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
@@ -49,8 +47,6 @@ export const Advertisement = () => {
     };
   });
 
-  // useEffect(() => {
-  // }, []);
   useEffect(() => {
     dispatch(getAd(id));
     dispatch(getBookedDays());
@@ -58,7 +54,23 @@ export const Advertisement = () => {
 
   const BKDAYS = [];
 
-  reservations.map((reservation) => BKDAYS.push(reservation.range));
+  const ReservationsWithRange = reservations.filter(
+    (reservation) => reservation.range
+  );
+  console.log("Reservations with range", ReservationsWithRange);
+
+  ReservationsWithRange.map((el) => BKDAYS.push(el.range));
+  const newdateBKDAYS = BKDAYS.map((el) => {
+    if (el) {
+      const obj = {
+        from: new Date(el.from),
+        to: new Date(el.to),
+      };
+      return obj;
+    }
+  });
+
+  console.log("NewBKDAYS", newdateBKDAYS);
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
@@ -103,7 +115,7 @@ export const Advertisement = () => {
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
                 onDayClick={(day) => dispatch(handleDayClick(day, range))}
-                // disabledDays={}
+                disabledDays={newdateBKDAYS}
               />
               <Button type="submit">Match Host!</Button>
             </Form>
