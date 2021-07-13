@@ -16,9 +16,7 @@ import {
   handleDayClick,
   getBookedDays,
 } from "../../store/ReservationReducer";
-
 import { getAd } from "../../store/getOneAdsReducer";
-import FormFileLabel from "react-bootstrap/esm/FormFileLabel";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
@@ -57,7 +55,6 @@ export const Advertisement = () => {
   const ReservationsWithRange = reservations.filter(
     (reservation) => reservation.range
   );
-  console.log("Reservations with range", ReservationsWithRange);
 
   ReservationsWithRange.map((el) => BKDAYS.push(el.range));
   const newdateBKDAYS = BKDAYS.map((el) => {
@@ -69,8 +66,6 @@ export const Advertisement = () => {
       return obj;
     }
   });
-
-  console.log("NewBKDAYS", newdateBKDAYS);
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
@@ -111,7 +106,6 @@ export const Advertisement = () => {
             <Form onSubmit={handleSubmit}>
               <DayPicker
                 className="Selectable"
-                // numberOfMonths={this.props.numberOfMonths}
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
                 onDayClick={(day) => dispatch(handleDayClick(day, range))}

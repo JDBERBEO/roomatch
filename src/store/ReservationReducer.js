@@ -13,7 +13,6 @@ export const BOOKEDDAYS_FINISHED = "BOOKEDDAYS_FINISHED";
 
 export function handleDayClick(day, range) {
   const newRange = DateUtils.addDayToRange(day, range);
-  console.log("newrangeTO from handlereducer: ", newRange);
   return {
     type: CHANGE_RANGEDATE,
     payload: newRange,
@@ -22,7 +21,6 @@ export function handleDayClick(day, range) {
 
 export function reserve(AdvertisementId, range, roomie, paidReservation) {
   return async function (dispatch) {
-    console.log("range desde reducer: ", range);
     try {
       dispatch({ type: RESERVATION_LOADING });
       const { data } = await axios({
@@ -123,12 +121,6 @@ function reservationReducer(state = initialState, action) {
         reservations: action.payload,
       };
     }
-    // case BOOKEDDAYS_FINISHED: {
-    //   return {
-    //     ...state,
-    //     reservations: action.payload,
-    //   };
-    // }
     default: {
       return state;
     }
