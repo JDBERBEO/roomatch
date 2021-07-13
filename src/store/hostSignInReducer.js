@@ -184,6 +184,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         loading: action.payload,
+        show:false,
       };
     }
     case REGISTER_ERROR: {
