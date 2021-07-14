@@ -8,6 +8,7 @@ import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
 import { RoomieProfile } from "./views/RoomieProfile";
+import { MyAdvertisements } from "./views/hostAdvertisments";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path={`/advertisement/:id`} component={Advertisement} />
           <Route exact path="/behost" component={BeHost} />
           <Route exact path="/host/profile" component={HostProfile} />
+          <Route exact path="/host/advertisements" component ={MyAdvertisements}/>
         </Switch>
       </Router>
     </div>
