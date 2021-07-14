@@ -27,7 +27,7 @@ export const AdsListsHost = ({
               <ListGroup.Item as="li">{description}</ListGroup.Item>
             </ListGroup>
             <Button variant="outline-success" onClick={() => handleSelect(id)}>
-              Book this space
+              Look this space
             </Button>
           </Col>
         </Row>

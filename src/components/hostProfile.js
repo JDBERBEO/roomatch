@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Tabs, Tab, Form, Container, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-
+import { MyAdvertisements } from "../views/hostAdvertisements";
 
 import {
   hostPostAdv,
@@ -73,7 +73,7 @@ export const HostProfileTab = () => {
       )
     );
   }
-  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
 
@@ -212,8 +212,9 @@ export const HostProfileTab = () => {
             </Col>
           </Form>
         </Tab>
-        <Tab eventKey="posts" title="Posts"></Tab>
-        
+        <Tab eventKey="posts" title="Posts">
+          <MyAdvertisements />
+        </Tab>
       </Tabs>
     </Container>
   );
