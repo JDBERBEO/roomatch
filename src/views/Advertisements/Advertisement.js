@@ -50,39 +50,31 @@ export const Advertisement = () => {
     dispatch(getBookedDays());
   }, []);
 
-  const BKDAYS = [];
+  
 
-  const ReservationsWithRange = reservations.filter(
-    (reservation) => reservation.range
-  );
-
-  ReservationsWithRange.map((el) => BKDAYS.push(el.range));
-  const newdateBKDAYS = BKDAYS.map((el) => {
-    if (el) {
-      const obj = {
-        from: new Date(el.from),
-        to: new Date(el.to),
-      };
-      return obj;
-    }
-  });
-
-  if (loading) return <p>loading...</p>;
-  if (error) return <p>oops, something went wrong </p>;
-
-  const paidReservation = ad.price;
+  const newdateBKDAYS = reservations
+    .filter((reservation) => reservation.range)
+    .map(reservation => reservation.range) 
+    .map(range => ({ 
+      from:new Date(range.from),
+      to: new Date(range.to)
+    }))
+  
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, range, RoomieIdMocked, paidReservation));
+    dispatch(reserve(id, range, RoomieIdMocked, ad.price));
   }
 
   const modifiers = {
     start: range.from,
     end: range.to,
+    disabled:newdateBKDAYS,
   };
   const { from, to } = range;
 
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>oops, something went wrong </p>;
   return (
     <div>
       <Container>
@@ -108,8 +100,9 @@ export const Advertisement = () => {
                 className="Selectable"
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
-                onDayClick={(day) => dispatch(handleDayClick(day, range))}
                 disabledDays={newdateBKDAYS}
+                onDayClick={(day, {disabled}) => dispatch(handleDayClick(day, range, disabled))}
+                
               />
               <Button type="submit">Match Host!</Button>
             </Form>

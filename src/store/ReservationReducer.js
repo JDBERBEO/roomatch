@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DateUtils } from "react-day-picker";
+import { DateUtils,ModifiersUtils } from "react-day-picker";
 export const RESERVATION_LOADING = "RESERVATION_LOADING ";
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS";
 export const RESERVATION_ERROR = "RESERVATION_ERROR";
@@ -11,7 +11,13 @@ export const BOOKEDDAYS_SUCCESS = "BOOKEDDAYS_SUCCESS";
 export const BOOKEDDAYS_ERROR = "BOOKEDDAYS_ERROR";
 export const BOOKEDDAYS_FINISHED = "BOOKEDDAYS_FINISHED";
 
-export function handleDayClick(day, range) {
+export function handleDayClick(day, range, disabled) {
+  if(disabled){
+    return {
+      type: "default"
+    }
+  }
+
   const newRange = DateUtils.addDayToRange(day, range);
   return {
     type: CHANGE_RANGEDATE,
