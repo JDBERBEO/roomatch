@@ -48,11 +48,13 @@ export function register( name, lastName, email, password, age, history) {
         url:'/roomie/signup', 
         data: { name, lastName, email,  password, age }
     })
-
+    //console.log(data)
+    localStorage.setItem('token', data.token)
     dispatch({type: REGISTER_SUCCESS, payload: data })
     history.push('/roomie/profile')    
     } catch(error) {
-    dispatch({ type: REGISTER_ERROR, payload: error })           
+//console.dir(error)
+    dispatch({ type: REGISTER_ERROR, payload: error.response.data.message })           
     } finally {
     dispatch ({type : REGISTER_FINISHED})
     }
@@ -60,7 +62,7 @@ export function register( name, lastName, email, password, age, history) {
 }
 
 const initialState = { 
-    name: '',
+    name: '',   
     lastName:'',
     email: '',
     password: '',

@@ -109,7 +109,7 @@ export function loginRoomie(
         },
       });
       console.log(data);
-
+      localStorage.setItem('token', data.token)
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/roomie/profile");
     } catch (error) {
