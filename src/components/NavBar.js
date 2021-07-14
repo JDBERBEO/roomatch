@@ -3,9 +3,17 @@ import ModalHome from "../components/ModalHome";
 import { BeHost } from "../components/BeHost";
 import { SignUp } from "../components/SignUp";
 
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 import React from "react";
 
 export const NavBar = () => {
+  const history = useHistory();
+  function Logout(){
+    localStorage.removeItem('token')
+    
+    history.push("/");
+  }
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -19,6 +27,15 @@ export const NavBar = () => {
               <BeHost />
 
               <SignUp />
+              <Button
+                variant={localStorage.token?"dark":"outline-dark"}
+                type="button"
+                onClick={Logout}
+                disabled={!localStorage.token}
+              >
+                Logout
+              </Button>
+
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">

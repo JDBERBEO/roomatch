@@ -86,7 +86,7 @@ export function register(
           profilePhoto,
         },
       });
-
+      localStorage.setItem('token',data.token)
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
