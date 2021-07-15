@@ -32,7 +32,7 @@ const rootReducer = combineReducers({
   roomieReducer,
   getAdsReducer,
   reservationReducer,
-  getAdvertisementsReducer, 
+  getAdvertisementsReducer,
   getOneAdReducer,
   formHostReducer,
   hostSignInReducer,
