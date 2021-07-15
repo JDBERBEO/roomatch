@@ -9,13 +9,13 @@ export function getReservations() {
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATIONS_LOADING });
-      
+
       const token = localStorage.getItem('token')
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
         url: "reservations",
-        headers:{
+        headers: {
           'Authorization': `Bearer ${token}`
         }
       });

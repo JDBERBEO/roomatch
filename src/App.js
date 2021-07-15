@@ -5,7 +5,7 @@ import { Home } from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
 import { Advertisements } from "./views/Advertisements/Advertisements";
 import { RoomieProfile } from "./views/RoomieProfile";
-import  { Reservations } from "./views/Reservations";
+import { Reservations } from "./views/Reservations";
 import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
 import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
@@ -21,8 +21,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/roomie/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={Advertisements} />
-          <Route exact path="/roomie/profile" component={RoomieProfile} />      
-          <Route exact path="/reservations" component={Reservations} />   
+          <Route exact path="/roomie/profile" component={RoomieProfile} />
+          <Route exact path="/reservations" component={Reservations} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={AdvertisementsMain} />
           <Route exact path={`/advertisement/:id`} component={Advertisement} />
