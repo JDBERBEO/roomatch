@@ -50,16 +50,13 @@ export const Advertisement = () => {
     dispatch(getBookedDays());
   }, []);
 
-  
-
   const newdateBKDAYS = reservations
     .filter((reservation) => reservation.range)
-    .map(reservation => reservation.range) 
-    .map(range => ({ 
-      from:new Date(range.from),
-      to: new Date(range.to)
-    }))
-  
+    .map((reservation) => reservation.range)
+    .map((range) => ({
+      from: new Date(range.from),
+      to: new Date(range.to),
+    }));
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -69,7 +66,7 @@ export const Advertisement = () => {
   const modifiers = {
     start: range.from,
     end: range.to,
-    disabled:newdateBKDAYS,
+    disabled: newdateBKDAYS,
   };
   const { from, to } = range;
 
@@ -95,14 +92,21 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            <Form onSubmit={handleSubmit}>
+            <Form
+              onSubmit={
+                range.from !== undefined || range.to !== undefined
+                  ? handleSubmit
+                  : null
+              }
+            >
               <DayPicker
                 className="Selectable"
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
                 disabledDays={newdateBKDAYS}
-                onDayClick={(day, {disabled}) => dispatch(handleDayClick(day, range, disabled))}
-                
+                onDayClick={(day, { disabled }) =>
+                  dispatch(handleDayClick(day, range, disabled))
+                }
               />
               <Button type="submit">Match Host!</Button>
             </Form>
