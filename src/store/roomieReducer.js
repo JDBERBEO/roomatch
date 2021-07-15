@@ -48,7 +48,7 @@ export function register( name, lastName, email, password, age, history) {
         url:'/roomie/signup', 
         data: { name, lastName, email,  password, age }
     })
-
+    localStorage.setItem("token", data.token);
     dispatch({type: REGISTER_SUCCESS, payload: data })
     history.push('/roomie/profile')    
     } catch(error) {
