@@ -9,6 +9,7 @@ import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
 import { RoomieProfile } from "./views/RoomieProfile";
 import { MyAdvertisements } from "./views/hostAdvertisments";
+import { PrivateRouter } from "./router/PrivateRouter";
 
 function App() {
   return (
@@ -17,13 +18,21 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/roomie/signup" component={SignUpForm} />
-          <Route exact path="/roomie/profile" component={RoomieProfile} />
+          <PrivateRouter
+            exact
+            path="/roomie/profile"
+            component={RoomieProfile}
+          />
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={AdvertisementsMain} />
-          <Route exact path={`/advertisement/:id`} component={Advertisement} />
           <Route exact path="/behost" component={BeHost} />
-          <Route exact path="/host/profile" component={HostProfile} />
-          <Route exact path="/host/advertisements" component ={MyAdvertisements}/>
+
+          <PrivateRouter exact path="/host/profile" component={HostProfile} />
+          <PrivateRouter
+            exact
+            path={`/advertisement/:id`}
+            component={Advertisement}
+          />
         </Switch>
       </Router>
     </div>

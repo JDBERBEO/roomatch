@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { Tabs, Tab, Form, Container, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 
-
 import {
   hostPostAdv,
   changePublicServices,
@@ -19,6 +18,8 @@ import {
   changePrice,
   changeHouseRules,
 } from "../store/hostPostReducer";
+import { useHistory } from "react-router-dom";
+import hostPostReducer from "../store/hostPostReducer";
 export const HostProfileTab = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -73,7 +74,7 @@ export const HostProfileTab = () => {
       )
     );
   }
-  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
 
@@ -213,7 +214,6 @@ export const HostProfileTab = () => {
           </Form>
         </Tab>
         <Tab eventKey="posts" title="Posts"></Tab>
-        
       </Tabs>
     </Container>
   );

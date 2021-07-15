@@ -6,7 +6,7 @@ export const BeHost = () => {
   return (
     <div>
       <Link to="/behost">
-        <Button variant="primary">Be Host</Button>{" "}
+        <Button variant="dark">Be Host</Button>{" "}
       </Link>
     </div>
   );
