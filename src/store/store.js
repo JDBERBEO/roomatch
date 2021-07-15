@@ -5,6 +5,7 @@ import getOneAdReducer from "./getOneAdsReducer";
 import formHostReducer from "./formHostReducer";
 import hostSignInReducer from "./hostSignInReducer";
 import roomieReducer from "./roomieReducer";
+import getAdvertisementsReducer from "./getAdvertisementsReducer";
 import hostPostReducer from "./hostPostReducer";
 
 import thunk from "redux-thunk";
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   roomieReducer,
   getAdsReducer,
   reservationReducer,
+  getAdvertisementsReducer,
   getOneAdReducer,
   formHostReducer,
   hostSignInReducer,

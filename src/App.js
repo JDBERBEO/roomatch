@@ -8,6 +8,7 @@ import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
 import { RoomieProfile } from "./views/RoomieProfile";
+import { MyAdvertisements } from "./views/hostAdvertisments";
 import { PrivateRouter } from "./router/PrivateRouter";
 
 function App() {
