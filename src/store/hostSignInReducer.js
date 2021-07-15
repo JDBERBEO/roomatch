@@ -71,7 +71,7 @@ export function loginHost(
           disabledHost,
         },
       });
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("Token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
@@ -184,7 +184,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         loading: action.payload,
-        show:false,
+        show: false,
       };
     }
     case REGISTER_ERROR: {
