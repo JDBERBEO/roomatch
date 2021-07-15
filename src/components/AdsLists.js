@@ -5,8 +5,8 @@ import { Carouselph } from "./Carousel";
 
 export const AdsLists = ({
   id,
+  living_space,
   price,
-  living_space_type,
   description,
   array,
   handleSelect,
@@ -21,7 +21,7 @@ export const AdsLists = ({
           <Col className="col-4">
             <ListGroup as="ul" key={id}>
               <ListGroup.Item as="li" active>
-                {living_space_type}
+                {living_space}
               </ListGroup.Item>
               <ListGroup.Item as="li">{price}</ListGroup.Item>
               <ListGroup.Item as="li">{description}</ListGroup.Item>

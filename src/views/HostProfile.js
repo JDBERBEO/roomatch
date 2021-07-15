@@ -9,7 +9,7 @@ export const HostProfile = () => {
   }
   return (
     <div>
-      <h3>Host Profile</h3>
+      <h3>Welcome</h3>
       <Link to="/">
         <Button onClick={logout}>logout</Button>
       </Link>
