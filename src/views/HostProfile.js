@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const HostProfile = () => {
   function logout() {
-    localStorage.removeItem("Token");
+    localStorage.removeItem("token");
   }
   return (
     <div>

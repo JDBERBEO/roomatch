@@ -19,7 +19,7 @@ function AdvertisementsMain() {
   useEffect(() => {
     dispatch(getAds());
   }, []);
-
+  console.log(ads);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
 

@@ -19,7 +19,6 @@ import {
   changePrice,
   changeHouseRules,
 } from "../store/hostPostReducer";
-import { useHistory } from "react-router-dom";
 import hostPostReducer from "../store/hostPostReducer";
 export const HostProfileTab = () => {
   const dispatch = useDispatch();
