@@ -33,13 +33,13 @@ export function handleDayClick(day, selectedDays, selected, disabled) {
   };
 }
 
-export function Reserve(
+export function reserve(
   AdvertisementId,
   selectedDays,
   roomie,
-  paidReservation
+  paidReservation,
+  history
 ) {
-  // const history = useHistory();
   console.log("selectedDays: ", selectedDays);
   return async function (dispatch) {
     try {
@@ -55,7 +55,7 @@ export function Reserve(
           paidReservation,
         },
       });
-      // history.push(`/advertisement/${AdvertisementId}`);
+      history.push(`/advertisement/${AdvertisementId}`);
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
       window.alert("Reservation Created");
     } catch (error) {
