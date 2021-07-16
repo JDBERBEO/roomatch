@@ -40,7 +40,6 @@ export function reserve(
   paidReservation,
   history
 ) {
-  console.log("selectedDays: ", selectedDays);
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATION_LOADING });
@@ -55,9 +54,9 @@ export function reserve(
           paidReservation,
         },
       });
-      history.push(`/advertisement/${AdvertisementId}`);
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
       window.alert("Reservation Created");
+      history.push("/advertisements");
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
     } finally {

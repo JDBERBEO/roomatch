@@ -12,7 +12,7 @@ import { imgAdds } from "../../Mock_data/imgsAdd";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import {
-  Reserve,
+  reserve,
   handleDayClick,
   getBookedDays,
 } from "../../store/ReservationReducer";
@@ -50,25 +50,21 @@ export const Advertisement = () => {
     dispatch(getBookedDays());
   }, []);
 
-  console.log("reservations", reservations);
   const newdateBKDAYS = reservations
     .filter((reservation) => reservation.selectedDays)
     .map((reservation) => reservation.selectedDays)
     .map((array) => array.map((date) => new Date(date)))
     .flat();
 
-  console.log("newdateBKDAYS", newdateBKDAYS);
-
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(Reserve(id, selectedDays, RoomieIdMocked, ad.price));
+    dispatch(reserve(id, selectedDays, RoomieIdMocked, ad.price));
   }
 
   const modifiers = {
     disabled: newdateBKDAYS,
     selected: selectedDays,
   };
-  // const { from, to } = range;
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
