@@ -16,7 +16,6 @@ export function getAds() {
         url: "/advertisements/getAds",
       });
       dispatch({ type: ADS_SUCCESS, payload: data });
-      console.log(data);
     } catch (error) {
       dispatch({ type: ADS_ERROR, payload: error });
     } finally {
