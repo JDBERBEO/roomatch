@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Tabs, Tab, Form, Container, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { MyAdvertisements } from "../views/hostAdvertisements";
+import { ShowHostProfile } from "../views/showHostProfile";
 
 import {
   hostPostAdv,
@@ -19,7 +20,6 @@ import {
   changePrice,
   changeHouseRules,
 } from "../store/hostPostReducer";
-import hostPostReducer from "../store/hostPostReducer";
 export const HostProfileTab = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -81,7 +81,9 @@ export const HostProfileTab = () => {
   return (
     <Container>
       <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-        <Tab eventKey="home" title="Personal data"></Tab>
+        <Tab eventKey="home" title="Personal data">
+          <ShowHostProfile />
+        </Tab>
         <Tab eventKey="profile" title="Show your space">
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="public_services">
