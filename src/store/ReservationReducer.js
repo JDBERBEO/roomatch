@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DateUtils, ModifiersUtils } from "react-day-picker";
+import { useHistory } from "react-router-dom";
 export const RESERVATION_LOADING = "RESERVATION_LOADING ";
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS";
 export const RESERVATION_ERROR = "RESERVATION_ERROR";
@@ -11,22 +12,35 @@ export const BOOKEDDAYS_SUCCESS = "BOOKEDDAYS_SUCCESS";
 export const BOOKEDDAYS_ERROR = "BOOKEDDAYS_ERROR";
 export const BOOKEDDAYS_FINISHED = "BOOKEDDAYS_FINISHED";
 
-export function handleDayClick(day, range, disabled) {
+export function handleDayClick(day, selectedDays, selected, disabled) {
   if (disabled) {
-    window.alert("Days already booked");
-    return {
-      type: "default",
-    };
+    window.alert("days already booked");
+    return { type: "default" };
+  }
+  const selectedDaysOne = selectedDays.concat();
+  if (selected) {
+    const selectedIndex = selectedDaysOne.findIndex((selectedDay) =>
+      DateUtils.isSameDay(selectedDay, day)
+    );
+    selectedDaysOne.splice(selectedIndex, 1);
+  } else {
+    selectedDaysOne.push(day);
   }
 
-  const newRange = DateUtils.addDayToRange(day, range);
   return {
     type: CHANGE_RANGEDATE,
-    payload: newRange,
+    payload: selectedDaysOne,
   };
 }
 
-export function reserve(AdvertisementId, range, roomie, paidReservation) {
+export function Reserve(
+  AdvertisementId,
+  selectedDays,
+  roomie,
+  paidReservation
+) {
+  // const history = useHistory();
+  console.log("selectedDays: ", selectedDays);
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATION_LOADING });
@@ -36,12 +50,14 @@ export function reserve(AdvertisementId, range, roomie, paidReservation) {
         url: "/reservations",
         data: {
           AdvertisementId,
-          range,
+          selectedDays,
           roomie,
           paidReservation,
         },
       });
+      // history.push(`/advertisement/${AdvertisementId}`);
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
+      window.alert("Reservation Created");
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
     } finally {
@@ -73,6 +89,7 @@ const initialState = {
     from: undefined,
     to: undefined,
   },
+  selectedDays: [],
   reserveLoading: false,
   reserveError: false,
   reservations: [],
@@ -88,7 +105,7 @@ function reservationReducer(state = initialState, action) {
     case CHANGE_RANGEDATE: {
       return {
         ...state,
-        range: action.payload,
+        selectedDays: action.payload,
       };
     }
 

@@ -12,7 +12,7 @@ import { imgAdds } from "../../Mock_data/imgsAdd";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import {
-  reserve,
+  Reserve,
   handleDayClick,
   getBookedDays,
 } from "../../store/ReservationReducer";
@@ -27,7 +27,7 @@ export const Advertisement = () => {
     loading,
     error,
     ad,
-    range,
+    selectedDays,
     reserveLoading,
     reserveError,
     reservations,
@@ -37,7 +37,7 @@ export const Advertisement = () => {
       loading: state.getOneAdReducer.loading,
       error: state.getOneAdReducer.error,
       ad: state.getOneAdReducer.ad,
-      range: state.reservationReducer.range,
+      selectedDays: state.reservationReducer.selectedDays,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
       reservations: state.reservationReducer.reservations,
@@ -50,25 +50,25 @@ export const Advertisement = () => {
     dispatch(getBookedDays());
   }, []);
 
+  console.log("reservations", reservations);
   const newdateBKDAYS = reservations
-    .filter((reservation) => reservation.range)
-    .map((reservation) => reservation.range)
-    .map((range) => ({
-      from: new Date(range.from),
-      to: new Date(range.to),
-    }));
+    .filter((reservation) => reservation.selectedDays)
+    .map((reservation) => reservation.selectedDays)
+    .map((array) => array.map((date) => new Date(date)))
+    .flat();
+
+  console.log("newdateBKDAYS", newdateBKDAYS);
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, range, RoomieIdMocked, ad.price));
+    dispatch(Reserve(id, selectedDays, RoomieIdMocked, ad.price));
   }
 
   const modifiers = {
-    start: range.from,
-    end: range.to,
     disabled: newdateBKDAYS,
+    selected: selectedDays,
   };
-  const { from, to } = range;
+  // const { from, to } = range;
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
@@ -92,20 +92,16 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            <Form
-              onSubmit={
-                range.from !== undefined || range.to !== undefined
-                  ? handleSubmit
-                  : null
-              }
-            >
+            <Form onSubmit={selectedDays.length !== 0 ? handleSubmit : null}>
               <DayPicker
                 className="Selectable"
-                selectedDays={[from, { from, to }]}
+                selectedDays={selectedDays}
                 modifiers={modifiers}
                 disabledDays={newdateBKDAYS}
-                onDayClick={(day, { disabled }) =>
-                  dispatch(handleDayClick(day, range, disabled))
+                onDayClick={(day, { selected, disabled }) =>
+                  dispatch(
+                    handleDayClick(day, selectedDays, selected, disabled)
+                  )
                 }
               />
               <Button type="submit">Match Host!</Button>
