@@ -10,7 +10,7 @@ export function getAdvertisements() {
     try {
       dispatch({ type: ADVERTISEMENTS_LOADING });
 
-      const token = localStorage.getItem("Token");
+      const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
