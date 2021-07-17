@@ -9,15 +9,15 @@ export function getAdvertisements() {
   return async function (dispatch) {
     try {
       dispatch({ type: ADVERTISEMENTS_LOADING });
-      
-      const token = localStorage.getItem('Token')
+
+      const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
-        url: "advertisements",
-        headers:{
-          'Authorization': `Bearer ${token}`
-        }
+        url: `/advertisements/hostAd/`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       dispatch({ type: ADVERTISEMENTS_SUCCESS, payload: data });
@@ -30,7 +30,7 @@ export function getAdvertisements() {
 }
 
 const initialState = {
-  advertisements: [],
+  hostAdvertisements: [],
   loading: false,
   error: false,
 };
@@ -46,7 +46,7 @@ const getAdvertisementsReducer = (state = initialState, action) => {
     case ADVERTISEMENTS_SUCCESS: {
       return {
         ...state,
-        advertisements: action.payload,
+        hostAdvertisements: action.payload,
       };
     }
     case ADVERTISEMENTS_ERROR: {

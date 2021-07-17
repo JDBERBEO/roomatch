@@ -9,6 +9,8 @@ import formHostReducer from "./formHostReducer";
 import hostSignInReducer from "./hostSignInReducer";
 import roomieReducer from "./roomieReducer";
 import getProfileReducer from "./getShowProfileReducer";
+import getAdvertisementsReducer from "./getAdvertisementsReducer";
+import hostPostReducer from "./hostPostReducer";
 
 import thunk from "redux-thunk";
 
@@ -38,9 +40,11 @@ const rootReducer = combineReducers({
   getProfileReducer,
   getAdvertisementsReducer,
   getAdsReducer,
+  getAdvertisementsReducer,
   getOneAdReducer,
   formHostReducer,
   hostSignInReducer,
+  hostPostReducer,
 });
 
 const middlewares = applyMiddleware(thunk, logger);
