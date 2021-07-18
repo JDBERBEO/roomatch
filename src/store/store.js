@@ -7,7 +7,7 @@ import hostSignInReducer from "./hostSignInReducer";
 import roomieReducer from "./roomieReducer";
 import getAdvertisementsReducer from "./getAdvertisementsReducer";
 import hostPostReducer from "./hostPostReducer";
-
+import getProfileHostReducer from "./getShowProfileHostReducer";
 import thunk from "redux-thunk";
 
 function logger(store) {
@@ -37,6 +37,7 @@ const rootReducer = combineReducers({
   formHostReducer,
   hostSignInReducer,
   hostPostReducer,
+  getProfileHostReducer,
 });
 
 const middlewares = applyMiddleware(thunk, logger);
