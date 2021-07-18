@@ -20,6 +20,7 @@ import {
   changePrice,
   changeHouseRules,
 } from "../store/hostPostReducer";
+import hostPostReducer from "../store/hostPostReducer";
 export const HostProfileTab = () => {
   const dispatch = useDispatch();
   const history = useHistory();
