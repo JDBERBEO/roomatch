@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Carouselph } from "../components/Carousel";
 import { Row, Col, Container, Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from "react-places-autocomplete";
+import mapboxgl from "mapbox-gl";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 export const Home = () => {
+  const mapboxgl.accessToken =
+    "pk.eyJ1IjoianVhbmJlcmJlbyIsImEiOiJja3I3MHZ4OWkxbnBsMnduM21hcnd2ZHg3In0.RRDvN27EMAe0eYU_eozmdQ";
+  const ref = useRef("textinput");
+  useEffect(() => {
+    let geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      types: "country, region, place, postcode, locality, neighborhood",
+    });
+    geocoder.addTo("textinput");
+  }, []);
   return (
     <div className="App">
+      <input type="text" ref={ref}></input>
       <NavBar />
       <Container>
         <Row className="justify-content-center">
