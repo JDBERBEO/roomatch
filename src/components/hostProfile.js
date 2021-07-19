@@ -18,8 +18,9 @@ import {
   changePhoto,
   changePrice,
   changeHouseRules,
+  changeCity,
 } from "../store/hostPostReducer";
-import hostPostReducer from "../store/hostPostReducer";
+
 export const HostProfileTab = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,6 +39,7 @@ export const HostProfileTab = () => {
     photo,
     price,
     house_rules,
+    city,
   } = useSelector(({ hostPostReducer }) => {
     return {
       loading: hostPostReducer.loading,
@@ -53,6 +55,7 @@ export const HostProfileTab = () => {
       photo: hostPostReducer.photo,
       price: hostPostReducer.price,
       house_rules: hostPostReducer.house_rules,
+      city: hostPostReducer.city,
     };
   });
   function handleSubmit(e) {
@@ -70,6 +73,7 @@ export const HostProfileTab = () => {
         photo,
         price,
         house_rules,
+        city,
         history
       )
     );
@@ -145,27 +149,23 @@ export const HostProfileTab = () => {
                 value={bathroom}
               />
             </Form.Group>
-            <Form.Row className="justify-center">
-              <Col xs="auto" className="my-1">
-                <Form.Label>private bathroom</Form.Label>
-                <Form.Control
-                  as="select"
-                  id="inlineFormCustomSelect"
-                  custom
-                  className="private_room"
-                  htmlFor="inlineFormCustomSelect"
-                  name="private_room"
-                  onChange={(e) => {
-                    dispatch(changePrivateBathRoom(e.target.value));
-                    console.log(e.target.value);
-                  }}
-                >
-                  <option value="0">Choose...</option>
-                  <option value={true}>yes</option>
-                  <option value={false}>no</option>
-                </Form.Control>
-              </Col>
-            </Form.Row>
+            <Form.Label>private bathroom</Form.Label>
+            <Form.Control
+              as="select"
+              id="inlineFormCustomSelect"
+              custom
+              className="private_room"
+              htmlFor="inlineFormCustomSelect"
+              name="private_room"
+              onChange={(e) => {
+                dispatch(changePrivateBathRoom(e.target.value));
+                console.log(e.target.value);
+              }}
+            >
+              <option value="0">Choose...</option>
+              <option value={true}>yes</option>
+              <option value={false}>no</option>
+            </Form.Control>
             <Form.Group controlId="Parking">
               <Form.Label>Parking</Form.Label>
               <Form.Control
@@ -208,6 +208,32 @@ export const HostProfileTab = () => {
                 value={house_rules}
               />
             </Form.Group>
+
+            <Form.Label>Select the city</Form.Label>
+            <Form.Control
+              as="select"
+              id="inlineFormCustomSelect"
+              custom
+              className="city"
+              htmlFor="inlineFormCustomSelect"
+              name="city"
+              onChange={(e) => {
+                dispatch(changeCity(e.target.value));
+                console.log("value", e.target.value);
+              }}
+            >
+              <option value="0">Choose your city</option>
+              <option value={"Bogotá"}>Bogotá</option>
+              <option value={"Cali"}>Cali</option>
+              <option value={"Medellín"}>Medellín</option>
+              <option value={"Bucaramanga"}>Bucaramanga</option>
+              <option value={"Santa Marta"}>Santa Marta</option>
+              <option value={"Barranquilla"}>Barranquilla</option>
+              <option value={"Cartagena"}>Cartagena</option>
+              <option value={"Cúcuta"}>Cúcuta</option>
+              <option value={"Pasto"}>Pasto</option>
+              <option value={"Ibagué"}>Ibagué</option>
+            </Form.Control>
             <Col>
               <Button type="submit">Submit</Button>
             </Col>

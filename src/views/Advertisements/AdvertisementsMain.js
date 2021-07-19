@@ -1,24 +1,21 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAds } from "../../store/getAdsReducer";
+import { filterPost } from "../../store/FilterReducer";
 import { Advertisements } from "./Advertisements";
 
 function AdvertisementsMain() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { loading, error, ads } = useSelector(({ getAdsReducer }) => {
+  const { loading, error, ads } = useSelector((state) => {
     return {
-      loading: getAdsReducer.loading,
-      error: getAdsReducer.error,
-      ads: getAdsReducer.ads,
+      loading: state.getAdsReducer.loading,
+      error: state.getAdsReducer.error,
+      ads: state.filterPostReducer.ads,
     };
   });
 
-  useEffect(() => {
-    dispatch(getAds());
-  }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
 
