@@ -43,6 +43,7 @@ export function reserve(
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATION_LOADING });
+      const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "POST",
         baseURL: "http://localhost:8000",
@@ -50,9 +51,9 @@ export function reserve(
         data: {
           AdvertisementId,
           selectedDays,
-          roomie,
           paidReservation,
         },
+        headers: { Authorization: `Bearer ${token}` },
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
       window.alert("Reservation Created");

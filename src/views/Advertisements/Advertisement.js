@@ -20,7 +20,6 @@ import { getAd } from "../../store/getOneAdsReducer";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
-  const RoomieIdMocked = "60e0a38fc192a31d21bea52f";
 
   let { id } = useParams();
   const {
@@ -58,7 +57,7 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, selectedDays, RoomieIdMocked, ad.price));
+    dispatch(reserve(id, selectedDays, ad.price));
   }
 
   const modifiers = {
