@@ -38,30 +38,31 @@ export function changeAge(age) {
     }
 }
 
-export function register( name, lastName, email, password, age, history) {
-   return async function(dispatch) {
-       try {
-        dispatch({ type: REGISTER_LOADING})
-        const { data } = await axios ({
-        method: 'POST',
-        baseURL: 'http://localhost:8000',
-        url:'/roomie/signup', 
-        data: { name, lastName, email,  password, age }
-    })
-    localStorage.setItem("token", data.token);
-    dispatch({type: REGISTER_SUCCESS, payload: data })
-    history.push('/roomie/profile')    
-    } catch(error) {
-    dispatch({ type: REGISTER_ERROR, payload: error })           
-    } finally {
-    dispatch ({type : REGISTER_FINISHED})
+export function register(name, lastName, email, password, age, history) {
+    return async function (dispatch) {
+        try {
+            dispatch({ type: REGISTER_LOADING })
+            const { data } = await axios({
+                method: 'POST',
+                baseURL: 'http://localhost:8000',
+                url: '/roomie/signup',
+                data: { name, lastName, email, password, age }
+            })
+            localStorage.setItem("token", data.token);
+            dispatch({ type: REGISTER_SUCCESS, payload: data })
+            history.push('/roomie/profile')
+        } catch (error) {
+            //console.dir(error)
+            dispatch({ type: REGISTER_ERROR, payload: error.response.data.message })
+        } finally {
+            dispatch({ type: REGISTER_FINISHED })
+        }
     }
-     } 
 }
 
-const initialState = { 
+const initialState = {
     name: '',
-    lastName:'',
+    lastName: '',
     email: '',
     password: '',
     age: 0,
@@ -72,59 +73,59 @@ const initialState = {
 }
 
 function reducer(state = initialState, action) {
- 
-    switch(action.type) {
+
+    switch (action.type) {
 
         case CHANGE_NAME: {
             return {
                 ...state,
-                name:action.payload,
+                name: action.payload,
             }
         } case CHANGE_LAST_NAME: {
             return {
                 ...state,
-                lastName:action.payload,
-                }            
+                lastName: action.payload,
+            }
         } case CHANGE_EMAIL: {
             return {
                 ...state,
-                email:action.payload,
-                }            
+                email: action.payload,
+            }
         } case CHANGE_PASSWORD: {
             return {
                 ...state,
-                password:action.payload,
-                }            
+                password: action.payload,
+            }
         } case CHANGE_AGE: {
             return {
                 ...state,
-                age:action.payload,
-                }            
-        } case  REGISTER_LOADING:{
+                age: action.payload,
+            }
+        } case REGISTER_LOADING: {
             return {
                 ...state,
                 loading: true,
-                }
+            }
         } case REGISTER_SUCCESS: {
             return {
                 ...state,
                 loading: false,
             }
         } case REGISTER_ERROR: {
-                return {
+            return {
                 ...state,
                 error: true,
-                }
-        }case REGISTER_FINISHED: {
-                return {
+            }
+        } case REGISTER_FINISHED: {
+            return {
                 ...state,
                 loading: false,
-                }
             }
-        default:{
+        }
+        default: {
             return state
         }
     }
 }
 
-export default reducer 
+export default reducer
