@@ -1,9 +1,12 @@
 import axios from "axios";
+import { DateUtils, ModifiersUtils } from "react-day-picker";
+
 export const FILTER_LOADING = "FILTER_LOADING";
 export const FILTER_SUCCESS = "FILTER_SUCCESS";
 export const FILTER_ERROR = "FILTER_ERROR";
 export const FILTER_FINISHED = "FILTER_FINISHED";
 export const FILTER_CITY = "FILTER_CITY";
+export const FILTER_CHANGES_SELECTED_DAYS = "FILTER_CHANGES_SELECTED_DAYS";
 
 export function handleFilterCity(city) {
   return {
@@ -12,15 +15,35 @@ export function handleFilterCity(city) {
   };
 }
 
-export function filterPost(city, history) {
+export function handleDayClick(day, selectedDays, selected) {
+  const selectedDaysOne = selectedDays.concat();
+  if (selected) {
+    const selectedIndex = selectedDaysOne.findIndex((selectedDay) =>
+      DateUtils.isSameDay(selectedDay, day)
+    );
+    selectedDaysOne.splice(selectedIndex, 1);
+  } else {
+    selectedDaysOne.push(day);
+  }
+  console.log("selectedDaysOne", selectedDaysOne);
+  return {
+    type: FILTER_CHANGES_SELECTED_DAYS,
+    payload: selectedDaysOne,
+  };
+}
+
+export function filterPost(city, selectedDays, history) {
   console.log("filterPostcity", city);
+  console.log("selectedDays", selectedDays);
   return async function (dispatch) {
+    const selectedDaysString = JSON.stringify(selectedDays);
+    console.log("selecteddayssrting", selectedDaysString);
     try {
       dispatch({ type: FILTER_LOADING });
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
-        url: `/advertisements/${city}`,
+        url: `/advertisements/${city}/?selectedDays=${selectedDaysString}`,
       });
       dispatch({ type: FILTER_SUCCESS, payload: data });
       history.push("/advertisements");
@@ -38,6 +61,7 @@ const initialState = {
   filterLoading: false,
   filterError: false,
   ads: [],
+  selectedDays: [],
 };
 
 function filterPostReducer(state = initialState, action) {
@@ -66,6 +90,12 @@ function filterPostReducer(state = initialState, action) {
       return {
         ...state,
         filterLoading: false,
+      };
+    }
+    case FILTER_CHANGES_SELECTED_DAYS: {
+      return {
+        ...state,
+        selectedDays: action.payload,
       };
     }
     default: {

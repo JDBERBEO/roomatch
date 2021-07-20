@@ -6,16 +6,19 @@ import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import { filterPost, handleFilterCity } from "../store/FilterReducer";
+import DayPicker from "react-day-picker";
+import { handleDayClick } from "../store/FilterReducer";
 
 export const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { filterError, filterLoading, city } = useSelector(
+  const { filterError, filterLoading, city, selectedDays } = useSelector(
     ({ filterPostReducer }) => {
       return {
         filterLoading: filterPostReducer.filterLoading,
         filterError: filterPostReducer.filterError,
         city: filterPostReducer.city,
+        selectedDays: filterPostReducer.selectedDays,
       };
     }
   );
@@ -25,8 +28,13 @@ export const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("handleSubmit");
-    dispatch(filterPost(city, history));
+    dispatch(filterPost(city, selectedDays, history));
   };
+
+  const modifiers = {
+    selected: selectedDays,
+  };
+
   if (filterLoading) return <p>Loading...</p>;
   if (filterError) return <p>Oops Something went wrong</p>;
 
@@ -72,37 +80,16 @@ export const Home = () => {
                     </Col>
                     <Col>
                       <Form.Group controlId="checkin">
-                        <Form.Label>Checkin</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Enter your checkin date"
-                          // name="public_services"
-                          // onChange={}
-                          // value={public_services}
-                        />
-                      </Form.Group>
-                    </Col>
-                    <Col>
-                      <Form.Group controlId="checkout">
-                        <Form.Label>Checkout</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Enter your checkout date"
-                          // name="public_services"
-                          // onChange={}
-                          // value={public_services}
-                        />
-                      </Form.Group>
-                    </Col>
-                    <Col>
-                      <Form.Group controlId="guests">
-                        <Form.Label>Guests</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Enter the number of guests"
-                          // name="public_services"
-                          // onChange={}
-                          // value={public_services}
+                        <Form.Label>Select your days </Form.Label>
+                        <DayPicker
+                          className="Selectable"
+                          selectedDays={selectedDays}
+                          modifiers={modifiers}
+                          onDayClick={(day, { selected }) =>
+                            dispatch(
+                              handleDayClick(day, selectedDays, selected)
+                            )
+                          }
                         />
                       </Form.Group>
                     </Col>
