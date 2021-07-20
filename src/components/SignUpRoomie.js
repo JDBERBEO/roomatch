@@ -90,7 +90,7 @@ function SignUpRoomie() {
                 <Form.Check type="checkbox" label="accept terms" />
               </Form.Group> 
               <Button 
-                variant="primary" 
+                variant="danger"
                 type="submit">
                 Register
               </Button>

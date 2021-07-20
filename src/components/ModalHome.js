@@ -77,7 +77,7 @@ function ModalHome() {
 
   return (
     <>
-      <Button variant="dark" onClick={() => dispatch(changeShow())}>
+      <Button variant="outline-light" onClick={() => dispatch(changeShow())}>
         Sign In
       </Button>
       <Modal
@@ -91,6 +91,7 @@ function ModalHome() {
         </Modal.Header>
         <Modal.Body>
           <Button
+            variant="danger"
             onClick={() =>
               dispatch(() => {
                 dispatch(changeHandleRoomie());
@@ -101,6 +102,7 @@ function ModalHome() {
             As a roomie
           </Button>{" "}
           <Button
+            variant="danger"
             onClick={() => {
               dispatch(changeHandleHost());
             }}
@@ -136,12 +138,12 @@ function ModalHome() {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button type="submit">Sign In</Button>
+            <Button variant="danger" type="submit">Sign In</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button
-            variant="secondary"
+            variant="danger"
             onClick={() => {
               dispatch(changeClose());
             }}

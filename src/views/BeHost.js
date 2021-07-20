@@ -5,6 +5,9 @@ export const BeHost = () => {
   return (
     <div>
       <h1>Host Form Register</h1>
+      <br></br>
+      <div class="divider"></div>
+      <br></br>
       <Hostform />
      </div>
   );

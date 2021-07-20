@@ -6,7 +6,7 @@ export const SignUp = () => {
   return (
     <div>
       <Link to="/roomie/signup">
-        <Button variant="dark">SignUp</Button>{" "}
+        <Button variant="outline-light">SignUp</Button>
       </Link>
     </div>
   );
