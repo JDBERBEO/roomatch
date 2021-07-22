@@ -53,8 +53,14 @@ export const NavBarCss = () => {
        </nav>
 
      </div>
-     <ul class="sidenav amber" id="mobile-demo">
-        
+     <ul class="sidenav red accent-3" id="mobile-demo">
+        <li><div class="section white">
+            <div class="background" >
+              <img class="responsive-img" src="../../RoomiesNavBar.jpg"/>
+            </div>
+        </div></li>
+      
+        <li><br></br></li>
         <li><ModalHome/></li>
         <li><BeHost/></li>
         <li><SignUp/></li>
