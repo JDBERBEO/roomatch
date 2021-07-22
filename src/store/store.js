@@ -8,8 +8,7 @@ import getOneReservationReducer from "./getOneReservationReducer";
 import formHostReducer from "./formHostReducer";
 import hostSignInReducer from "./hostSignInReducer";
 import roomieReducer from "./roomieReducer";
-import getProfileReducer from "./getShowProfileReducer";
-import getAdvertisementsReducer from "./getAdvertisementsReducer";
+import ProfileReducer from "./profileReducer";
 import hostPostReducer from "./hostPostReducer";
 import getProfileHostReducer from "./getShowProfileHostReducer";
 import thunk from "redux-thunk";
@@ -37,7 +36,7 @@ const rootReducer = combineReducers({
   reservationReducer,
   getOneReservationReducer,
   getReservationsReducer,
-  getProfileReducer,
+  ProfileReducer,
   getAdvertisementsReducer,
   getAdsReducer,
   getAdvertisementsReducer,

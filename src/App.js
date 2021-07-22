@@ -10,7 +10,7 @@ import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
 import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
-
+import { PrivateRouter } from "./router/PrivateRouter"
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/advertisements" component={AdvertisementsMain} />
           <Route exact path="/behost" component={BeHost} />
 
-          <PrivateRouter exact path="/host/profile" component={HostProfile} />
+          <Route exact path="/host/profile" component={HostProfile} />
           <PrivateRouter
             exact
             path={`/advertisement/:id`}

@@ -1,11 +1,13 @@
 import React from "react";
 import { Tabs, Tab, Container, Col, Card, Button, ListGroup, Row } from "react-bootstrap";
 import { Reservations } from "../views/Reservations"
+import ModalUpdateProfile from "./ModalUpdateProfile"
 
 export const CardProfile = ({
   id,
   name,
   lastName,
+  email,
   age,
   description,
 }
@@ -32,6 +34,9 @@ export const CardProfile = ({
               <Card style={{ width: '20rem' }}>
                 <Card.Header>Preferences</Card.Header>
                 <ListGroup variant="flush">
+                  <ListGroup.Item>{email}</ListGroup.Item>
+                </ListGroup>
+                <ListGroup variant="flush">
                   <ListGroup.Item>{description}</ListGroup.Item>
                 </ListGroup>
               </Card>
@@ -40,7 +45,7 @@ export const CardProfile = ({
           <Row className="justify-content-center">
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <Button> Edit Profile </Button>
+                <ModalUpdateProfile />
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button> Delete Profile </Button>

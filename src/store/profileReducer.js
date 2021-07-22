@@ -12,6 +12,7 @@ export function getProfile() {
 
             const token = localStorage.getItem('token')
             const { data } = await axios({
+
                 method: "GET",
                 baseURL: "http://localhost:8000",
                 url: "/roomie/profile",
@@ -21,6 +22,7 @@ export function getProfile() {
             });
 
             dispatch({ type: PROFILE_SUCCESS, payload: data });
+            console.log("data", data)
         } catch (error) {
             dispatch({ type: PROFILE_ERROR, payload: error });
         } finally {
@@ -29,13 +31,36 @@ export function getProfile() {
     };
 }
 
+export function updateProfile(profile) {
+    return async function (dispatch) {
+        try {
+            // dispatch({ type: PROFILE_LOADING })
+            const token = localStorage.getItem("token")
+            const { data } = await axios({
+                method: 'PUT',
+                baseURL: 'http://localhost:8000',
+                url: '/roomie/profile/',
+                data: profile,
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            dispatch({ type: PROFILE_SUCCESS, payload: data })
+        } catch (error) {
+            //        dispatch({ type: PROFILE_ERROR, payload: error.response.data.message })
+        } finally {
+            //       dispatch({ type: PROFILE_FINISHED })
+        }
+    }
+}
+
 const initialState = {
     profile: {},
     loading: false,
     error: false,
 };
 
-const getProfileReducer = (state = initialState, action) => {
+const ProfileReducer = (state = initialState, action) => {
     switch (action.type) {
         case PROFILE_LOADING: {
             return {
@@ -67,4 +92,4 @@ const getProfileReducer = (state = initialState, action) => {
     }
 };
 
-export default getProfileReducer;
+export default ProfileReducer;
