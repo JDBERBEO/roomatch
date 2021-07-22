@@ -137,7 +137,6 @@ export function hostPostAdv(
       history.push("/");
     } catch (error) {
       dispatch({ type: HOSTPOST_ERROR, payload: error });
-      console.dir(error);
     } finally {
       dispatch({ type: HOSTPOST_FINISHED });
     }

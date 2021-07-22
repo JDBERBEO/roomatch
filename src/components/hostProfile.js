@@ -159,7 +159,6 @@ export const HostProfileTab = () => {
               name="private_room"
               onChange={(e) => {
                 dispatch(changePrivateBathRoom(e.target.value));
-                console.log(e.target.value);
               }}
             >
               <option value="0">Choose...</option>
@@ -219,7 +218,6 @@ export const HostProfileTab = () => {
               name="city"
               onChange={(e) => {
                 dispatch(changeCity(e.target.value));
-                console.log("value", e.target.value);
               }}
             >
               <option value="0">Choose your city</option>

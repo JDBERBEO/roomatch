@@ -53,39 +53,40 @@ export function changePrice(price) {
 }
 
 export function register(
-    living_space,
-    description,
-    rooms,
-    bathrooms,
-    parking,
-    price,
-    history
-  ) {
-    return async function (dispatch) {
-      try {
-        dispatch({ type: REGISTER_LOADING });
-        const { data } = await axios({
-          method: "POST",
-          baseURL: "http://localhost:8000",
-          url: "/host/signup",
-          data: {
-            name,
-            lastName,
-            email,
-            password,
-            age,
-            description,
-            profilePhoto,
-          },
-        });
-        console.log(data);
-        localStorage.setItem('token',data.token)
-        dispatch({ type: REGISTER_SUCCESS, payload: data });
-        history.push("/host/profile");
-      } catch (error) {
-        dispatch({ type: REGISTER_ERROR, payload: error });
-      } finally {
-        dispatch({ type: REGISTER_FINISHED });
-      }
-    };
-  }
+  name,
+  lastName,
+  email,
+  password,
+  age,
+  description,
+  profilePhoto,
+  history
+) {
+  return async function (dispatch) {
+    try {
+      dispatch({ type: REGISTER_LOADING });
+      const { data } = await axios({
+        method: "POST",
+        baseURL: "http://localhost:8000",
+        url: "/host/signup",
+        data: {
+          name,
+          lastName,
+          email,
+          password,
+          age,
+          description,
+          profilePhoto,
+        },
+      });
+      console.log(data);
+      localStorage.setItem("token", data.token);
+      dispatch({ type: REGISTER_SUCCESS, payload: data });
+      history.push("/host/profile");
+    } catch (error) {
+      dispatch({ type: REGISTER_ERROR, payload: error });
+    } finally {
+      dispatch({ type: REGISTER_FINISHED });
+    }
+  };
+}

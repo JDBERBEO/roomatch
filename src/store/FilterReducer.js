@@ -25,7 +25,6 @@ export function handleDayClick(day, selectedDays, selected) {
   } else {
     selectedDaysOne.push(day);
   }
-  console.log("selectedDaysOne", selectedDaysOne);
   return {
     type: FILTER_CHANGES_SELECTED_DAYS,
     payload: selectedDaysOne,
@@ -33,23 +32,21 @@ export function handleDayClick(day, selectedDays, selected) {
 }
 
 export function filterPost(city, selectedDays, history) {
-  console.log("filterPostcity", city);
-  console.log("selectedDays", selectedDays);
   return async function (dispatch) {
     const selectedDaysString = JSON.stringify(selectedDays);
-    console.log("selecteddayssrting", selectedDaysString);
+
     try {
       dispatch({ type: FILTER_LOADING });
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
-        url: `/advertisements/${city}/?selectedDays=${selectedDaysString}`,
+        url: `/advertisements/${city}/`,
+        params: { selectedDays: selectedDaysString },
       });
       dispatch({ type: FILTER_SUCCESS, payload: data });
       history.push("/advertisements");
     } catch (error) {
       dispatch({ type: FILTER_ERROR, payload: error });
-      console.dir(error);
     } finally {
       dispatch({ type: FILTER_FINISHED });
     }

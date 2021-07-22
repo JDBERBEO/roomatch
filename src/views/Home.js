@@ -23,11 +23,9 @@ export const Home = () => {
     }
   );
 
-  console.log("city desde home", city);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit");
+
     dispatch(filterPost(city, selectedDays, history));
   };
 
@@ -62,7 +60,6 @@ export const Home = () => {
                         name="city"
                         onChange={(e) => {
                           dispatch(handleFilterCity(e.target.value));
-                          console.log("value", e.target.value);
                         }}
                       >
                         <option value="0">Choose your city</option>
