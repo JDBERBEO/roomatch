@@ -1,14 +1,18 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import getAdsReducer from "./getAdsReducer";
+import getReservationsReducer from "./getReservationsReducer";
+import getAdvertisementsReducer from "./getAdvertisementsReducer";
 import reservationReducer from "./ReservationReducer";
 import getOneAdReducer from "./getOneAdsReducer";
+import getOneReservationReducer from "./getOneReservationReducer";
 import formHostReducer from "./formHostReducer";
 import hostSignInReducer from "./hostSignInReducer";
 import roomieReducer from "./roomieReducer";
-import getAdvertisementsReducer from "./getAdvertisementsReducer";
+import getProfileReducer from "./getShowProfileReducer";
 import hostPostReducer from "./hostPostReducer";
 import filterPostReducer from "./FilterReducer";
 
+import getProfileHostReducer from "./getShowProfileHostReducer";
 import thunk from "redux-thunk";
 
 function logger(store) {
@@ -31,14 +35,19 @@ function logger(store) {
 
 const rootReducer = combineReducers({
   roomieReducer,
-  getAdsReducer,
   reservationReducer,
+  getOneReservationReducer,
+  getReservationsReducer,
+  getProfileReducer,
+  getAdvertisementsReducer,
+  getAdsReducer,
   getAdvertisementsReducer,
   getOneAdReducer,
   formHostReducer,
   hostSignInReducer,
   hostPostReducer,
   filterPostReducer,
+  getProfileHostReducer,
 });
 
 const middlewares = applyMiddleware(thunk, logger);

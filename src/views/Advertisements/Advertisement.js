@@ -13,52 +13,60 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import {
   reserve,
-  changeEndDate,
-  handleStartDateClick,
-  handleEndDateClick,
+  handleDayClick,
+  getBookedDays,
 } from "../../store/ReservationReducer";
-
 import { getAd } from "../../store/getOneAdsReducer";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
-  const RoomieIdMocked = "60e0a38fc192a31d21bea52f";
 
   let { id } = useParams();
   const {
     loading,
     error,
     ad,
-    startDate,
-    endDate,
+    selectedDays,
     reserveLoading,
     reserveError,
+    reservations,
+    reservationsError,
   } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
       error: state.getOneAdReducer.error,
       ad: state.getOneAdReducer.ad,
-      startDate: state.reservationReducer.startDate,
-      endDate: state.reservationReducer.endDate,
+      selectedDays: state.reservationReducer.selectedDays,
       reserveLoading: state.reservationReducer.reserveLoading,
       reserveError: state.reservationReducer.reserveError,
+      reservations: state.reservationReducer.reservations,
+      reservationsError: state.reservationReducer.reservationsError,
     };
   });
 
   useEffect(() => {
     dispatch(getAd(id));
+    dispatch(getBookedDays());
   }, []);
 
-  if (loading) return <p>loading...</p>;
-  if (error) return <p>oops, something went wrong </p>;
-
-  const paidReservation = ad.price;
+  const newdateBKDAYS = reservations
+    .filter((reservation) => reservation.selectedDays)
+    .map((reservation) => reservation.selectedDays)
+    .map((array) => array.map((date) => new Date(date)))
+    .flat();
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, startDate, RoomieIdMocked, endDate, paidReservation));
+    dispatch(reserve(id, selectedDays, ad.price));
   }
 
+  const modifiers = {
+    disabled: newdateBKDAYS,
+    selected: selectedDays,
+  };
+
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>oops, something went wrong </p>;
   return (
     <div>
       <Container>
@@ -79,16 +87,17 @@ export const Advertisement = () => {
               <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
               <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
             </ListGroup>
-            <Form onSubmit={handleSubmit}>
-              <Form.Label>Arriving Date</Form.Label>
+            <Form onSubmit={selectedDays.length !== 0 ? handleSubmit : null}>
               <DayPicker
-                onDayClick={(day) => dispatch(handleStartDateClick(day))}
-                selectedDays={startDate}
-              />
-              <Form.Label>Leaving Date</Form.Label>
-              <DayPicker
-                onDayClick={(day) => dispatch(handleEndDateClick(day))}
-                selectedDays={endDate}
+                className="Selectable"
+                selectedDays={selectedDays}
+                modifiers={modifiers}
+                disabledDays={newdateBKDAYS}
+                onDayClick={(day, { selected, disabled }) =>
+                  dispatch(
+                    handleDayClick(day, selectedDays, selected, disabled)
+                  )
+                }
               />
               <Button type="submit">Match Host!</Button>
             </Form>
