@@ -10,7 +10,7 @@ import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
 import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
-
+import { PrivateRouter } from "./router/PrivateRouter";
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/roomie/signup" component={SignUpForm} />
-          <Route exact path="/advertisements" component={Advertisements} />
           <Route exact path="/reservations" component={Reservations} />
           <PrivateRouter
             exact
