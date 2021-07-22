@@ -1,12 +1,10 @@
 import React from "react";
-//import "../materialize.css";
 import { Carouselph } from "../components/Carousel";
 import { Row, Col, Container, Button, Breadcrumb } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
 import Image from 'react-bootstrap/Image'
-//import 'materialize-css/dist/css/materialize.min.css'
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import ModalHome from "../components/ModalHome";
 import { BeHost } from "../components/BeHost";
