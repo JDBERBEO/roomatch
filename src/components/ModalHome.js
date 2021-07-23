@@ -77,7 +77,7 @@ function ModalHome() {
 
   return (
     <>
-      <Button variant="primary" onClick={() => dispatch(changeShow())}>
+      <Button variant="dark" onClick={() => dispatch(changeShow())}>
         Sign In
       </Button>
       <Modal

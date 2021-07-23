@@ -71,8 +71,7 @@ export function loginHost(
           disabledHost,
         },
       });
-      console.log(data);
-
+      localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
@@ -108,8 +107,7 @@ export function loginRoomie(
           disabledHost,
         },
       });
-      console.log(data);
-      localStorage.setItem('token', data.token)
+      localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/roomie/profile");
     } catch (error) {
@@ -129,6 +127,7 @@ const initialState = {
   disabledHost: false,
   loading: false,
   error: false,
+  isAuth: false,
 };
 
 function reducer(state = initialState, action) {
@@ -185,6 +184,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         loading: action.payload,
+        show: false,
       };
     }
     case REGISTER_ERROR: {
