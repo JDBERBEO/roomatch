@@ -9,7 +9,6 @@ export function getReservations() {
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATIONS_LOADING });
-
       const token = localStorage.getItem('token')
       const { data } = await axios({
         method: "GET",

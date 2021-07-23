@@ -52,7 +52,6 @@ export function register(name, lastName, email, password, age, history) {
             dispatch({ type: REGISTER_SUCCESS, payload: data })
             history.push('/roomie/profile')
         } catch (error) {
-            //console.dir(error)
             dispatch({ type: REGISTER_ERROR, payload: error.response.data.message })
         } finally {
             dispatch({ type: REGISTER_FINISHED })
