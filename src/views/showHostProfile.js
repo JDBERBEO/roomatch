@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getProfileHost } from "../store/getShowProfileHostReducer";
 import { CardProfileHost } from "../components/CardProfileHost";
+
+
 export const ShowHostProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -33,8 +35,8 @@ export const ShowHostProfile = () => {
           id={profile._id}
           name={profile.name}
           LastName={profile.LastName}
-          email={profile.email}
           age={profile.age}
+          email={profile.email}
           description={profile.description}
         />
       }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Col, Card, Button, ListGroup, Row } from "react-bootstrap";
+import ModalUpdateProfile from "./ModalUpdateProfileHost"
 
 export const CardProfileHost = ({
   id,
@@ -41,7 +42,7 @@ export const CardProfileHost = ({
       <Row className="justify-content-center">
         <ListGroup variant="flush">
           <ListGroup.Item>
-            <Button> Edit Profile </Button>
+            <ModalUpdateProfile />
           </ListGroup.Item>
           <ListGroup.Item>
             <Button> Delete Profile </Button>
