@@ -40,8 +40,8 @@ export function filterPost(city, selectedDays, history) {
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
-        url: `/advertisements/${city}/`,
-        params: { selectedDays: selectedDaysString },
+        url: `/advertisements/`,
+        params: { selectedDays: selectedDaysString, city },
       });
       dispatch({ type: FILTER_SUCCESS, payload: data });
       history.push("/advertisements");

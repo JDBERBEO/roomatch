@@ -11,50 +11,34 @@ import { BreadCrumb } from "../../components/BreadCrumb";
 import { imgAdds } from "../../Mock_data/imgsAdd";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
-import {
-  reserve,
-  handleDayClick,
-  getBookedDays,
-} from "../../store/ReservationReducer";
+import { reserve, handleDayClick } from "../../store/ReservationReducer";
 import { getAd } from "../../store/getOneAdsReducer";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
 
   let { id } = useParams();
-  const {
-    loading,
-    error,
-    ad,
-    selectedDays,
-    reserveLoading,
-    reserveError,
-    reservations,
-    reservationsError,
-  } = useSelector((state) => {
+  const { loading, error, ad, selectedDays } = useSelector((state) => {
     return {
       loading: state.getOneAdReducer.loading,
       error: state.getOneAdReducer.error,
       ad: state.getOneAdReducer.ad,
       selectedDays: state.reservationReducer.selectedDays,
-      reserveLoading: state.reservationReducer.reserveLoading,
-      reserveError: state.reservationReducer.reserveError,
-      reservations: state.reservationReducer.reservations,
-      reservationsError: state.reservationReducer.reservationsError,
     };
   });
 
-  console.log("ad", ad);
   useEffect(() => {
     dispatch(getAd(id));
-    dispatch(getBookedDays(id));
   }, []);
 
-  const newdateBKDAYS = reservations
-    .filter((reservation) => reservation.selectedDays)
-    .map((reservation) => reservation.selectedDays)
-    .map((array) => array.map((date) => new Date(date)))
-    .flat();
+  let BookedDaysPerAdvertisement = "";
+  if (ad.reservations !== undefined) {
+    BookedDaysPerAdvertisement = ad.reservations
+      .map((reservation) =>
+        reservation.selectedDays.map((bookedDate) => new Date(bookedDate))
+      )
+      .flat();
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -62,7 +46,7 @@ export const Advertisement = () => {
   }
 
   const modifiers = {
-    disabled: newdateBKDAYS,
+    disabled: BookedDaysPerAdvertisement,
     selected: selectedDays,
   };
 
@@ -93,7 +77,7 @@ export const Advertisement = () => {
                 className="Selectable"
                 selectedDays={selectedDays}
                 modifiers={modifiers}
-                disabledDays={newdateBKDAYS}
+                disabledDays={BookedDaysPerAdvertisement}
                 onDayClick={(day, { selected, disabled }) =>
                   dispatch(
                     handleDayClick(day, selectedDays, selected, disabled)
