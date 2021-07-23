@@ -44,9 +44,10 @@ export const Advertisement = () => {
     };
   });
 
+  console.log("ad", ad);
   useEffect(() => {
     dispatch(getAd(id));
-    dispatch(getBookedDays());
+    dispatch(getBookedDays(id));
   }, []);
 
   const newdateBKDAYS = reservations
@@ -57,7 +58,7 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(id, selectedDays, ad.price));
+    dispatch(reserve(ad.living_space, ad._id, selectedDays, ad.price));
   }
 
   const modifiers = {

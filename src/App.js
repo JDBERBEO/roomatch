@@ -19,7 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/roomie/signup" component={SignUpForm} />
-          <Route exact path="/reservations" component={Reservations} />
+          <PrivateRouter exact path="/reservations" component={Reservations} />
           <PrivateRouter
             exact
             path="/roomie/profile"

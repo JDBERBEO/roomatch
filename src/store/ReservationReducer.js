@@ -34,22 +34,30 @@ export function handleDayClick(day, selectedDays, selected, disabled) {
 }
 
 export function reserve(
-  AdvertisementId,
+  living_space_type,
+  advertisementId,
   selectedDays,
-  roomie,
   paidReservation,
   history
 ) {
   return async function (dispatch) {
     try {
+      console.log(
+        living_space_type,
+        advertisementId,
+        selectedDays,
+        paidReservation
+      );
       dispatch({ type: RESERVATION_LOADING });
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "POST",
         baseURL: "http://localhost:8000",
         url: "/reservations",
+
         data: {
-          AdvertisementId,
+          living_space_type,
+          advertisementId,
           selectedDays,
           paidReservation,
         },
@@ -66,14 +74,16 @@ export function reserve(
   };
 }
 
-export function getBookedDays() {
+export function getBookedDays(advertisementId) {
+  console.log("advertisementId", advertisementId);
   return async function (dispatch) {
     try {
       dispatch({ type: BOOKEDDAYS_LOADING });
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
-        url: "/reservations",
+        url: "/reservations/reservationsId/",
+        params: { advertisementId },
       });
       dispatch({ type: BOOKEDDAYS_SUCCESS, payload: data });
     } catch (error) {
