@@ -30,9 +30,7 @@ export const Advertisement = () => {
   useEffect(() => {
     dispatch(getAd(id));
   }, []);
-  console.log("selectedDays", selectedDays);
-  console.log("ad", ad);
-  console.log("reservations", ad.reservations);
+
   let BookedDaysPerAdvertisement = "";
   if (ad.reservations !== undefined) {
     BookedDaysPerAdvertisement = ad.reservations

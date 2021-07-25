@@ -32,8 +32,6 @@ export function handleDayClick(day, selectedDays, selected) {
 }
 
 export function filterPost(city, selectedDays, history) {
-  console.log("city desde filter post", city);
-  console.log("selectedDays desde filterpost", selectedDays);
   return async function (dispatch) {
     const selectedDaysString = JSON.stringify(selectedDays);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Carouselph } from "../components/Carousel";
 import { Row, Col, Container, Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";

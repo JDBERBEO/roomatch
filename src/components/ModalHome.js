@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { SignUp } from "./SignUp";
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   loginHost,

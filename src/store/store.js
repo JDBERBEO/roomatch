@@ -41,7 +41,6 @@ const rootReducer = combineReducers({
   getProfileReducer,
   getAdvertisementsReducer,
   getAdsReducer,
-  getAdvertisementsReducer,
   getOneAdReducer,
   formHostReducer,
   hostSignInReducer,
