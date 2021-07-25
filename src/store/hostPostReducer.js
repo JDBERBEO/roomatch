@@ -102,7 +102,7 @@ export function hostPostAdv(
   return async function (dispatch) {
     try {
       dispatch({ type: HOSTPOST_LOADING });
-      const token = localStorage.getItem("Token");
+      const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "POST",
         baseURL: "http://localhost:8000",
@@ -151,7 +151,7 @@ const initialState = {
   hostPostError: false,
 };
 
-function hostPostreducer(state = initialState, action) {
+function hostPostReducer(state = initialState, action) {
   switch (action.type) {
     case HOSTPOST_PUBLIC_SERVICES: {
       return {
@@ -244,4 +244,4 @@ function hostPostreducer(state = initialState, action) {
   }
 }
 
-export default hostPostreducer;
+export default hostPostReducer;
