@@ -4,30 +4,35 @@ import { Row, Col, Container, Button, Breadcrumb } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
+import Image from 'react-bootstrap/Image'
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import ModalHome from "../components/ModalHome";
+import { BeHost } from "../components/BeHost";
+import { SignUp } from "../components/SignUp";
+import { useHistory } from "react-router-dom";
+import {Parallax} from "../components/Parallex";
+import {ParallaxFooter} from "../components/ParallexFooter";
+import {NavBarCss} from "../components/NavBarCss";
+import {BodyCss} from "../components/BodyCss";
+import { BreadCrumb } from '../components/BreadCrumb';
+import { BreadCrumbCss } from "../components/BreadCrumbCss";
+import { FooterCss } from "../components/FooterCss";
+
 
 export const Home = () => {
+
   return (
     <div className="App">
-      <NavBar />
-      <Container>
-        <Row className="justify-content-right"></Row>
-        <Row className="justify-content-center">
-          <Col className="col-7">
-            <Breadcrumb>
-              <Breadcrumb.Item>City</Breadcrumb.Item>
-              <Breadcrumb.Item>Checkin</Breadcrumb.Item>
-              <Breadcrumb.Item>Checkout</Breadcrumb.Item>
-              <Breadcrumb.Item>Guests</Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="/advertisements">
-                  <Button>Search</Button>
-                </Link>
-              </Breadcrumb.Item>
-            </Breadcrumb>
-          </Col>
-        </Row>
-      </Container>
-      <Carouselph array={imgAdds} />
+      <NavBarCss/> 
+      <Parallax/>
+      <br></br>
+      <BreadCrumbCss/>
+      <div class="divider"></div>
+      <BodyCss/>    
+      <ParallaxFooter/>
+      <br></br>
+      <FooterCss/>
+      
     </div>
   );
 };
