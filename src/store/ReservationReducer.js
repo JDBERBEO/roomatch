@@ -37,12 +37,6 @@ export function reserve(
 ) {
   return async function (dispatch) {
     try {
-      console.log(
-        living_space_type,
-        advertisementId,
-        selectedDays,
-        paidReservation
-      );
       dispatch({ type: RESERVATION_LOADING });
       const token = localStorage.getItem("token");
       const { data } = await axios({

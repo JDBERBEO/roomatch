@@ -79,7 +79,7 @@ export function register(
           profilePhoto,
         },
       });
-      console.log(data);
+
       localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");

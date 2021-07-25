@@ -28,17 +28,14 @@ function AdvertisementsMain() {
   }
 
   const city = useQueryCity();
-  // console.log("location", location);
 
   const handleQueryString = () => {
     let selectedDaysString = queryString.parse(location.search);
     return selectedDaysString.selectedDays.split(",");
   };
 
-  // useEffect(() => {
   const selectedDays = handleQueryString();
-  console.log("selectedDaysQuery", selectedDays);
-  // }, []);
+
   useEffect(() => {
     dispatch(filterPost(city, selectedDays, history));
   }, []);
