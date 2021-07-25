@@ -9,7 +9,6 @@ function AdvertisementsMain() {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-  // const [selectedDays, setState] = useState({ selectedDays: [] });
 
   const { loading, error, ads } = useSelector((state) => {
     return {
