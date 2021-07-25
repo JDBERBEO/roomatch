@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home } from "./views/Home";
 import { SignUpForm } from "./views/SignUpForm";
-import { Advertisements } from "./views/Advertisements/Advertisements";
 import { RoomieProfile } from "./views/RoomieProfile";
 import { Reservations } from "./views/Reservations";
 import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
@@ -26,7 +25,11 @@ function App() {
             component={RoomieProfile}
           />
           <Route exact path="/signup" component={SignUpForm} />
-          <Route exact path="/advertisements" component={AdvertisementsMain} />
+          <Route
+            exact
+            path={`/advertisements`}
+            component={AdvertisementsMain}
+          />
           <Route exact path="/behost" component={BeHost} />
 
           <PrivateRouter exact path="/host/profile" component={HostProfile} />

@@ -1,22 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { Carouselph } from "../components/Carousel";
 import { Row, Col, Container, Button, Card, Form } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
 import { useSelector, useDispatch } from "react-redux";
-import { filterPost, handleFilterCity } from "../store/FilterReducer";
+import { handleFilterCity } from "../store/FilterReducer";
 import DayPicker from "react-day-picker";
 import { handleDayClick } from "../store/FilterReducer";
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { filterError, filterLoading, city, selectedDays } = useSelector(
     ({ filterPostReducer }) => {
       return {
-        filterLoading: filterPostReducer.filterLoading,
-        filterError: filterPostReducer.filterError,
         city: filterPostReducer.city,
         selectedDays: filterPostReducer.selectedDays,
       };
@@ -25,8 +22,6 @@ export const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(filterPost(city, selectedDays, history));
   };
 
   const modifiers = {
@@ -92,9 +87,11 @@ export const Home = () => {
                     </Col>
                   </Row>
                 </Card.Body>
-                {/* <Link to="/advertisements"> */}
-                <Button type="submit">Search</Button>
-                {/* </Link> */}
+                <Link
+                  to={`/advertisements/?city=${city}&selectedDays=${selectedDays}`}
+                >
+                  <Button type="submit">Search</Button>
+                </Link>
               </Form>
               <Card.Footer className="text-muted"></Card.Footer>
             </Card>

@@ -107,6 +107,7 @@ function reservationReducer(state = initialState, action) {
       return {
         ...state,
         reserveLoading: false,
+        selectedDays: [],
       };
     }
     default: {

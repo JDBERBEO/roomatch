@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DateUtils, ModifiersUtils } from "react-day-picker";
+import { DateUtils } from "react-day-picker";
 
 export const FILTER_LOADING = "FILTER_LOADING";
 export const FILTER_SUCCESS = "FILTER_SUCCESS";
@@ -32,6 +32,8 @@ export function handleDayClick(day, selectedDays, selected) {
 }
 
 export function filterPost(city, selectedDays, history) {
+  console.log("city desde filter post", city);
+  console.log("selectedDays desde filterpost", selectedDays);
   return async function (dispatch) {
     const selectedDaysString = JSON.stringify(selectedDays);
 
@@ -44,7 +46,6 @@ export function filterPost(city, selectedDays, history) {
         params: { selectedDays: selectedDaysString, city },
       });
       dispatch({ type: FILTER_SUCCESS, payload: data });
-      history.push("/advertisements");
     } catch (error) {
       dispatch({ type: FILTER_ERROR, payload: error });
     } finally {
@@ -87,6 +88,8 @@ function filterPostReducer(state = initialState, action) {
       return {
         ...state,
         filterLoading: false,
+        city: "",
+        selectedDays: [],
       };
     }
     case FILTER_CHANGES_SELECTED_DAYS: {
