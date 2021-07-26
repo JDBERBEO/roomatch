@@ -6,14 +6,13 @@ import { AdsLists } from "../../components/AdsLists";
 import { imgAdds } from "../../Mock_data/imgsAdd";
 import { BreadCrumb } from "../../components/BreadCrumb";
 
-
 export const Advertisements = ({ ads, handleSelect }) => {
   return (
     <div>
       <Container>
         <Row className="justify-content-center">
           <Col className="col-7">
-           <BreadCrumb />
+            <BreadCrumb />
           </Col>
         </Row>
         {ads.map((el) => (
@@ -25,6 +24,7 @@ export const Advertisements = ({ ads, handleSelect }) => {
             description={el.description}
             array={imgAdds}
             handleSelect={handleSelect}
+            city={el.city}
           />
         ))}
       </Container>

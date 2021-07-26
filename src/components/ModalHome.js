@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { SignUp } from "./SignUp";
 import { SignUp2 } from "./SignUp2";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -142,18 +143,25 @@ function ModalHome() {
             </Form.Group>
             {/* <Button variant="danger" type="submit">Sign In</Button> */}
             <div class="row">
-              <div class="col"><Button variant="danger" type="submit">Sign In</Button></div>
-              <div class="col"><SignUp2 /></div>
-              <div class="col"><Button
-                variant="danger"
-                onClick={() => {
-                dispatch(changeClose());
-                }}
+              <div class="col">
+                <Button variant="danger" type="submit">
+                  Sign In
+                </Button>
+              </div>
+              <div class="col">
+                <SignUp2 />
+              </div>
+              <div class="col">
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    dispatch(changeClose());
+                  }}
                 >
-                Close
-              </Button></div>
+                  Close
+                </Button>
+              </div>
             </div>
-            
           </Form>
         </Modal.Body>
       </Modal>

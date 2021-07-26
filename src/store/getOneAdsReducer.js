@@ -9,11 +9,10 @@ export function getAd(id) {
   return async function (dispatch) {
     try {
       dispatch({ type: AD_LOADING });
-
       const { data } = await axios({
         method: "GET",
         baseURL: "http://localhost:8000",
-        url: `/advertisements/${id}`,
+        url: `/advertisements/seeAd/${id}`,
       });
       dispatch({ type: AD_SUCCESS, payload: data });
     } catch (error) {

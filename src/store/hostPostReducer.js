@@ -17,6 +17,7 @@ export const HOSTPOST_PRICE = "HOSTPOST_PRICE";
 export const HOSTPOST_ACTIVITIES = "HOSTPOST_ACTIVITIES";
 export const HOSTPOST_RANKING = "HOSTPOST_RANKING";
 export const HOSTPOST_HOUSE_RULES = "HOSTPOST_HOUSE_RULES";
+export const HOSTPOST_CITY = "HOSTPOST_CITY";
 
 export function changePublicServices(public_services) {
   return {
@@ -85,6 +86,12 @@ export function changeHouseRules(house_rules) {
   };
 }
 
+export function changeCity(city) {
+  return {
+    type: HOSTPOST_CITY,
+    payload: city,
+  };
+}
 export function hostPostAdv(
   public_services,
   facilities,
@@ -97,6 +104,7 @@ export function hostPostAdv(
   photo,
   price,
   house_rules,
+  city,
   history
 ) {
   return async function (dispatch) {
@@ -119,6 +127,7 @@ export function hostPostAdv(
           photo,
           price,
           house_rules,
+          city,
         },
         headers: {
           Authorization: `Bearer ${token}`,
@@ -128,7 +137,6 @@ export function hostPostAdv(
       history.push("/");
     } catch (error) {
       dispatch({ type: HOSTPOST_ERROR, payload: error });
-      console.dir(error);
     } finally {
       dispatch({ type: HOSTPOST_FINISHED });
     }
@@ -147,6 +155,7 @@ const initialState = {
   photo: "",
   price: 0,
   house_rules: "",
+  city: "",
   hostPostLoading: false,
   hostPostError: false,
 };
@@ -217,6 +226,12 @@ function hostPostReducer(state = initialState, action) {
       return {
         ...state,
         house_rules: action.payload,
+      };
+    }
+    case HOSTPOST_CITY: {
+      return {
+        ...state,
+        city: action.payload,
       };
     }
     case HOSTPOST_SUCCESS: {
