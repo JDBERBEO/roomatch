@@ -112,7 +112,9 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Carouselph array={imgAdds} />
+      <div>
+        <Carouselph />
+      </div>
       <Parallax />
       <br></br>
       <BreadCrumbCss />
