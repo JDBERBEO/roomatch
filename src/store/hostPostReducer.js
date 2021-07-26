@@ -102,26 +102,28 @@ export function hostPostAdv(
   return async function (dispatch) {
     try {
       dispatch({ type: HOSTPOST_LOADING });
-      const token = localStorage.getItem("Token");
+      const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "POST",
         baseURL: "http://localhost:8000",
-        url: `/advertisements/`,
-        data: {
-          public_services,
-          facilities,
-          living_space,
-          description,
-          rooms,
-          bathroom,
-          private_bathroom,
-          parking,
-          photo,
-          price,
-          house_rules,
-        },
+        url: '/advertisements/',
+        data,
+        //: {
+        //   public_services,
+        //   facilities,
+        //   living_space,
+        //   description,
+        //   rooms,
+        //   bathroom,
+        //   private_bathroom,
+        //   parking,
+        //   photo,
+        //   price,
+        //   house_rules,
+        // },
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`,
         },
       });
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
@@ -151,7 +153,7 @@ const initialState = {
   hostPostError: false,
 };
 
-function hostPostreducer(state = initialState, action) {
+function hostPostReducer(state = initialState, action) {
   switch (action.type) {
     case HOSTPOST_PUBLIC_SERVICES: {
       return {
@@ -244,4 +246,4 @@ function hostPostreducer(state = initialState, action) {
   }
 }
 
-export default hostPostreducer;
+export default hostPostReducer;
