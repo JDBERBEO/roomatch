@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Col, Card, Button, ListGroup, Row } from "react-bootstrap";
-import ModalUpdateProfile from "./ModalUpdateProfileHost"
+import ModalUpdateProfile from "./ModalUpdateProfileHost";
 
 export const CardProfileHost = ({
   id,
@@ -22,6 +22,11 @@ export const CardProfileHost = ({
             <Card.Body key={id}>
               <Card.Title>
                 {name} {lastName}
+                {/* <input
+                  type="file"
+                  id="HostPorfilePicture"
+                  onChange={selectImage}
+                /> */}
               </Card.Title>
               <Card.Text>{age}</Card.Text>
             </Card.Body>

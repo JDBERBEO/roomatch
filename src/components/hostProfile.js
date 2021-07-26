@@ -95,19 +95,33 @@ export const HostProfileTab = () => {
 
     dispatch(
       hostPostAdv(
-        public_services,
-        facilities,
-        living_space,
-        description,
-        rooms,
-        bathroom,
-        private_bathroom,
-        parking,
-        photo,
-        price,
-        house_rules,
-        city,
-        history
+        //ya por que hay una foto hay que hacer todos los campos formdata
+
+        data.append("public_services", public_services),
+        data.append("facilities", facilities),
+        data.append("living_space", living_space),
+        data.append("description", description),
+        data.append(" rooms", rooms),
+        data.append(" bathroom", bathroom),
+        data.append(" private_bathroom", private_bathroom),
+        data.append(" parking", parking),
+        data.append(" photosAds", file, file.name),
+        data.append(" price", price),
+        data.append(" house_rules", house_rules),
+        data.append(" history", history)
+        //agregue a ese objeto una propiedad email que el valor es email y asi con todos.
+        // public_services,
+        // facilities,
+        // living_space,
+        // description,
+        // rooms,
+        // bathroom,
+        // private_bathroom,
+        // parking,
+        // photo,
+        // price,
+        // house_rules,
+        // history
       )
     );
     //no se envia con json se envia con FORMDATA para hacer peticiones http
@@ -216,16 +230,19 @@ export const HostProfileTab = () => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="Photo">
-                <Form.Label>Photo</Form.Label>
+              <Form.Group controlId="formFileMultiple" className="mb-3">
+                <Form.Label>Photos</Form.Label>
                 <Form.Control
-                  type="text"
-                  placeholder="Enter photos of the space"
-                  name="photo"
-                  onChange={(e) => dispatch(changePhoto(e.target.value))}
-                  value={photo}
+                  type="file"
+                  //id="file"
+                  multiple
+                  onChange={changePhoto}
+                  accept="image/*"
+                  //onChange={(e) => dispatch(changePhoto(e.target.value))}
+                  //value={photo}
                 />
               </Form.Group>
+              {image && <img src={image} alt="preview" />}
 
               <Form.Group controlId="price">
                 <Form.Label>price</Form.Label>
