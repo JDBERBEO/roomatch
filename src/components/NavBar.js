@@ -18,7 +18,15 @@ export const NavBar = () => {
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">RooMatch</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <img
+              src="../../logo2.png"
+              width="90"
+              height="70"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

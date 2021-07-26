@@ -10,7 +10,9 @@ export const AdsLists = ({
   description,
   array,
   handleSelect,
+  city,
 }) => {
+  console.log("array", array);
   return (
     <div>
       <Container>
@@ -25,6 +27,7 @@ export const AdsLists = ({
               </ListGroup.Item>
               <ListGroup.Item as="li">{price}</ListGroup.Item>
               <ListGroup.Item as="li">{description}</ListGroup.Item>
+              <ListGroup.Item as="li">{city}</ListGroup.Item>
             </ListGroup>
             <Button variant="outline-success" onClick={() => handleSelect(id)}>
               Book this space
