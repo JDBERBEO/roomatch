@@ -1,9 +1,9 @@
 import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
-import { registerRoomie, changeName, changeLastName, changeEmail, changePassword, changeAge } from '../store/roomieReducer'
+import { register, changeName, changeLastName, changeEmail, changePassword, changeAge } from '../store/roomieReducer'
 import { useHistory } from 'react-router-dom'
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -25,28 +25,40 @@ function SignUpRoomie() {
     }
   })
 
-  let validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    lastName: yup.string().required('LastName is required'),
-    email: yup.string().email('Email is invalid'),
-    password: yup.string()
+  let registerSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Name is required'),
+    lastName: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('LastName is required'),
+    email: Yup.string()
+      .email('Invalid email')
+      .required('Required'),
+    password: Yup.string()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
       .max(40, 'Password must not exceed 40 characters'),
-    age: yup.number().required().positive().integer(),
-    accepTerms: yup.bool().oneOf([true, 'Accept Terms is required'])
+    age: Yup.number()
+      .required()
+      .positive()
+      .integer(),
+    accepTerms: Yup.bool()
+      .oneOf([true, 'Accept Terms is required'])
   })
 
   const {
     register,
     formState: { errors }
   } = useForm({
-    resolver: yupResolver(validationSchema)
+    resolver: yupResolver(registerSchema)
   })
 
   function handleSubmit(e) {
     e.preventDefault()
-    dispatch(registerRoomie(name, lastName, email, password, age, history))
+    dispatch(register(name, lastName, email, password, age, history))
   }
 
   if (loading) return <p>loding...</p>

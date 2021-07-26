@@ -6,10 +6,18 @@ import * as Yup from 'yup';
 
 function validation() {
 
-  let validationSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    lastName: Yup.string().required('LastName is required'),
-    email: Yup.string().email('Email is invalid'),
+  let registerSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Name is required'),
+    lastName: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('LastName is required'),
+    email: Yup.string()
+      .email('Invalid email')
+      .required('Required'),
     password: Yup.string()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
