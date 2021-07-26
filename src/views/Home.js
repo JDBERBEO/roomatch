@@ -8,6 +8,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { handleFilterCity } from "../store/FilterReducer";
 import DayPicker from "react-day-picker";
 import { handleDayClick } from "../store/FilterReducer";
+import Image from "react-bootstrap/Image";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import ModalHome from "../components/ModalHome";
+import { BeHost } from "../components/BeHost";
+import { SignUp } from "../components/SignUp";
+import { useHistory } from "react-router-dom";
+import { Parallax } from "../components/Parallex";
+import { ParallaxFooter } from "../components/ParallexFooter";
+import { NavBarCss } from "../components/NavBarCss";
+import { BodyCss } from "../components/BodyCss";
+import { BreadCrumb } from "../components/BreadCrumb";
+import { BreadCrumbCss } from "../components/BreadCrumbCss";
+import { FooterCss } from "../components/FooterCss";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -33,7 +46,8 @@ export const Home = () => {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBarCss />
+      {/* <NavBar /> */}
       <Container>
         <Row className="justify-content-center">
           <Col>
@@ -99,6 +113,14 @@ export const Home = () => {
         </Row>
       </Container>
       <Carouselph array={imgAdds} />
+      <Parallax />
+      <br></br>
+      <BreadCrumbCss />
+      <div class="divider"></div>
+      <BodyCss />
+      <ParallaxFooter />
+      <br></br>
+      <FooterCss />
     </div>
   );
 };

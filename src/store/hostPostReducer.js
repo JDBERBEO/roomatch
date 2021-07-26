@@ -160,7 +160,7 @@ const initialState = {
   hostPostError: false,
 };
 
-function hostPostreducer(state = initialState, action) {
+function hostPostReducer(state = initialState, action) {
   switch (action.type) {
     case HOSTPOST_PUBLIC_SERVICES: {
       return {
@@ -259,4 +259,4 @@ function hostPostreducer(state = initialState, action) {
   }
 }
 
-export default hostPostreducer;
+export default hostPostReducer;

@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
 export const Carouselph = ({ array }) => {
+  console.log("array", array);
   return (
     <div>
       <Carousel>

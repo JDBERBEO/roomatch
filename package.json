@@ -13,6 +13,7 @@
     "mapbox-gl": "^2.3.1",
     "places.js": "^1.19.0",
     "query-string": "^7.0.1",
+    "materialize-css": "^1.0.0-rc.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-day-picker": "^7.4.10",
@@ -25,6 +26,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "sweetalert2": "^11.0.19",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

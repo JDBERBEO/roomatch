@@ -32,8 +32,8 @@ export const ShowHostProfile = () => {
           id={profile._id}
           name={profile.name}
           LastName={profile.LastName}
-          email={profile.email}
           age={profile.age}
+          email={profile.email}
           description={profile.description}
         />
       }

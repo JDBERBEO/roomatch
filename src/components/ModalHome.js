@@ -3,6 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { SignUp } from "./SignUp";
+import { SignUp2 } from "./SignUp2";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   loginHost,
@@ -75,8 +77,8 @@ function ModalHome() {
   if (error) return <p>user can't be created</p>;
 
   return (
-    <>
-      <Button variant="dark" onClick={() => dispatch(changeShow())}>
+    <div>
+      <Button variant="outline-light" onClick={() => dispatch(changeShow())}>
         Sign In
       </Button>
       <Modal
@@ -90,6 +92,7 @@ function ModalHome() {
         </Modal.Header>
         <Modal.Body>
           <Button
+            variant="danger"
             onClick={() =>
               dispatch(() => {
                 dispatch(changeHandleRoomie());
@@ -100,6 +103,7 @@ function ModalHome() {
             As a roomie
           </Button>{" "}
           <Button
+            variant="danger"
             onClick={() => {
               dispatch(changeHandleHost());
             }}
@@ -134,23 +138,36 @@ function ModalHome() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
+              <br></br>
+              <div class="divider"></div>
             </Form.Group>
-            <Button type="submit">Sign In</Button>
+            {/* <Button variant="danger" type="submit">Sign In</Button> */}
+            <div class="row">
+              <div class="col">
+                <Button variant="danger" type="submit">
+                  Sign In
+                </Button>
+              </div>
+              <div class="col">
+                <SignUp2 />
+              </div>
+              <div class="col">
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    dispatch(changeClose());
+                  }}
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              dispatch(changeClose());
-            }}
-          >
-            Close
-          </Button>
-          <SignUp />
-        </Modal.Footer>
       </Modal>
-    </>
+      <div class="section"></div>
+      <br></br>
+    </div>
   );
 }
 

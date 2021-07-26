@@ -89,157 +89,163 @@ export const HostProfileTab = () => {
           <ShowHostProfile />
         </Tab>
         <Tab eventKey="profile" title="Show your space">
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="public_services">
-              <Form.Label>Public Services</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="public services that your space has"
-                name="public_services"
-                onChange={(e) => dispatch(changePublicServices(e.target.value))}
-                value={public_services}
-              />
-            </Form.Group>
-            <Form.Group controlId="Living_space">
-              <Form.Label>Facilities</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter the facilities of your space has"
-                name="facilities"
-                onChange={(e) => dispatch(changeFacilities(e.target.value))}
-                value={facilities}
-              />
-            </Form.Group>
-            <Form.Group controlId="description">
-              <Form.Label>Living space</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter a description of your space"
-                name="living_space"
-                onChange={(e) => dispatch(changeLivingSpace(e.target.value))}
-                value={living_space}
-              />
-            </Form.Group>
+          <div class="section">
+            <br></br>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="public_services">
+                <Form.Label>Public Services</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="public services that your space has"
+                  name="public_services"
+                  onChange={(e) =>
+                    dispatch(changePublicServices(e.target.value))
+                  }
+                  value={public_services}
+                />
+              </Form.Group>
+              <Form.Group controlId="Living_space">
+                <Form.Label>Facilities</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter the facilities of your space has"
+                  name="facilities"
+                  onChange={(e) => dispatch(changeFacilities(e.target.value))}
+                  value={facilities}
+                />
+              </Form.Group>
+              <Form.Group controlId="description">
+                <Form.Label>Living space</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter a description of your space"
+                  name="living_space"
+                  onChange={(e) => dispatch(changeLivingSpace(e.target.value))}
+                  value={living_space}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="description">
-              <Form.Label>Description</Form.Label>
+              <Form.Group controlId="description">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter a description of your space"
+                  name="description"
+                  onChange={(e) => dispatch(changeDescription(e.target.value))}
+                  value={description}
+                />
+              </Form.Group>
+              <Form.Group controlId="rooms">
+                <Form.Label>rooms</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter the number of rooms in your space"
+                  name="rooms"
+                  onChange={(e) => dispatch(changeRooms(e.target.value))}
+                  value={rooms}
+                />
+              </Form.Group>
+              <Form.Group controlId="bathroom">
+                <Form.Label>Bathroom</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter the number of bathrooms available"
+                  name="bathroom"
+                  onChange={(e) => dispatch(changeBathRoom(e.target.value))}
+                  value={bathroom}
+                />
+              </Form.Group>
+              <Form.Label>private bathroom</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Enter a description of your space"
-                name="description"
-                onChange={(e) => dispatch(changeDescription(e.target.value))}
-                value={description}
-              />
-            </Form.Group>
-            <Form.Group controlId="rooms">
-              <Form.Label>rooms</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter the number of rooms in your space"
-                name="rooms"
-                onChange={(e) => dispatch(changeRooms(e.target.value))}
-                value={rooms}
-              />
-            </Form.Group>
-            <Form.Group controlId="bathroom">
-              <Form.Label>Bathroom</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter the number of bathrooms available"
-                name="bathroom"
-                onChange={(e) => dispatch(changeBathRoom(e.target.value))}
-                value={bathroom}
-              />
-            </Form.Group>
-            <Form.Label>private bathroom</Form.Label>
-            <Form.Control
-              as="select"
-              id="inlineFormCustomSelect"
-              custom
-              className="private_room"
-              htmlFor="inlineFormCustomSelect"
-              name="private_room"
-              onChange={(e) => {
-                dispatch(changePrivateBathRoom(e.target.value));
-              }}
-            >
-              <option value="0">Choose...</option>
-              <option value={true}>yes</option>
-              <option value={false}>no</option>
-            </Form.Control>
-            <Form.Group controlId="Parking">
-              <Form.Label>Parking</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter the number of Parkings available"
-                name="parking"
-                onChange={(e) => dispatch(changeParking(e.target.value))}
-                value={parking}
-              />
-            </Form.Group>
+                as="select"
+                id="inlineFormCustomSelect"
+                custom
+                className="private_room"
+                htmlFor="inlineFormCustomSelect"
+                name="private_room"
+                onChange={(e) => {
+                  dispatch(changePrivateBathRoom(e.target.value));
+                }}
+              >
+                <option value="0">Choose...</option>
+                <option value={true}>yes</option>
+                <option value={false}>no</option>
+              </Form.Control>
+              <Form.Group controlId="Parking">
+                <Form.Label>Parking</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter the number of Parkings available"
+                  name="parking"
+                  onChange={(e) => dispatch(changeParking(e.target.value))}
+                  value={parking}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="Photo">
-              <Form.Label>Photo</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter photos of the space"
-                name="photo"
-                onChange={(e) => dispatch(changePhoto(e.target.value))}
-                value={photo}
-              />
-            </Form.Group>
+              <Form.Group controlId="Photo">
+                <Form.Label>Photo</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter photos of the space"
+                  name="photo"
+                  onChange={(e) => dispatch(changePhoto(e.target.value))}
+                  value={photo}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="price">
-              <Form.Label>price</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter price of to rent"
-                name="price"
-                onChange={(e) => dispatch(changePrice(e.target.value))}
-                value={price}
-              />
-            </Form.Group>
-            <Form.Group controlId="house_rules">
-              <Form.Label>Rules</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your rules"
-                name="rules"
-                onChange={(e) => dispatch(changeHouseRules(e.target.value))}
-                value={house_rules}
-              />
-            </Form.Group>
+              <Form.Group controlId="price">
+                <Form.Label>price</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter price of to rent"
+                  name="price"
+                  onChange={(e) => dispatch(changePrice(e.target.value))}
+                  value={price}
+                />
+              </Form.Group>
+              <Form.Group controlId="house_rules">
+                <Form.Label>Rules</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your rules"
+                  name="rules"
+                  onChange={(e) => dispatch(changeHouseRules(e.target.value))}
+                  value={house_rules}
+                />
+              </Form.Group>
 
-            <Form.Label>Select the city</Form.Label>
-            <Form.Control
-              as="select"
-              id="inlineFormCustomSelect"
-              custom
-              className="city"
-              htmlFor="inlineFormCustomSelect"
-              name="city"
-              onChange={(e) => {
-                dispatch(changeCity(e.target.value));
-              }}
-            >
-              <option value="0">Choose your city</option>
-              <option value={"Bogotá"}>Bogotá</option>
-              <option value={"Cali"}>Cali</option>
-              <option value={"Medellín"}>Medellín</option>
-              <option value={"Bucaramanga"}>Bucaramanga</option>
-              <option value={"Santa Marta"}>Santa Marta</option>
-              <option value={"Barranquilla"}>Barranquilla</option>
-              <option value={"Cartagena"}>Cartagena</option>
-              <option value={"Cúcuta"}>Cúcuta</option>
-              <option value={"Pasto"}>Pasto</option>
-              <option value={"Ibagué"}>Ibagué</option>
-            </Form.Control>
-            <Col>
-              <Button type="submit">Submit</Button>
-            </Col>
-          </Form>
+              <Form.Label>Select the city</Form.Label>
+              <Form.Control
+                as="select"
+                id="inlineFormCustomSelect"
+                custom
+                className="city"
+                htmlFor="inlineFormCustomSelect"
+                name="city"
+                onChange={(e) => {
+                  dispatch(changeCity(e.target.value));
+                }}
+              >
+                <option value="0">Choose your city</option>
+                <option value={"Bogotá"}>Bogotá</option>
+                <option value={"Cali"}>Cali</option>
+                <option value={"Medellín"}>Medellín</option>
+                <option value={"Bucaramanga"}>Bucaramanga</option>
+                <option value={"Santa Marta"}>Santa Marta</option>
+                <option value={"Barranquilla"}>Barranquilla</option>
+                <option value={"Cartagena"}>Cartagena</option>
+                <option value={"Cúcuta"}>Cúcuta</option>
+                <option value={"Pasto"}>Pasto</option>
+                <option value={"Ibagué"}>Ibagué</option>
+              </Form.Control>
+              <Col>
+                <Button type="submit">Submit</Button>
+              </Col>
+            </Form>
+          </div>
         </Tab>
         <Tab eventKey="posts" title="Posts">
+          <br></br>
           <MyAdvertisements />
         </Tab>
       </Tabs>

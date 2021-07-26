@@ -1,17 +1,19 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../store/getShowProfileReducer";
+import { useHistory } from "react-router-dom";
+import { getProfile } from "../store/profileReducer";
 import { CardProfile } from "../components/CardProfile";
 
 export const RoomieProfile = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
-  const { loading, error, profile } = useSelector(({ getProfileReducer }) => {
+  const { loading, error, profile } = useSelector(({ ProfileReducer }) => {
     return {
-      loading: getProfileReducer.loading,
-      error: getProfileReducer.error,
-      profile: getProfileReducer.profile,
+      loading: ProfileReducer.loading,
+      error: ProfileReducer.error,
+      profile: ProfileReducer.profile,
     };
   });
 
@@ -19,7 +21,7 @@ export const RoomieProfile = () => {
     dispatch(getProfile());
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Loading lo mas rapidooo...</p>;
   if (error) return <p>Oops Something went wrong</p>;
   return (
     <main>
@@ -31,6 +33,7 @@ export const RoomieProfile = () => {
           name={profile.name}
           LastName={profile.LastName}
           age={profile.age}
+          email={profile.email}
           description={profile.description}
         />
       }
