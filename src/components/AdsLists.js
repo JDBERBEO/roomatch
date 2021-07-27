@@ -12,8 +12,7 @@ export const AdsLists = ({
   handleSelect,
   city,
 }) => {
-  console.log("array", array);
-  return (
+   return (
     <div>
       <Container>
         <Row>

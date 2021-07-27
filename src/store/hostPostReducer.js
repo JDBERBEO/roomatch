@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from 'sweetalert'
 
 export const HOSTPOST_LOADING = "HOSTPOST_LOADING ";
 export const HOSTPOST_SUCCESS = "HOSTPOST_SUCCESS";
@@ -134,7 +135,11 @@ export function hostPostAdv(
         },
       });
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
-      history.push("/");
+      if(data){
+        swal("Your space has been created")
+      }
+      history.push("/host/profile");
+
     } catch (error) {
       dispatch({ type: HOSTPOST_ERROR, payload: error });
     } finally {

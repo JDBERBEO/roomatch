@@ -19,7 +19,7 @@ export function getProfileHost() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("data", data)
+      
 
       dispatch({ type: PROFILE_SUCCESS, payload: data });
     } catch (error) {
