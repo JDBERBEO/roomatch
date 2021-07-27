@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
-import { registerRoomie, changeName, changeLastName, changeEmail, changePassword, changeAge } from '../store/roomieReducer'
+import { registerRoomie } from '../store/roomieReducer'
 import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -64,7 +64,13 @@ function SignUpRoomie() {
     })
 
   function createRoomie(data) {
-    // dispatch(registerRoomie(name, lastName, email, password, age, history))
+    dispatch(registerRoomie(
+      data.name,
+      data.lastName,
+      data.email,
+      data.password,
+      data.age,
+      history))
     console.log(data)
     reset();
   }
@@ -82,64 +88,53 @@ function SignUpRoomie() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 {...register('name')}
-                // type="text"
-                // name="name"
-                // placeholder="Enter name"
-                // value={name}
-                // onChange={e => dispatch(changeName(e.target.value))}
+                type="text"
+                placeholder="Enter name"
                 className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                required
               />
               <p>{!!errors.name && errors.name.message}</p>
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="LastName">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 {...register('lastName')}
-                // type="text"
-                // name="lastname"
-                // placeholder="Enter last name"
-                // value={lastName}
-                // onChange={e => dispatch(changeLastName(e.target.value))}
+                type="text"
+                placeholder="Enter last name"
                 className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
+                required
               />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <p>{!!errors.lastName && errors.lastName.message}</p>
             </Form.Group>
             <Form.Group controlId="Email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 {...register('email')}
-                // type="email"
-                // placeholder="Enter Email"
-                // value={email}
-                // name="email"
-                // onChange={e => dispatch(changeEmail(e.target.value))}
+                type="email"
+                placeholder="Enter Email"
                 className={`form-control ${errors.email ? 'is-invalid' : ''}`}
               />
+              <p>{errors.email?.message}</p>
             </Form.Group>
             <Form.Group controlId="Password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 {...register('password')}
                 type="password"
-                // placeholder="Password"
-                // value={password}
-                // name="password"
-                // onChange={e => dispatch(changePassword(e.target.value))}
+                placeholder="Password"
                 className={`form-control ${errors.password ? 'is-invalid' : ''}`}
               />
+              <p>{errors.password?.message} </p>
             </Form.Group>
             <Form.Group controlId="Age">
               <Form.Label>Age</Form.Label>
               <Form.Control
                 {...register('age')}
-                // onChange={e => dispatch(changeAge(e.target.value))}
-                // type="text"
-                // placeholder="Enter Age"
-                // value={age}
-                // name="age"
+                type="text"
+                placeholder="Enter Age"
                 className={`form-control ${errors.age ? 'is-invalid' : ''}`}
               />
+              <p>{!!errors.age && errors.age.message}</p>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check
