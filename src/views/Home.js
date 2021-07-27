@@ -17,6 +17,9 @@ import {BodyCss} from "../components/BodyCss";
 import { BreadCrumb } from '../components/BreadCrumb';
 import { BreadCrumbCss } from "../components/BreadCrumbCss";
 import { FooterCss } from "../components/FooterCss";
+import { Payments } from "../components/Payments";
+
+
 
 
 export const Home = () => {
@@ -30,6 +33,11 @@ export const Home = () => {
       <div class="divider"></div>
       <BodyCss/>    
       <ParallaxFooter/>
+      <Payments/>
+      <div className="container">
+        <Carouselph array={imgAdds}/>
+      </div>
+      {/* <Carouselph array={imgAdds} /> */}
       <br></br>
       <FooterCss/>
       

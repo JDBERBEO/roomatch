@@ -11,6 +11,8 @@ import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
 import { PrivateRouter } from "./router/PrivateRouter"
+import { Response } from "./components/Response";
+
 
 function App() {
   return (
@@ -29,8 +31,9 @@ function App() {
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/advertisements" component={AdvertisementsMain} />
           <Route exact path="/behost" component={BeHost} />
-
-          <Route exact path="/host/profile" component={HostProfile} />
+          <Route exact path="/response">
+            <Response  />
+          </Route>
           <PrivateRouter
             exact
             path={`/advertisement/:id`}
