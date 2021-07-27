@@ -52,12 +52,12 @@ export function changePersonalDescription(description) {
   };
 }
 
-export function changeProfilePhoto(profilePhoto) {
-  return {
-    type: CHANGE_PROFILE_PHOTO,
-    payload: profilePhoto,
-  };
-}
+// export function changeProfilePhoto(profilePhoto) {
+//   return {
+//     type: CHANGE_PROFILE_PHOTO,
+//     payload: profilePhoto,
+//   };
+// }
 
 export function register(
   name,
@@ -66,7 +66,7 @@ export function register(
   password,
   age,
   description,
-  profilePhoto,
+  // profilePhoto,
   history
 ) {
   return async function (dispatch) {
@@ -83,10 +83,10 @@ export function register(
           password,
           age,
           description,
-          profilePhoto,
+          // profilePhoto,
         },
       });
-      localStorage.setItem('token',data.token)
+      localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
@@ -104,7 +104,7 @@ const initialState = {
   password: "",
   age: 0,
   description: "",
-  profilePhoto: "",
+  // profilePhoto: "",
   loading: false,
   error: false,
 };
@@ -147,12 +147,12 @@ function reducer(state = initialState, action) {
         description: action.payload,
       };
     }
-    case CHANGE_PROFILE_PHOTO: {
-      return {
-        ...state,
-        profilePhoto: action.payload,
-      };
-    }
+    // case CHANGE_PROFILE_PHOTO: {
+    //   return {
+    //     ...state,
+    //     profilePhoto: action.payload,
+    //   };
+    // }
     case REGISTER_LOADING: {
       return {
         ...state,

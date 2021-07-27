@@ -136,7 +136,7 @@ export const HostProfileTab = () => {
         <Tab eventKey="home" title="Personal data">
           <ShowHostProfile />
         </Tab>
-        <Tab eventKey="profile" title="Show your space">
+        <Tab eventKey="profile" title="Publish your space">
           <div class="section">
             <br></br>
             <Form onSubmit={handleSubmit}>

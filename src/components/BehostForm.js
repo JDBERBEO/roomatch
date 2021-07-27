@@ -9,7 +9,7 @@ import {
   changePassword,
   changeAge,
   changePersonalDescription,
-  changeProfilePhoto,
+  // changeProfilePhoto,
 } from "../store/formHostReducer";
 import { useHistory } from "react-router-dom";
 
@@ -26,7 +26,7 @@ function Hostform() {
     password,
     age,
     description,
-    profilePhoto,
+    // profilePhoto,
   } = useSelector(({ formHostReducer }) => {
     return {
       loading: formHostReducer.loading,
@@ -37,7 +37,7 @@ function Hostform() {
       password: formHostReducer.password,
       age: formHostReducer.age,
       description: formHostReducer.description,
-      profilePhoto: formHostReducer.profilePhoto,
+      // profilePhoto: formHostReducer.profilePhoto,
     };
   });
   function handleSubmit(e) {
@@ -50,7 +50,7 @@ function Hostform() {
         password,
         age,
         description,
-        profilePhoto,
+        // profilePhoto,
         history
       )
     );
@@ -124,15 +124,14 @@ function Hostform() {
                 value={description}
               />
             </Form.Group>
-            <Form.Group controlId="profilePhoto">
-              <Form.Label>Photo</Form.Label>
+            <Form.Group>
+              <Form.Label>Change Profile Photo</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Enter photo"
-                name="profilePhoto"
-                onChange={(e) => dispatch(changeProfilePhoto(e.target.value))}
-                value={profilePhoto}
-              />
+                type="file"
+                id="HostPorfilePicture"
+                // onChange={selectImage}
+                accept="image/*"
+              ></Form.Control>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
