@@ -9,10 +9,21 @@ export const HostProfile = () => {
   }
   return (
     <div>
-      <h3>Welcome</h3>
-      <Link to="/">
-        <Button onClick={logout}>logout</Button>
-      </Link>
+      <div class="container">
+        <div>
+          <h3>Welcome</h3>
+        </div>
+        <div>
+          <Link to="/">
+            <Button  onClick={logout}>logout</Button>
+          </Link>
+        </div>
+    </div>
+ 
+
+      <br></br>
+      <div class="divider"></div>
+      <br></br>
       <HostProfileTab />
     </div>
   );

@@ -3,10 +3,8 @@ import { imgAdds } from "../Mock_data/imgsAdd";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdvertisements } from "../store/getAdvertisementsReducer";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
 export function MyAdvertisements() {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const { loading_ad, error_ad, hostAdvertisements } = useSelector(

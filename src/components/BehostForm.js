@@ -180,7 +180,7 @@ function Hostform() {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="danger" type="submit">
               Submit
             </Button>
           </Form>
