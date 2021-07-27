@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Col, Card, Button, ListGroup, Row } from "react-bootstrap";
 import ModalUpdateProfile from "./ModalUpdateProfileHost";
-import { HostProfilePictureEditMain } from "./UsersProfilePictureEdit/HostProfilePictureEdit/HostProfilePictureEditMain";
 
 export const CardProfileHost = ({
   id,
@@ -18,7 +17,6 @@ export const CardProfileHost = ({
         <Col className="col-4">
           <Card style={{ width: "23rem" }}>
             <Card.Img variant="top" src={profilePhoto} />
-            <HostProfilePictureEditMain />
             <Card.Body key={id}>
               <Card.Title>
                 {name} {lastName}
