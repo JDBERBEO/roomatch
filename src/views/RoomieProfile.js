@@ -1,13 +1,12 @@
-import React from "react"
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { getProfile } from "../store/profileReducer";
-import { CardProfile } from '../components/CardProfile'
-
+import { CardProfile } from "../components/CardProfile";
 
 export const RoomieProfile = () => {
-  const history = useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const { loading, error, profile } = useSelector(({ ProfileReducer }) => {
@@ -40,5 +39,4 @@ export const RoomieProfile = () => {
       }
     </main>
   );
-}
-
+};

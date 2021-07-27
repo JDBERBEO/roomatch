@@ -1,6 +1,3 @@
-
-// import { imgAdds } from "../../Mock_data/imgsAdd";
-
 import Carousel from "react-bootstrap/Carousel";
 import React, { useEffect } from "react";
 import M from "materialize-css";

@@ -10,6 +10,8 @@ import hostSignInReducer from "./hostSignInReducer";
 import roomieReducer from "./roomieReducer";
 import ProfileReducer from "./profileReducer";
 import hostPostReducer from "./hostPostReducer";
+import filterPostReducer from "./FilterReducer";
+
 import getProfileHostReducer from "./getShowProfileHostReducer";
 import thunk from "redux-thunk";
 
@@ -43,6 +45,7 @@ const rootReducer = combineReducers({
   formHostReducer,
   hostSignInReducer,
   hostPostReducer,
+  filterPostReducer,
   getProfileHostReducer,
 });
 

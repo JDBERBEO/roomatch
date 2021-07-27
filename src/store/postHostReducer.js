@@ -53,12 +53,13 @@ export function changePrice(price) {
 }
 
 export function register(
-  living_space,
+  name,
+  lastName,
+  email,
+  password,
+  age,
   description,
-  rooms,
-  bathrooms,
-  parking,
-  price,
+  profilePhoto,
   history
 ) {
   return async function (dispatch) {
@@ -78,8 +79,8 @@ export function register(
           profilePhoto,
         },
       });
-      console.log(data);
-      localStorage.setItem('token', data.token)
+
+      localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {

@@ -1,13 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { getProfileHost } from "../store/getShowProfileHostReducer";
 import { CardProfileHost } from "../components/CardProfileHost";
 
-
 export const ShowHostProfile = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const { loading, error, profile } = useSelector(
