@@ -36,31 +36,21 @@ function ModalUpdateProfile() {
   );
 
   const [name, setName] = useState(dataProfile.name);
-  console.log("name", name);
+  // console.log("name", name);
   const [lastName, setLastName] = useState(dataProfile.lastName);
-  console.log("lastname", lastName);
+  // console.log("lastname", lastName);
   const [email, setEmail] = useState(dataProfile.email);
-  console.log("email", email);
+  // console.log("email", email);
   const [password, setPassword] = useState(dataProfile.password);
-  console.log("password", password);
+  // console.log("password", password);
   const [age, setAge] = useState(dataProfile.age);
-  console.log("age", age);
+  // console.log("age", age);
   const [description, setDescription] = useState(dataProfile.description);
-  console.log("description", description);
-
-  // const [state, setState] = useState(dataProfile);
-
-  // function handleChange(e) {
-  //   const { name, value } = e.target;
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // }
+  // console.log("description", description);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("namedesde submit", name);
+    // console.log("namedesde submit", name);
     const data = new FormData();
     data.append("name append", name);
     data.append("lastName", lastName);
@@ -72,7 +62,7 @@ function ModalUpdateProfile() {
       data.append("profilePhoto", file, file.name);
     }
 
-    console.log("data desde handle submit", data);
+    // console.log("data desde handle submit", data);
 
     for (var pair of data.entries()) {
       console.log(pair[0] + ", " + pair[1]);
