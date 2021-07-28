@@ -60,19 +60,20 @@ export const Advertisement = () => {
           <br></br>
           <div class="divider"></div>
           <br></br>
-      <Row className="container pink">
-        <Card className=" z-depth-0 pink" border="light">  
-          <Card.Body>
-            <Row clasName="container black">
+      <Row>
+        <Card className="container z-depth-0" border="light">  
+          <Card.Header className="pink"></Card.Header>
+          <Card.Body clasName="container">
+            <Row>
               <Col>
-                <Card className="z-depth-5 black">
+                <Card className="z-depth-5">
                   <Card.Body>
                     <Carouselph array={imgAdds} />
                   </Card.Body>
                 </Card>
               </Col>
               <Col>
-                <Card className="text-center z-depth-0" border="light">
+                <Card className="text-center z-depth-5" border="light">
                   <Card.Body>
                     <ListGroup  as="ul" key={ad._id}>
                       <ListGroup.Item className="pink" as="li" active>
@@ -83,7 +84,7 @@ export const Advertisement = () => {
                     </ListGroup>
                     <Form onSubmit={selectedDays.length !== 0 ? handleSubmit : null}>
                       <DayPicker
-                        className="Selectable"
+                        className="container Selectable"
                         selectedDays={selectedDays}
                         modifiers={modifiers}
                         disabledDays={BookedDaysPerAdvertisement}
@@ -100,6 +101,7 @@ export const Advertisement = () => {
               </Col>
             </Row>
           </Card.Body>
+          <Card.Footer className="pink"></Card.Footer>
         </Card>
       </Row>
     </div>

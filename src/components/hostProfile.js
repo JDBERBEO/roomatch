@@ -84,11 +84,12 @@ export const HostProfileTab = () => {
 
   return (
     <Container>
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-        <Tab eventKey="home" title="Personal data">
+      <Tabs className="container pink " defaultActiveKey="profile" id="uncontrolled-tab-example">
+        <Tab class="container text-pink" eventKey="home" title="Profile">
+          <br></br>
           <ShowHostProfile />
         </Tab>
-        <Tab eventKey="profile" title="Show your space">
+        <Tab  eventKey="profile" title="Show your space">
           <div class="section">
             <br></br>
             <Form onSubmit={handleSubmit}>

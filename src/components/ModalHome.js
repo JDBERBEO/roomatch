@@ -2,7 +2,6 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-<<<<<<< Updated upstream
 import { SignUp } from "./SignUp";
 import { SignUp2 } from "./SignUp2";
 import { useEffect } from "react";
@@ -173,95 +172,3 @@ function ModalHome() {
 }
 
 export default ModalHome;
-=======
-import { SingUp } from "./SingUp";
-import axios from "axios";
-
-class ModalHome extends React.Component {
-
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-
-  state={
-    loading:false,
-    Error:"",
-    email: '',
-    password: '',
-  }
-  const handleChange= e =>{
-    const{name, value}=e.target;
-    this.setState({[name]:value});
-    setShow(false)
-  }
-  const modalHome= async userData =>{
-    
-    try{
-      this.setState({loading: true})
-      const {data} = await axios({
-        method:'Post'
-        baseURL: 'http://localhost:8000'
-        url: "/users/signup"
-        data:userData
-      })
-      setShow(false);
-      this.setState({ loading: false })
-      localStorage.setItem('token', data.token) 
-      this.props.history.push('/users/advertisements')     
-    }
-    catch (error) {
-      this.setState({
-        error: error.response.data.message,
-        loading: false
-      })
-    }
-    render(){
-      const { email, password } = this.state
-      return (
-        <>
-          <Button variant="primary" onClick={handleShow}>
-            Sign In
-          </Button>
-
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>SIGN IN</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Form onSubmit={(e) =>{
-                e.preventDefault()
-                handleSubmit(this.modalHome)}}>
-                <Form.Group className="mb-3" controlId="email" onChange={handleChange} value={email}> 
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="password" onChange={handleChange} value={password}>
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="secondary" type="submit" >
-                Submit
-              </Button>
-              <SingUp />
-            </Modal.Footer>
-          </Modal>
-        </>
-      )
-    }
-  }
-}
-export default ModalHome;
->>>>>>> Stashed changes

@@ -1,16 +1,6 @@
 import React from "react";
 import { Carouselph } from "../components/Carousel";
-<<<<<<< Updated upstream
 import { Row, Col, Container, Button, Card, Form } from "react-bootstrap";
-=======
-import { SingUp } from "../components/SingUp";
-import { BeHost } from "../components/BeHost";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import ModalHome from "../components/ModalHome";
->>>>>>> Stashed changes
 import { Link } from "react-router-dom";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
@@ -31,6 +21,7 @@ import { BodyCss } from "../components/BodyCss";
 import { BreadCrumb } from "../components/BreadCrumb";
 import { BreadCrumbCss } from "../components/BreadCrumbCss";
 import { FooterCss } from "../components/FooterCss";
+import { Payments } from "../components/Payments";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -57,13 +48,16 @@ export const Home = () => {
   return (
     <div className="App">
       <NavBarCss />
-      {/* <NavBar /> */}
+      <br></br>
+      <Parallax />
+      <br></br>
+      <div class="divider"></div>
       <Container>
         <Row className="justify-content-center">
           <Col>
             <Card className="text-center">
-              <Card.Header>
-                Search for your favorite living space here!
+              <Card.Header className="pink text-white">
+                <h3>Search for your favorite living space here!</h3>
               </Card.Header>
               <Form onSubmit={handleSubmit}>
                 <Card.Body>
@@ -114,24 +108,33 @@ export const Home = () => {
                 <Link
                   to={`/advertisements/?city=${city}&selectedDays=${selectedDays}`}
                 >
-                  <Button type="submit">Search</Button>
+                  <Button className="waves-effect waves-white orange bt-flat text-white" type="submit">Search
+                   <i class="material-icons left">search</i>
+                  </Button>
                 </Link>
               </Form>
-              <Card.Footer className="text-muted"></Card.Footer>
+              <Card.Footer className="text-muted">
+              
+              </Card.Footer>
             </Card>
           </Col>
         </Row>
       </Container>
-      <div>
-        <Carouselph />
-      </div>
-      <Parallax />
-      <br></br>
-      <BreadCrumbCss />
+      
       <div class="divider"></div>
-      <BodyCss />
-      <ParallaxFooter />
       <br></br>
+      <div className="container">
+        <BreadCrumbCss /> 
+        <BodyCss/>  
+        <Carouselph array={imgAdds}/>
+        <br></br>
+      </div>
+      <br></br>
+      <div class="divider"></div>
+       
+      <ParallaxFooter/>
+      <Payments/>
+
       <FooterCss />
     </div>
   );
