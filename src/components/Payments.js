@@ -49,7 +49,7 @@ export const Payments=()=> {
 
       methodsDisable: ['DP', 'PSE', 'SP'],
     }
-    
+
     handler.open(data)
   }
   console.log(process.env.REACT_APP_EPAYCO_PUBLIC_KEY)

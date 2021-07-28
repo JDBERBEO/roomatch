@@ -3,6 +3,7 @@ import { imgAdds } from "../Mock_data/imgsAdd";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdvertisements } from "../store/getAdvertisementsReducer";
 import { useEffect } from "react";
+import {deleteAdvertisement} from "../store/getAdvertisementsReducer"
 
 export function MyAdvertisements() {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ export function MyAdvertisements() {
       };
     }
   );
+  const handleDelete =(adverId)=>{
+    dispatch(deleteAdvertisement(adverId))
+  }
 
   useEffect(() => {
     dispatch(getAdvertisements());
@@ -35,6 +39,7 @@ export function MyAdvertisements() {
           price={el.price}
           description={el.description}
           array={imgAdds}
+          handleDelete={handleDelete}
         />
       ))}
     </div>

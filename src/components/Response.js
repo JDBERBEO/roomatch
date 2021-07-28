@@ -21,7 +21,7 @@ function queryString(query) {
 		})
 	return res
 }
-  
+
 export const Response=()=> {
 	const location = useLocation()
 	let data1=""
@@ -38,7 +38,7 @@ export const Response=()=> {
 				data1={data};
 			} )
 	}, [location])
-  
+
 	return (
 		<div className="container">
 			<div>
