@@ -1,6 +1,16 @@
 import React from "react";
 import { Carouselph } from "../components/Carousel";
+<<<<<<< Updated upstream
 import { Row, Col, Container, Button, Card, Form } from "react-bootstrap";
+=======
+import { SingUp } from "../components/SingUp";
+import { BeHost } from "../components/BeHost";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import ModalHome from "../components/ModalHome";
+>>>>>>> Stashed changes
 import { Link } from "react-router-dom";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { NavBar } from "../components/NavBar";
