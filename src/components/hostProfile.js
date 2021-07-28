@@ -96,20 +96,20 @@ export const HostProfileTab = () => {
     data.append("facilities", facilities);
     data.append("living_space", living_space);
     data.append("description", description);
-    data.append(" rooms", rooms);
-    data.append(" bathroom", bathroom);
-    data.append(" private_bathroom", private_bathroom);
-    data.append(" parking", parking);
+    data.append("rooms", rooms);
+    data.append("bathroom", bathroom);
+    data.append("private_bathroom", private_bathroom);
+    data.append("parking", parking);
     // data.append(" photosAds", file, file.name);
-    data.append(" price", price);
-    data.append(" house_rules", house_rules);
+    data.append("price", price);
+    data.append("house_rules", house_rules);
 
     if (files) {
       //recorrer con for in
       for (let llave in files) {
         // imprimir llave + valor
         console.log(llave, files[llave]["name"]);
-        // data.append("profilePhoto", files[llave], files[llave].name);
+        data.append(``, files[llave], files[llave].name);
       }
     }
     console.log("data form submit", data);
