@@ -21,6 +21,9 @@ import { BodyCss } from "../components/BodyCss";
 import { BreadCrumb } from "../components/BreadCrumb";
 import { BreadCrumbCss } from "../components/BreadCrumbCss";
 import { FooterCss } from "../components/FooterCss";
+import { Payments } from "../components/Payments";
+
+
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -47,7 +50,6 @@ export const Home = () => {
   return (
     <div className="App">
       <NavBarCss />
-      {/* <NavBar /> */}
       <Container>
         <Row className="justify-content-center">
           <Col>
@@ -119,8 +121,12 @@ export const Home = () => {
       <br></br>
       <BreadCrumbCss />
       <div class="divider"></div>
-      <BodyCss />
-      <ParallaxFooter />
+      <BodyCss/>    
+      <ParallaxFooter/>
+      <Payments/>
+      <div className="container">
+        <Carouselph array={imgAdds}/>
+      </div>
       <br></br>
       <FooterCss />
     </div>
