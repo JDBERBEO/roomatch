@@ -92,21 +92,7 @@ export function changeCity(city) {
     payload: city,
   };
 }
-export function hostPostAdv(
-  public_services,
-  facilities,
-  living_space,
-  description,
-  rooms,
-  bathroom,
-  private_bathroom,
-  parking,
-  photo,
-  price,
-  house_rules,
-  city,
-  history
-) {
+export function hostPostAdv(datas) {
   return async function (dispatch) {
     try {
       dispatch({ type: HOSTPOST_LOADING });
@@ -115,27 +101,13 @@ export function hostPostAdv(
         method: "POST",
         baseURL: "http://localhost:8000",
         url: "/advertisements/",
-        data,
-        //: {
-        //   public_services,
-        //   facilities,
-        //   living_space,
-        //   description,
-        //   rooms,
-        //   bathroom,
-        //   private_bathroom,
-        //   parking,
-        //   photo,
-        //   price,
-        //   house_rules,
-        // },
+        data: datas,
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
-      history.push("/");
     } catch (error) {
       dispatch({ type: HOSTPOST_ERROR, payload: error });
     } finally {

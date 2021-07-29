@@ -106,12 +106,15 @@ export const HostProfileTab = () => {
 
     if (files) {
       //recorrer con for in
-
-      for (let llave in files) {
-        // imprimir llave + valor
-        console.log(llave, files[llave]["name"]);
-        data.append(``, files[llave], files[llave].name);
+      for (let i = 0; i < files.length; i++) {
+        console.log(`files${i}`, files[i], files[i]["name"]);
+        data.append(`SpacePhoto${i}`, files[i], files[i]["name"]);
       }
+      // for (let llave in files) {
+      // imprimir llave + valor
+      // console.log(llave, files[llave]["name"]);
+      // data.append(``, files[llave], files[llave].name);
+      // }
     }
     console.log("data form submit", data);
     // for (var pair of data.entries()) {
