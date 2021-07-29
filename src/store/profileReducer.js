@@ -10,20 +10,18 @@ export function getProfile() {
     try {
       dispatch({ type: PROFILE_LOADING });
 
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
       const { data } = await axios({
-
         method: "GET",
         baseURL: "http://localhost:8000",
         url: "/roomie/profile",
         headers: {
-          'Authorization': `Bearer ${token}`,
-
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       dispatch({ type: PROFILE_SUCCESS, payload: data });
-      console.log("data", data)
+      console.log("data", data);
     } catch (error) {
       dispatch({ type: PROFILE_ERROR, payload: error });
     } finally {
@@ -33,30 +31,29 @@ export function getProfile() {
 }
 
 export function updateProfile(profile) {
+  console.log("profile desde updateprofile");
   return async function (dispatch) {
     try {
       // dispatch({ type: PROFILE_LOADING })
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const { data } = await axios({
-        method: 'PUT',
-        baseURL: 'http://localhost:8000',
-        url: '/roomie/profile/',
+        method: "PUT",
+        baseURL: "http://localhost:8000",
+        url: "/roomie/profile/",
         data: profile,
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
-        }
-      })
-      dispatch({ type: PROFILE_SUCCESS, payload: data })
+        },
+      });
+      dispatch({ type: PROFILE_SUCCESS, payload: data });
     } catch (error) {
       //        dispatch({ type: PROFILE_ERROR, payload: error.response.data.message })
     } finally {
       //       dispatch({ type: PROFILE_FINISHED })
     }
-  }
+  };
 }
-
-
 
 export function updateProfilePhoto(file) {
   return async function (dispatch) {
@@ -71,7 +68,7 @@ export function updateProfilePhoto(file) {
       const response = await axios({
         method: "PUT",
         baseURL: "http://localhost:8000",
-        url: 'roomie/profile/photo',
+        url: "/roomie/updatePhoto",
         data,
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,13 +77,13 @@ export function updateProfilePhoto(file) {
       });
       console.log("response actual", response);
 
-      dispatch({ type: PROFILE_SUCCESS, payload: response.data })
+      dispatch({ type: PROFILE_SUCCESS, payload: response.data });
     } catch (error) {
       //        dispatch({ type: PROFILE_ERROR, payload: error.response.data.message })
     } finally {
       //       dispatch({ type: PROFILE_FINISHED })
     }
-  }
+  };
 }
 
 const initialState = {

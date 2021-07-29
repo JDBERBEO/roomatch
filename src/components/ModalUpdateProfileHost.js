@@ -52,7 +52,7 @@ function ModalUpdateProfile() {
     e.preventDefault();
     // console.log("namedesde submit", name);
     const data = new FormData();
-    data.append("name append", name);
+    data.append("name", name);
     data.append("lastName", lastName);
     data.append("email", email);
     data.append("password", password);

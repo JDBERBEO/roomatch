@@ -35,7 +35,7 @@ export const RoomieProfile = () => {
           age={profile.age}
           email={profile.email}
           description={profile.description}
-          profilePhoto={profile.profilePhoto}
+          photos={profile.photos}
         />
       }
     </main>

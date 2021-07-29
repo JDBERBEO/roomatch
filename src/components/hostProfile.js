@@ -103,6 +103,7 @@ export const HostProfileTab = () => {
     // data.append(" photosAds", file, file.name);
     data.append("price", price);
     data.append("house_rules", house_rules);
+    data.append("city", city);
 
     if (files) {
       //recorrer con for in

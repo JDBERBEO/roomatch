@@ -23,7 +23,7 @@ export const CardProfile = ({
   email,
   age,
   description,
-  profilePhoto,
+  photos,
 }) => {
   return (
     <Container>
@@ -36,7 +36,7 @@ export const CardProfile = ({
           <Row className="justify-content-center">
             <Col className="col-4">
               <Card style={{ width: "23rem" }}>
-                <Card.Img variant="top" src={profilePhoto} />
+                <Card.Img variant="top" src={[photos]} />
                 <Card.Body key={id}>
                   <Card.Title>
                     {name} {lastName}
@@ -75,6 +75,6 @@ export const CardProfile = ({
         </Tab>
         <Tab eventKey="contact" title="no se" disabled></Tab>
       </Tabs>
-    </Container >
+    </Container>
   );
 };
