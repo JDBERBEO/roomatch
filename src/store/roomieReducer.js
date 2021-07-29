@@ -55,7 +55,7 @@ export function register(name, lastName, email, password, age, history) {
       });
       localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
-      history.push("/roomie/profile");
+      history.push("/");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error.response.data.message });
     } finally {

@@ -40,11 +40,12 @@ export const RoomieProfilePictureEdit = () => {
 
     //no se envia con json se envia con FORMDATA para hacer peticiones http
 
+
     const token = localStorage.getItem("token");
     const response = axios({
-      method: "POST",
+      method: "PUT",
       baseURL: "http://localhost:8000",
-      url: "/roomie/profile/",
+      url: '/profilePic',
       data,
       headers: {
         Authorization: `Bearer ${token}`,
@@ -55,6 +56,7 @@ export const RoomieProfilePictureEdit = () => {
   }
 
   return (
+
     <Form onSubmit={handleSubmit}>
       {image && <img src={image} alt="preview" />}
       <Form.Group controlId="formFileMultiple" className="mb-3">
