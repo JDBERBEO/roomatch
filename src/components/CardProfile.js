@@ -14,7 +14,7 @@ import {
 import { Reservations } from "../views/Reservations";
 import ModalUpdateProfile from "./ModalUpdateProfile";
 import { useState } from "react";
-import { RoomieProfilePictureEdit } from "./RoomieProfilePictureEdit";
+import { RoomieProfilePictureEdit } from "./ModalUpdatePhotoProfile";
 
 export const CardProfile = ({
   id,
@@ -23,6 +23,7 @@ export const CardProfile = ({
   email,
   age,
   description,
+  profilePhoto,
 }) => {
   return (
     <Container>
@@ -34,16 +35,18 @@ export const CardProfile = ({
         <Tab eventKey="home" title="Profile">
           <Row className="justify-content-center">
             <Col className="col-4">
-              <RoomieProfilePictureEdit />
               <Card style={{ width: "23rem" }}>
+                <Card.Img variant="top" src={profilePhoto} />
                 <Card.Body key={id}>
                   <Card.Title>
                     {name} {lastName}
                   </Card.Title>
                   <Card.Text>{age}</Card.Text>
+                  <RoomieProfilePictureEdit />
                 </Card.Body>
               </Card>
             </Col>
+
             <Col className="col-8">
               <Card style={{ width: "20rem" }}>
                 <Card.Header>Preferences</Card.Header>
@@ -72,6 +75,6 @@ export const CardProfile = ({
         </Tab>
         <Tab eventKey="contact" title="no se" disabled></Tab>
       </Tabs>
-    </Container>
+    </Container >
   );
 };

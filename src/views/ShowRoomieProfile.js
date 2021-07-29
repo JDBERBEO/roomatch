@@ -42,6 +42,7 @@ export const ShowRoomieProfile = () => {
           age={el.age}
           email={el.email}
           description={el.description}
+          profilePhoto={el.profilePhoto}
         />
       ))}
     </main>
