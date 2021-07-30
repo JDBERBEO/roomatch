@@ -16,7 +16,6 @@ import { getAd } from "../../store/getOneAdsReducer";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
-  // const [adhost, setAdhost] = useState([]);
 
   let { id } = useParams();
   const { loading, error, ad, selectedDays } = useSelector((state) => {
@@ -50,10 +49,6 @@ export const Advertisement = () => {
     disabled: BookedDaysPerAdvertisement,
     selected: selectedDays,
   };
-
-  // if (ad.length !== 0) {
-  //   setAdhost(ad.host);
-  // }
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
