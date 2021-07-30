@@ -47,7 +47,7 @@ export const Home = () => {
   return (
     <div className="App">
       <NavBarCss />
-      {/* <NavBar /> */}
+
       <Container>
         <Row className="justify-content-center">
           <Col>

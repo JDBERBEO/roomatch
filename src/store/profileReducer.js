@@ -21,7 +21,6 @@ export function getProfile() {
       });
 
       dispatch({ type: PROFILE_SUCCESS, payload: data });
-      console.log("data", data);
     } catch (error) {
       dispatch({ type: PROFILE_ERROR, payload: error });
     } finally {
@@ -31,7 +30,6 @@ export function getProfile() {
 }
 
 export function updateProfile(profile) {
-  console.log("profile desde updateprofile");
   return async function (dispatch) {
     try {
       // dispatch({ type: PROFILE_LOADING })
@@ -74,7 +72,6 @@ export function updateProfilePhoto(file) {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log("response actual", response);
 
       dispatch({ type: PROFILE_SUCCESS, payload: response.data });
     } catch (error) {

@@ -19,7 +19,6 @@ export function getProfileHost() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("data", data);
 
       dispatch({ type: PROFILE_SUCCESS, payload: data });
     } catch (error) {
@@ -31,7 +30,6 @@ export function getProfileHost() {
 }
 
 export function updateProfileHost(dataForm) {
-  console.log("data desde updateProfileHost", dataForm);
   return async function (dispatch) {
     try {
       // dispatch({ type: PROFILE_LOADING })
@@ -47,7 +45,6 @@ export function updateProfileHost(dataForm) {
         },
       });
       dispatch({ type: PROFILE_SUCCESS, payload: data });
-      console.log("data success", data);
     } catch (error) {
       //        dispatch({ type: PROFILE_ERROR, payload: error.response.data.message })
     } finally {

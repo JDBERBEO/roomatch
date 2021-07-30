@@ -80,18 +80,6 @@ function ModalUpdateProfile() {
                 name="email"
               />
             </Form.Group>
-            <Form.Group controlId="Password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                onChange={(e) =>
-                  setProfile({ ...profile, password: e.target.value })
-                }
-                type="password"
-                placeholder="Password"
-                value={profile.password}
-                name="password"
-              />
-            </Form.Group>
             <Form.Group controlId="Age">
               <Form.Label>Age</Form.Label>
               <Form.Control

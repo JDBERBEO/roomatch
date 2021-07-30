@@ -63,34 +63,13 @@ export const HostProfileTab = () => {
   });
 
   const [files, setFile] = useState(null);
-  //recibe un objeto que representa la imagen este setfile sirve para enviar la imag al backend
-  // const [image, setImage] = useState(null);
-  //
 
   function changePhoto(e) {
     setFile(e.target.files);
-    // generetePreview(e.target.files[0]);
-    //selecione la imagen y que le pase un archivo en la posicion 0
-    // console.dir(e.target);
   }
-
-  // function generetePreview(file) {
-  //   const fileReader = new FileReader();
-
-  //file reader va a estar escuchando on load recibe una asignacón.(que evento escucha y que callback recibe )
-  // fileReader.onload = (e) => setImage(e.target.result);
-  // fileReader.onerror = (e) => console.log(fileReader.error);
-
-  //leer diferentes archivos como un bufer pero que lo lea con una url que contiene una data.
-  // fileReader.readAsDataURL(file);
-  // 2 forma de hacerlo con URL
-  // const result = URL.createObjectURL(file);
-  // setImage(result);
-  // }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("files", files);
     const data = new FormData();
     data.append("public_services", public_services);
     data.append("facilities", facilities);
@@ -100,46 +79,17 @@ export const HostProfileTab = () => {
     data.append("bathroom", bathroom);
     data.append("private_bathroom", private_bathroom);
     data.append("parking", parking);
-    // data.append(" photosAds", file, file.name);
     data.append("price", price);
     data.append("house_rules", house_rules);
     data.append("city", city);
 
     if (files) {
-      //recorrer con for in
       for (let i = 0; i < files.length; i++) {
-        console.log(`files${i}`, files[i], files[i]["name"]);
         data.append(`SpacePhoto${i}`, files[i], files[i]["name"]);
       }
-      // for (let llave in files) {
-      // imprimir llave + valor
-      // console.log(llave, files[llave]["name"]);
-      // data.append(``, files[llave], files[llave].name);
-      // }
     }
-    console.log("data form submit", data);
-    // for (var pair of data.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
-
     dispatch(hostPostAdv(data));
   }
-  //no se envia con json se envia con FORMDATA para hacer peticiones http
-  //ya por que hay una foto hay que hacer todos los campos formdata
-
-  //agregue a ese objeto una propiedad email que el valor es email y asi con todos.
-  // public_services,
-  // facilities,
-  // living_space,
-  // description,
-  // rooms,
-  // bathroom,
-  // private_bathroom,
-  // parking,
-  // photo,
-  // price,
-  // house_rules,
-  // history
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops Something went wrong</p>;
@@ -252,11 +202,8 @@ export const HostProfileTab = () => {
                   multiple
                   onChange={changePhoto}
                   accept="image/*"
-                  // onChange={(e) => dispatch(changePhoto(e.target.value))}
-                  // value={photo}
                 />
               </Form.Group>
-              {/* {image && <img src={image} alt="preview" />} */}
 
               <Form.Group controlId="price">
                 <Form.Label>price</Form.Label>

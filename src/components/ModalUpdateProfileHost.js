@@ -35,39 +35,26 @@ function ModalUpdateProfile() {
     }
   );
 
-  console.log("profile", dataProfile);
-
   const [name, setName] = useState(dataProfile.name);
-  // console.log("name", name);
+
   const [lastName, setLastName] = useState(dataProfile.lastName);
-  // console.log("lastname", lastName);
+
   const [email, setEmail] = useState(dataProfile.email);
-  // console.log("email", email);
-  const [password, setPassword] = useState(dataProfile.password);
-  // console.log("password", password);
+
   const [age, setAge] = useState(dataProfile.age);
-  // console.log("age", age);
+
   const [description, setDescription] = useState(dataProfile.description);
-  // console.log("description", description);
 
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log("namedesde submit", name);
     const data = new FormData();
     data.append("name", name);
     data.append("lastName", lastName);
     data.append("email", email);
-    data.append("password", password);
     data.append("age", age);
     data.append("description", description);
     if (file) {
       data.append("profilePhoto", file, file.name);
-    }
-
-    // console.log("data desde handle submit", data);
-
-    for (var pair of data.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
     }
     dispatch(updateProfileHost(data));
     setShow(false);
@@ -120,16 +107,6 @@ function ModalUpdateProfile() {
                 placeholder="Enter Email"
                 value={email}
                 name="email"
-              />
-            </Form.Group>
-            <Form.Group controlId="Password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-                value={password}
-                name="password"
               />
             </Form.Group>
             <Form.Group controlId="Age">

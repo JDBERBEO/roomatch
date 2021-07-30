@@ -11,7 +11,6 @@ export const CardProfileHost = ({
   description,
   profilePhoto,
 }) => {
-  console.log("profilephoto", profilePhoto);
   return (
     <Container>
       <Row className="justify-content-center">
