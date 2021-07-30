@@ -137,6 +137,7 @@ export function hostPostAdv(
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
       if(data){
         swal("Your space has been created")
+        //.then(() => window.location.reload())
       }
       history.push("/host/profile");
 
@@ -243,6 +244,18 @@ function hostPostReducer(state = initialState, action) {
       return {
         ...state,
         hostPostLoading: false,
+        public_services: "",
+        facilities: "",
+        living_space: "",
+        description: "",
+        rooms: 0,
+        bathroom: 0,
+        private_bathroom: false,
+        parking: 0,
+        photo: "",
+        price: 0,
+        house_rules: "",
+        city:"",
       };
     }
 
