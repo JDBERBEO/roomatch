@@ -91,13 +91,15 @@ export const Advertisement = () => {
               />
               <Button type="submit">Match Host!</Button>
             </Form>
-            <ListGroup as="ul" key={ad._id}>
-              <ListGroup.Item as="li" active>
-                {ad.host.name}
-              </ListGroup.Item>
-              <ListGroup.Item as="li">{ad.host.email}</ListGroup.Item>
-              <ListGroup.Item as="li">{ad.host.description}</ListGroup.Item>
-            </ListGroup>
+            {!!ad.host && (
+              <ListGroup as="ul" key={ad._id}>
+                <ListGroup.Item as="li" active>
+                  {ad.host.name}
+                </ListGroup.Item>
+                <ListGroup.Item as="li">{ad.host.email}</ListGroup.Item>
+                <ListGroup.Item as="li">{ad.host.description}</ListGroup.Item>
+              </ListGroup>
+            )}
           </Col>
         </Row>
       </Container>
