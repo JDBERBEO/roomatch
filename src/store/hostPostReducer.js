@@ -137,7 +137,6 @@ export function hostPostAdv(
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
       if(data){
         swal("Your space has been created")
-        //.then(() => window.location.reload())
       }
       history.push("/host/profile");
 
