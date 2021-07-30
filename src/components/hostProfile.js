@@ -245,7 +245,7 @@ export const HostProfileTab = () => {
             </Form>
           </div>
         </Tab>
-        <Tab eventKey="posts" title="Posts">
+        <Tab eventKey="posts" title="Posts" >
           <br></br>
           <MyAdvertisements />
         </Tab>
