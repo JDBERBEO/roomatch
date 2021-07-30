@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 
 import { Form, Button, Modal } from "react-bootstrap";
-import { useSelector, useDispatch } from 'react-redux'
-import { updateProfile } from '../store/profileReducer'
-
-
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfile } from "../store/profileReducer";
 
 function ModalUpdateProfile() {
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const { loading, error, dataProfile } = useSelector(({ ProfileReducer }) => {
     return {
@@ -18,18 +15,18 @@ function ModalUpdateProfile() {
     };
   });
 
-  const [profile, setProfile] = useState(dataProfile)
+  const [profile, setProfile] = useState(dataProfile);
 
   function handleSubmit(e) {
-    e.preventDefault()
-    dispatch(updateProfile(profile))
-    setShow(false)
+    e.preventDefault();
+    dispatch(updateProfile(profile));
+    setShow(false);
   }
 
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  if (loading) return <p>loding...</p>
-  if (error) return <p>user can not be created</p>
+  if (loading) return <p>loding...</p>;
+  if (error) return <p>user can not be created</p>;
 
   return (
     <>
@@ -50,7 +47,9 @@ function ModalUpdateProfile() {
             <Form.Group controlId="Name">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                onChange={e => setProfile({ ...profile, name: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, name: e.target.value })
+                }
                 type="text"
                 placeholder={"Enter name"}
                 value={profile.name}
@@ -60,7 +59,9 @@ function ModalUpdateProfile() {
             <Form.Group controlId="LastName">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
-                onChange={e => setProfile({ ...profile, lastName: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, lastName: e.target.value })
+                }
                 type="text"
                 placeholder="Enter last name"
                 value={profile.lastName}
@@ -70,7 +71,9 @@ function ModalUpdateProfile() {
             <Form.Group controlId="Email">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                onChange={e => setProfile({ ...profile, email: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, email: e.target.value })
+                }
                 type="email"
                 placeholder="Enter Email"
                 value={profile.email}
@@ -80,7 +83,9 @@ function ModalUpdateProfile() {
             <Form.Group controlId="Password">
               <Form.Label>Password</Form.Label>
               <Form.Control
-                onChange={e => setProfile({ ...profile, password: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, password: e.target.value })
+                }
                 type="password"
                 placeholder="Password"
                 value={profile.password}
@@ -90,7 +95,9 @@ function ModalUpdateProfile() {
             <Form.Group controlId="Age">
               <Form.Label>Age</Form.Label>
               <Form.Control
-                onChange={e => setProfile({ ...profile, age: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, age: e.target.value })
+                }
                 type="text"
                 placeholder="Enter Age"
                 value={profile.age}
@@ -100,7 +107,9 @@ function ModalUpdateProfile() {
             <Form.Group controlId="Description">
               <Form.Label>Description</Form.Label>
               <Form.Control
-                onChange={e => setProfile({ ...profile, description: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, description: e.target.value })
+                }
                 type="text"
                 placeholder="Enter Description"
                 value={profile.description}
@@ -122,7 +131,6 @@ function ModalUpdateProfile() {
         </Modal.Footer>
       </Modal>
     </>
-
-  )
+  );
 }
-export default ModalUpdateProfile
+export default ModalUpdateProfile;

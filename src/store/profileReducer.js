@@ -43,7 +43,6 @@ export function updateProfile(profile) {
         data: profile,
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
         },
       });
       dispatch({ type: PROFILE_SUCCESS, payload: data });

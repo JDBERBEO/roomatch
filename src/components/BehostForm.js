@@ -9,7 +9,6 @@ import {
   changePassword,
   changeAge,
   changePersonalDescription,
-  // changeProfilePhoto,
 } from "../store/formHostReducer";
 import { useHistory } from "react-router-dom";
 
@@ -17,29 +16,19 @@ function Hostform() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const {
-    loading,
-    error,
-    name,
-    lastName,
-    email,
-    password,
-    age,
-    description,
-    // profilePhoto,
-  } = useSelector(({ formHostReducer }) => {
-    return {
-      loading: formHostReducer.loading,
-      error: formHostReducer.error,
-      name: formHostReducer.name,
-      lastName: formHostReducer.lastName,
-      email: formHostReducer.email,
-      password: formHostReducer.password,
-      age: formHostReducer.age,
-      description: formHostReducer.description,
-      // profilePhoto: formHostReducer.profilePhoto,
-    };
-  });
+  const { loading, error, name, lastName, email, password, age, description } =
+    useSelector(({ formHostReducer }) => {
+      return {
+        loading: formHostReducer.loading,
+        error: formHostReducer.error,
+        name: formHostReducer.name,
+        lastName: formHostReducer.lastName,
+        email: formHostReducer.email,
+        password: formHostReducer.password,
+        age: formHostReducer.age,
+        description: formHostReducer.description,
+      };
+    });
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(
@@ -123,15 +112,6 @@ function Hostform() {
                 }
                 value={description}
               />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Change Profile Photo</Form.Label>
-              <Form.Control
-                type="file"
-                id="HostPorfilePicture"
-                // onChange={selectImage}
-                accept="image/*"
-              ></Form.Control>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />

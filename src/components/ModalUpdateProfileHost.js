@@ -35,6 +35,8 @@ function ModalUpdateProfile() {
     }
   );
 
+  console.log("profile", dataProfile);
+
   const [name, setName] = useState(dataProfile.name);
   // console.log("name", name);
   const [lastName, setLastName] = useState(dataProfile.lastName);
