@@ -1,7 +1,8 @@
-import React from "react";
+import {React, useEffect} from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { Carouselph } from "./Carousel";
+import { useSelector, useDispatch } from "react-redux";
 
 export const AdsListsHost = ({
   id,
@@ -9,7 +10,7 @@ export const AdsListsHost = ({
   price,
   description,
   array,
-  handleSelect,
+  handleDelete
 }) => {
   return (
     <div>
@@ -26,8 +27,8 @@ export const AdsListsHost = ({
               <ListGroup.Item as="li">{price}</ListGroup.Item>
               <ListGroup.Item as="li">{description}</ListGroup.Item>
             </ListGroup>
-            <Button variant="outline-success" onClick={() => handleSelect(id)}>
-              Book this space
+            <Button variant="danger" onClick={() => handleDelete(id)}>
+              Delete this space
             </Button>
           </Col>
         </Row>

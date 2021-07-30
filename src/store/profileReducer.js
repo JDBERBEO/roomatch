@@ -22,7 +22,6 @@ export function getProfile() {
             });
 
             dispatch({ type: PROFILE_SUCCESS, payload: data });
-            console.log("data", data)
         } catch (error) {
             dispatch({ type: PROFILE_ERROR, payload: error });
         } finally {

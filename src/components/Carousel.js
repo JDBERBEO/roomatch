@@ -21,7 +21,7 @@ export const Carouselph = ({ array }) => {
   return (
   <div class="container">
       <div class="slider center-align">
-        <ul class="slides">  
+        <ul class="slides">
         {!!array && array.length > 0 && array.map((el) => (
           <li class="slides" key={el.title}>
             <img class="responsive-img" src={el.src} alt="First slide" />

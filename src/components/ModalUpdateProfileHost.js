@@ -22,7 +22,6 @@ function ModalUpdateProfile() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(profile)
         dispatch(updateProfileHost(profile))
         setShow(false)
     }
