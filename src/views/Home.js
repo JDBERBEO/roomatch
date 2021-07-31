@@ -108,32 +108,34 @@ export const Home = () => {
                 <Link
                   to={`/advertisements/?city=${city}&selectedDays=${selectedDays}`}
                 >
-                  <Button className="waves-effect waves-white orange bt-flat text-white" type="submit">Search
-                   <i class="material-icons left">search</i>
+                  <Button
+                    className="waves-effect waves-white orange bt-flat text-white"
+                    type="submit"
+                  >
+                    Search
+                    <i class="material-icons left">search</i>
                   </Button>
                 </Link>
               </Form>
-              <Card.Footer className="text-muted">
-              
-              </Card.Footer>
+              <Card.Footer className="text-muted"></Card.Footer>
             </Card>
           </Col>
         </Row>
       </Container>
-      
+
       <div class="divider"></div>
       <br></br>
       <div className="container">
-        <BreadCrumbCss /> 
-        <BodyCss/>  
-        <Carouselph array={imgAdds}/>
+        <BreadCrumbCss />
+        <BodyCss />
+        <Carouselph array={imgAdds} />
         <br></br>
       </div>
       <br></br>
       <div class="divider"></div>
-       
-      <ParallaxFooter/>
-      <Payments/>
+
+      <ParallaxFooter />
+      <Payments />
 
       <FooterCss />
     </div>

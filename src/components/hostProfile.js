@@ -4,6 +4,7 @@ import { Tabs, Tab, Form, Container, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { MyAdvertisements } from "../views/hostAdvertisements";
 import { ShowHostProfile } from "../views/showHostProfile";
+import { useState } from "react";
 
 import {
   hostPostAdv,
@@ -15,7 +16,7 @@ import {
   changeBathRoom,
   changePrivateBathRoom,
   changeParking,
-  changePhoto,
+  //changePhoto,
   changePrice,
   changeHouseRules,
   changeCity,
@@ -26,6 +27,7 @@ export const HostProfileTab = () => {
   const history = useHistory();
 
   const {
+    data,
     loading,
     error,
     public_services,
@@ -44,6 +46,7 @@ export const HostProfileTab = () => {
     return {
       loading: hostPostReducer.loading,
       error: hostPostReducer.error,
+      data: hostPostReducer.data,
       public_services: hostPostReducer.public_services,
       facilities: hostPostReducer.facilities,
       living_space: hostPostReducer.living_space,
@@ -58,25 +61,34 @@ export const HostProfileTab = () => {
       city: hostPostReducer.city,
     };
   });
+
+  const [files, setFile] = useState(null);
+
+  function changePhoto(e) {
+    setFile(e.target.files);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(
-      hostPostAdv(
-        public_services,
-        facilities,
-        living_space,
-        description,
-        rooms,
-        bathroom,
-        private_bathroom,
-        parking,
-        photo,
-        price,
-        house_rules,
-        city,
-        history
-      )
-    );
+    const data = new FormData();
+    data.append("public_services", public_services);
+    data.append("facilities", facilities);
+    data.append("living_space", living_space);
+    data.append("description", description);
+    data.append("rooms", rooms);
+    data.append("bathroom", bathroom);
+    data.append("private_bathroom", private_bathroom);
+    data.append("parking", parking);
+    data.append("price", price);
+    data.append("house_rules", house_rules);
+    data.append("city", city);
+
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        data.append(`SpacePhoto${i}`, files[i], files[i]["name"]);
+      }
+    }
+    dispatch(hostPostAdv(data, history));
   }
 
   if (loading) return <p>Loading...</p>;
@@ -84,12 +96,16 @@ export const HostProfileTab = () => {
 
   return (
     <Container>
-      <Tabs className="container pink " defaultActiveKey="profile" id="uncontrolled-tab-example">
+      <Tabs
+        className="container pink "
+        defaultActiveKey="profile"
+        id="uncontrolled-tab-example"
+      >
         <Tab class="container text-pink" eventKey="home" title="Profile">
           <br></br>
           <ShowHostProfile />
         </Tab>
-        <Tab  eventKey="profile" title="Show your space">
+        <Tab eventKey="profile" title="Publish your space">
           <div class="section">
             <br></br>
             <Form onSubmit={handleSubmit}>
@@ -183,14 +199,14 @@ export const HostProfileTab = () => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="Photo">
-                <Form.Label>Photo</Form.Label>
+              <Form.Group controlId="formFileMultiple" className="mb-3">
+                <Form.Label>Photos</Form.Label>
                 <Form.Control
-                  type="text"
-                  placeholder="Enter photos of the space"
-                  name="photo"
-                  onChange={(e) => dispatch(changePhoto(e.target.value))}
-                  value={photo}
+                  type="file"
+                  id="files"
+                  multiple
+                  onChange={changePhoto}
+                  accept="image/*"
                 />
               </Form.Group>
 
@@ -245,7 +261,7 @@ export const HostProfileTab = () => {
             </Form>
           </div>
         </Tab>
-        <Tab eventKey="posts" title="Posts" >
+        <Tab eventKey="posts" title="Posts">
           <br></br>
           <MyAdvertisements />
         </Tab>

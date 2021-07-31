@@ -17,7 +17,7 @@ export const Advertisements = ({ ads, handleSelect }) => {
             price={el.price}
             living_space_type={el.living_space}
             description={el.description}
-            array={imgAdds}
+            array={el.photos}
             handleSelect={handleSelect}
             city={el.city}
           />

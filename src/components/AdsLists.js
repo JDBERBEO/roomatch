@@ -12,7 +12,7 @@ export const AdsLists = ({
   handleSelect,
   city,
 }) => {
-   return (
+  return (
     <div>
       <Container>
         <Row>
