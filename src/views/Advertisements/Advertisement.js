@@ -56,33 +56,35 @@ export const Advertisement = () => {
   if (error) return <p>oops, something went wrong </p>;
   return (
     <div class="container">
-          <h1>¡Reserva Ahora!</h1>
-          <br></br>
-          <div class="divider"></div>
-          <br></br>
+      <h1>¡Reserva Ahora!</h1>
+      <br></br>
+      <div class="divider"></div>
+      <br></br>
       <Row>
-        <Card className="container z-depth-0" border="light">  
+        <Card className="container z-depth-0" border="light">
           <Card.Header className="pink"></Card.Header>
           <Card.Body clasName="container">
             <Row>
               <Col>
                 <Card className="z-depth-5">
                   <Card.Body>
-                    <Carouselph array={imgAdds} />
+                    <Carouselph array={ad.photos} />
                   </Card.Body>
                 </Card>
               </Col>
               <Col>
                 <Card className="text-center z-depth-5" border="light">
                   <Card.Body>
-                    <ListGroup  as="ul" key={ad._id}>
+                    <ListGroup as="ul" key={ad._id}>
                       <ListGroup.Item className="pink" as="li" active>
                         {ad.living_space}
                       </ListGroup.Item>
                       <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
                       <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
                     </ListGroup>
-                    <Form onSubmit={selectedDays.length !== 0 ? handleSubmit : null}>
+                    <Form
+                      onSubmit={selectedDays.length !== 0 ? handleSubmit : null}
+                    >
                       <DayPicker
                         className="container Selectable"
                         selectedDays={selectedDays}
@@ -90,12 +92,32 @@ export const Advertisement = () => {
                         disabledDays={BookedDaysPerAdvertisement}
                         onDayClick={(day, { selected, disabled }) =>
                           dispatch(
-                            handleDayClick(day, selectedDays, selected, disabled)
+                            handleDayClick(
+                              day,
+                              selectedDays,
+                              selected,
+                              disabled
+                            )
                           )
                         }
                       />
                       <Button type="submit">Match Host!</Button>
                     </Form>
+                    <br></br>
+                    <div class="divider"></div>
+                    <br></br>
+                    <h1>Host's Info</h1>
+                    {!!ad.host && (
+                      <ListGroup as="ul" key={ad._id}>
+                        <ListGroup.Item as="li" active className="pink" as="li">
+                          {ad.host.name}
+                        </ListGroup.Item>
+                        <ListGroup.Item as="li">{ad.host.email}</ListGroup.Item>
+                        <ListGroup.Item as="li">
+                          {ad.host.description}
+                        </ListGroup.Item>
+                      </ListGroup>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>
