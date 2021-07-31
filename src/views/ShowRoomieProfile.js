@@ -17,14 +17,6 @@ export const ShowRoomieProfile = () => {
     };
   });
 
-  // const { loading, error, profile } = useSelector(({ getProfileReducer }) => {
-  //   return {
-  //     loading: getProfileReducer.loading,
-  //     error: getProfileReducer.error,
-  //     profile: getProfileReducer.profile,
-  //   };
-  // });
-
   useEffect(() => {
     dispatch(getProfile());
   }, []);
@@ -42,6 +34,7 @@ export const ShowRoomieProfile = () => {
           age={el.age}
           email={el.email}
           description={el.description}
+          photos={el.photos}
         />
       ))}
     </main>

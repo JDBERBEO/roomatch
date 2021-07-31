@@ -17,7 +17,7 @@ export const Parallax=() =>{
 						</div>
 						<div className="section white">
 							<h2 className="header">¡Bienvenidos!</h2>
-							<p className="grey-text text-darken-3 lighten-3">Empieza a vivir la experiencia de encontrar hospdaje seguro</p>
+							<h4 className="grey-text text-darken-3 lighten-3">Empieza a vivir la experiencia de encontrar hospdaje seguro</h4>
 						<div/>   
           </div>
         </div>

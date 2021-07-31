@@ -1,5 +1,5 @@
 import axios from "axios";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
 export const HOSTPOST_LOADING = "HOSTPOST_LOADING ";
 export const HOSTPOST_SUCCESS = "HOSTPOST_SUCCESS";
@@ -93,21 +93,7 @@ export function changeCity(city) {
     payload: city,
   };
 }
-export function hostPostAdv(
-  public_services,
-  facilities,
-  living_space,
-  description,
-  rooms,
-  bathroom,
-  private_bathroom,
-  parking,
-  photo,
-  price,
-  house_rules,
-  city,
-  history
-) {
+export function hostPostAdv(datas, history) {
   return async function (dispatch) {
     try {
       dispatch({ type: HOSTPOST_LOADING });
@@ -115,31 +101,18 @@ export function hostPostAdv(
       const { data } = await axios({
         method: "POST",
         baseURL: "http://localhost:8000",
-        url: `/advertisements/`,
-        data: {
-          public_services,
-          facilities,
-          living_space,
-          description,
-          rooms,
-          bathroom,
-          private_bathroom,
-          parking,
-          photo,
-          price,
-          house_rules,
-          city,
-        },
+        url: "/advertisements/",
+        data: datas,
         headers: {
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
-      if(data){
-        swal("Your space has been created")
+      if (data) {
+        swal("Your space has been created");
       }
       history.push("/host/profile");
-
     } catch (error) {
       dispatch({ type: HOSTPOST_ERROR, payload: error });
     } finally {
@@ -243,6 +216,18 @@ function hostPostReducer(state = initialState, action) {
       return {
         ...state,
         hostPostLoading: false,
+        public_services: "",
+        facilities: "",
+        living_space: "",
+        description: "",
+        rooms: 0,
+        bathroom: 0,
+        private_bathroom: false,
+        parking: 0,
+        photo: "",
+        price: 0,
+        house_rules: "",
+        city: "",
       };
     }
 
