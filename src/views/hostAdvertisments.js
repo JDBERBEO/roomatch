@@ -19,10 +19,6 @@ export function MyAdvertisements() {
     }
   );
 
-  //   const handleSelect = (id) => {
-  //     history.push(`/advertisements/${id}`);
-  //   };
-
   useEffect(() => {
     dispatch(getAdvertisements());
   }, []);
@@ -41,7 +37,6 @@ export function MyAdvertisements() {
           price={el.price}
           description={el.description}
           array={imgAdds}
-          //   handleSelect={handleSelect}
         />
       ))}
     </div>
