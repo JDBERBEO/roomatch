@@ -23,8 +23,6 @@ import { BreadCrumbCss } from "../components/BreadCrumbCss";
 import { FooterCss } from "../components/FooterCss";
 import { Payments } from "../components/Payments";
 
-
-
 export const Home = () => {
   const dispatch = useDispatch();
   const { filterError, filterLoading, city, selectedDays } = useSelector(
@@ -50,12 +48,16 @@ export const Home = () => {
   return (
     <div className="App">
       <NavBarCss />
+      <br></br>
+      <Parallax />
+      <br></br>
+      <div class="divider"></div>
       <Container>
         <Row className="justify-content-center">
           <Col>
             <Card className="text-center">
-              <Card.Header>
-                Search for your favorite living space here!
+              <Card.Header className="pink text-white">
+                <h3>Search for your favorite living space here!</h3>
               </Card.Header>
               <Form onSubmit={handleSubmit}>
                 <Card.Body>
@@ -106,7 +108,13 @@ export const Home = () => {
                 <Link
                   to={`/advertisements/?city=${city}&selectedDays=${selectedDays}`}
                 >
-                  <Button type="submit">Search</Button>
+                  <Button
+                    className="waves-effect waves-white orange bt-flat text-white"
+                    type="submit"
+                  >
+                    Search
+                    <i class="material-icons left">search</i>
+                  </Button>
                 </Link>
               </Form>
               <Card.Footer className="text-muted"></Card.Footer>
@@ -114,20 +122,21 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      <div>
-        <Carouselph />
-      </div>
-      <Parallax />
-      <br></br>
-      <BreadCrumbCss />
+
       <div class="divider"></div>
-      <BodyCss/>    
-      <ParallaxFooter/>
-      <Payments/>
+      <br></br>
       <div className="container">
-        <Carouselph array={imgAdds}/>
+        <BreadCrumbCss />
+        <BodyCss />
+        <Carouselph array={imgAdds} />
+        <br></br>
       </div>
       <br></br>
+      <div class="divider"></div>
+
+      <ParallaxFooter />
+      <Payments />
+
       <FooterCss />
     </div>
   );
