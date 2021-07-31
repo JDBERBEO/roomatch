@@ -10,11 +10,6 @@ export const Advertisements = ({ ads, handleSelect }) => {
   return (
     <div>
       <Container>
-        <Row className="justify-content-center">
-          <Col className="col-7">
-            <BreadCrumb />
-          </Col>
-        </Row>
         {ads.map((el) => (
           <AdsLists
             key={el._id}

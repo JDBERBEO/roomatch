@@ -88,7 +88,7 @@ export const HostProfileTab = () => {
         data.append(`SpacePhoto${i}`, files[i], files[i]["name"]);
       }
     }
-    dispatch(hostPostAdv(data));
+    dispatch(hostPostAdv(data, history));
   }
 
   if (loading) return <p>Loading...</p>;
@@ -96,8 +96,13 @@ export const HostProfileTab = () => {
 
   return (
     <Container>
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-        <Tab eventKey="home" title="Personal data">
+      <Tabs
+        className="container pink "
+        defaultActiveKey="profile"
+        id="uncontrolled-tab-example"
+      >
+        <Tab class="container text-pink" eventKey="home" title="Profile">
+          <br></br>
           <ShowHostProfile />
         </Tab>
         <Tab eventKey="profile" title="Publish your space">

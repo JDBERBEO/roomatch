@@ -43,7 +43,7 @@ export function changeAge(age) {
   };
 }
 
-export function register(name, lastName, email, password, age, history) {
+export function registerRoomie(name, lastName, email, password, age, history) {
   return async function (dispatch) {
     try {
       dispatch({ type: REGISTER_LOADING });
@@ -55,9 +55,9 @@ export function register(name, lastName, email, password, age, history) {
       });
       localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
-      history.push("/");
+      history.push("/roomie/profile");
     } catch (error) {
-      dispatch({ type: REGISTER_ERROR, payload: error.response.data.message });
+      dispatch({ type: REGISTER_ERROR, payload: error.message });
     } finally {
       dispatch({ type: REGISTER_FINISHED });
     }

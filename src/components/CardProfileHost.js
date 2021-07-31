@@ -25,8 +25,8 @@ export const CardProfileHost = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col className="col-8">
-          <Card style={{ width: "20rem" }}>
+        <Col className="container">
+          <Card className="z-depth-5">
             <Card.Header>Preferences</Card.Header>
             <ListGroup variant="flush">
               <ListGroup.Item>{email}</ListGroup.Item>

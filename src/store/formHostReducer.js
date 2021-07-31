@@ -51,7 +51,7 @@ export function changePersonalDescription(description) {
   };
 }
 
-export function register(
+export function registerHost(
   name,
   lastName,
   email,
