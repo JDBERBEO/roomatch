@@ -46,23 +46,24 @@ export function changeAge(age) {
 export function registerRoomie(name, lastName, email, password, age, history) {
   return async function (dispatch) {
     try {
-      dispatch({ type: REGISTER_LOADING });
+      dispatch({ type: REGISTER_LOADING })
       const { data } = await axios({
-        method: "POST",
-        baseURL: "http://localhost:8000",
-        url: "/roomie/signup",
-        data: { name, lastName, email, password, age },
-      });
+        method: 'POST',
+        baseURL: 'http://localhost:8000',
+        url: '/roomie/signup',
+        data: { name, lastName, email, password, age }
+      })
       localStorage.setItem("token", data.token);
-      dispatch({ type: REGISTER_SUCCESS, payload: data });
-      history.push("/roomie/profile");
+      dispatch({ type: REGISTER_SUCCESS, payload: data })
+      history.push('/')
     } catch (error) {
-      dispatch({ type: REGISTER_ERROR, payload: error.message });
+      dispatch({ type: REGISTER_ERROR, payload: error.message })
     } finally {
-      dispatch({ type: REGISTER_FINISHED });
+      dispatch({ type: REGISTER_FINISHED })
     }
-  };
-}
+  }
+};
+
 
 const initialState = {
   name: "",
