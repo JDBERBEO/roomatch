@@ -74,7 +74,6 @@ export const CardProfile = ({
         <Tab eventKey="profile" title="My Reservations">
           <Reservations />
         </Tab>
-        <Tab eventKey="contact" title="no se" disabled></Tab>
       </Tabs>
     </Container>
   );

@@ -14,11 +14,11 @@ import "materialize-css/js/parallax";
 
 export const NavBarCss = () => {
   const history = useHistory();
-  function Logout() {
-    localStorage.removeItem("token");
+  // function Logout() {
+  //   localStorage.removeItem("token");
 
-    history.push("/");
-  }
+  //   history.push("/");
+  // }
   useEffect(() => {
     let elements = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elements);
@@ -28,6 +28,7 @@ export const NavBarCss = () => {
   const handleClick = () => {
     localStorage.removeItem("token");
     setActive(!activeButton);
+    history.push("/");
   };
   return (
     <div>

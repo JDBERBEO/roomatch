@@ -14,7 +14,7 @@ export const GoProfile = () => {
         {!activeButton && localStorage.getItem("token") && <Button variant="outline-light"
           type="button"
           onClick={handleClick}
-        >GoProfile</Button>}
+        >Go Profile</Button>}
       </Link>
     </div>
   );

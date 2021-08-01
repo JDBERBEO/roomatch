@@ -4,16 +4,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { ListGroup, Form } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import { reserve, handleDayClick } from "../../store/ReservationReducer";
 import { getAd } from "../../store/getOneAdsReducer";
 import { Card } from "react-bootstrap";
+import swal from 'sweetalert'
+import { NavBarCss } from "../../components/NavBarCss";
 
 export const Advertisement = () => {
   const dispatch = useDispatch();
+  const history=useHistory();
 
   let { id } = useParams();
   const { loading, error, ad, selectedDays } = useSelector((state) => {
@@ -50,7 +53,7 @@ export const Advertisement = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(ad.living_space, ad._id, selectedDays, totalPrice));
+    dispatch(reserve(ad.living_space, ad._id, selectedDays, totalPrice,history));
   }
 
   const modifiers = {
@@ -62,6 +65,8 @@ export const Advertisement = () => {
   if (error) return <p>oops, something went wrong </p>;
 
   return (
+    <div>
+      <NavBarCss/>
     <div class="container">
           <h1> Book Now!</h1>
           <br></br>
@@ -142,5 +147,7 @@ export const Advertisement = () => {
         </Card>
       </Row>
     </div>
+    </div>
+
   );
 };

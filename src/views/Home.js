@@ -44,7 +44,6 @@ export const Home = () => {
       <div className="container">
         <BreadCrumbCss />
         <BodyCss />
-        <Carouselph array={imgAdds} />
         <br></br>
       </div>
       <br></br>

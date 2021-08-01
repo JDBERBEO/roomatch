@@ -1,7 +1,7 @@
 export const imgAdds = [
     {
       title: 1,
-      src: "https://images.pexels.com/photos/7005475/pexels-photo-7005475.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-7005475.jpg&fm=jpg",
+      src: "https://res.cloudinary.com/evollve-sas/image/upload/v1627854807/roomatch/colores-pintar-habitacion-color-azul-claro-1_whky18.webp",
       alt: "First slide",
       price: 0,
       ranking: 0,

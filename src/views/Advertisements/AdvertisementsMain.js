@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { filterPost } from "../../store/FilterReducer";
 import { Advertisements } from "./Advertisements";
 import queryString from "query-string";
+import swal from "sweetalert";
 import { NoCoindencies } from "./NoCoinciden";
 
 function AdvertisementsMain() {
@@ -44,7 +45,15 @@ function AdvertisementsMain() {
   if (filterError) return <p>Oops Something went wrong</p>;
 
   const handleSelect = (id) => {
-    history.push(`/advertisement/${id}`);
+    
+    if (localStorage.getItem("token")){
+      history.push(`/advertisement/${id}`)
+    }
+    else
+    {
+      swal("Please Login","If you don't have an user, please sign up","error")
+    }
+  
   };
 
   return (
