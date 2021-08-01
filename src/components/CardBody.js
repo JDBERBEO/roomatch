@@ -9,11 +9,11 @@ export const CardBody = () => {
 				<Card.Img variant="top" src="../../hostProfile.jpg" />
 				<Card.Body>
 					<Card.Text>
-					Una Startup que busca la comodidad y seguridad del usuario al buscar hospedajes.
-					Aplicación ideal para viajeros, estudiantes e incluso para personas que buscan rentar de forma prolongada.
-					Nuestra propuesta de valor se basa en la transparencia al brindar seguridad al usuario por medio de rankings.
-					Podrás evaluar a tu roomie, casero y compartir tu experiencia de forma pública,
-					de tal manera que cada usuario tendrá un historial con comentarios y ranking asignado. 
+					A Startup that seeks the comfort and security of the user when looking for accommodation.
+					The perfect app for travelers, students, and even for people looking to rent for a long time.
+					Our value proposition is based on transparency by providing security to the user through our
+					user ranking and feedback.
+					You will be able to evaluate your roommate, landlord and share your experience publicly.
 					</Card.Text>
 				</Card.Body>
 			</Card>

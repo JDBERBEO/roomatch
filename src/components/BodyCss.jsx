@@ -12,25 +12,27 @@ export const BodyCss = () => {
 							<div class="col s12 m4">
 								<div class="icon-block">
 									<h1 class="center brown-text"><i class="material-icons">home</i></h1>
-									<h5 class="center">Anímater a ser anfitrión</h5>
-									<p class="light"> Comparte tu espacio para ganar dinero extra y aprovechar nuevas oportunidades</p>
+									<h5 class="center">Encourage to be a host</h5>
+									<p class="light"> 
+										Share your space to earn extra money and take advantage of new opportunities
+									</p>
 								</div>
 							</div>
 
 							<div class="col s12 m4">
 								<div class="icon-block">
 									<h1 class="center brown-text"><i class="material-icons">insert_invitation</i></h1>
-									<h5 class="center">Reserva tu spacio</h5>
+									<h5 class="center">Reserve your space</h5>
 
-									<p class="light">Por donde viajes o vivas  has match con el mejor espacio y mejor anfitrión</p>
+									<p class="light">Wherever you travel or live, you have a match with the best space and the best host</p>
 								</div>
 							</div>
 
 							<div class="col s12 m4">
 								<div class="icon-block">
 									<h1 class="center brown-text"><i class="material-icons">card_travel</i></h1>
-									<h5 class="center">Descubre las mejores experiencias</h5>
-									<p class="light">Disfruta de las actividades que mas te gustan a la lado de la mejor compañia</p>
+									<h5 class="center">Discover the best experiences</h5>
+									<p class="light">Enjoy the activities that you love, next to the best company</p>
 								</div>
 							</div>
 

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getProfile } from "../store/profileReducer";
 import { CardProfile } from "../components/CardProfile";
+import { NavBarCss } from "../components/NavBarCss";
 
 export const RoomieProfile = () => {
   const history = useHistory();
@@ -24,8 +25,17 @@ export const RoomieProfile = () => {
   if (loading) return <p>Loading lo mas rapidooo...</p>;
   if (error) return <p>Oops Something went wrong</p>;
   return (
-    <main>
-      {
+    <div>
+      <NavBarCss/>
+      <div class="container">
+        <br></br>
+        <div>
+          <h1>Welcome</h1>
+        </div>
+        <br></br>
+        <div class="divider"></div>
+        <br></br>
+
         <CardProfile
           profile={profile}
           key={profile._id}
@@ -37,7 +47,7 @@ export const RoomieProfile = () => {
           description={profile.description}
           photos={profile.photos}
         />
-      }
-    </main>
+      </div>
+    </div>
   );
 };

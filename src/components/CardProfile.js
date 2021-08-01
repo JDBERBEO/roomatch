@@ -27,48 +27,49 @@ export const CardProfile = ({
 }) => {
   return (
     <Container>
-      <Tabs
-        defaultActiveKey="profile"
-        id="uncontrolled-tab-example"
-        className="mb-3"
-      >
+      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3 pink">
         <Tab eventKey="home" title="Profile">
-          <Row className="justify-content-center">
-            <Col className="col-4">
-              <Card style={{ width: "23rem" }}>
-                <Card.Img variant="top" src={[photos]} />
-                <Card.Body key={id}>
-                  <Card.Title>
-                    {name} {lastName}
-                  </Card.Title>
-                  <Card.Text>{age}</Card.Text>
-                  <RoomieProfilePictureEdit />
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col className="col-8">
-              <Card style={{ width: "20rem" }}>
-                <Card.Header>Preferences</Card.Header>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>{email}</ListGroup.Item>
-                </ListGroup>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>{description}</ListGroup.Item>
-                </ListGroup>
-              </Card>
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <ModalUpdateProfile />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Button> Delete Profile </Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Row>
+        <Row className="justify-content-center">
+          <Col>
+          <Card className="text-center z-depth-0" border="light">
+            <Card.Body>
+              <Row className="container">
+                <Col>
+                  <Card className="z-depth-5">
+                    <Card.Img variant="top" src={[photos]} />
+                    <Card.Body key={id}>
+                      <Card.Title>{name} {lastName}</Card.Title>
+                      <Card.Text>{age}</Card.Text>
+                      <RoomieProfilePictureEdit />
+                    </Card.Body>
+                  </Card>
+                </Col>
+                <Col className="container">
+                  <Card className="z-depth-5">
+                    <Card.Header>Preferences</Card.Header>
+                    <ListGroup variant="flush">
+                      <ListGroup.Item>{email}</ListGroup.Item>
+                    </ListGroup>
+                    <ListGroup variant="flush">
+                      <ListGroup.Item>{description}</ListGroup.Item>
+                    </ListGroup>
+                  </Card>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">    
+          <ListGroup variant="flush">
+            <ListGroup.Item>
+              <ModalUpdateProfile />
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button variant="danger" className="waves-effect waves-white text-white"> Delete Profile </Button>
+            </ListGroup.Item>
+          </ListGroup>
+        </Row>
         </Tab>
         <Tab eventKey="profile" title="My Reservations">
           <Reservations />

@@ -63,10 +63,10 @@ export const Advertisement = () => {
 
   return (
     <div class="container">
-      <h1>¡Book now!</h1>
-      <br></br>
-      <div class="divider"></div>
-      <br></br>
+          <h1> Book Now!</h1>
+          <br></br>
+          <div class="divider"></div>
+          <br></br>
       <Row>
         <Card className="container z-depth-0" border="light">
           <Card.Header className="pink"></Card.Header>
@@ -116,7 +116,7 @@ export const Advertisement = () => {
                           )
                         }
                       />
-                      <Button type="submit">Match Host!</Button>
+                      <Button variant="danger"  type="submit">Match Host!</Button>
                     </Form>
                     <br></br>
                     <div class="divider"></div>

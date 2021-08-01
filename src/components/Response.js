@@ -42,7 +42,7 @@ export const Response=()=> {
 	return (
 		<div className="container">
 			<div>
-				<h3>¡¡Gracias por confiar en nosotros!!</h3>
+				<h3>Thanks for trusting us!</h3>
 			</div>
 			<br></br>
 			<div class="divider"></div>
@@ -55,11 +55,12 @@ export const Response=()=> {
 							<span class="card-title">{data1.x_business}</span>
 						</div>
 						<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information.
-							I am convenient because I require little markup to use effectively.</p>
+							<p>The roomatch team wishes you a good rest.
+								We hope to see you soon
+							</p>
 						</div>
 						<div class="card-action red accent-2 ">
-							<a class="text-white" href="/">Esperamos verlo pronto </a>
+							<a class="text-white" href="/">Home </a>
 						</div>
 					</div>
 				</div>

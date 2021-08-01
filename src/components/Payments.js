@@ -28,8 +28,8 @@ export const Payments=()=> {
       tax: 0,
       tax_base: 0,
       amount: 20000,
-      name: 'Programa TOP Make it Real',
-      description: 'Programa Fullstack Inmersivo',
+      name: 'Roomatch',
+      description: '1 month room: best house',
 
       currency: 'cop',
       country: 'CO',
@@ -41,7 +41,7 @@ export const Payments=()=> {
 
       response: `${process.env.REACT_APP_BASE_URL}/response`,
 
-      name_billing: 'María Lopez',
+      name_billing: 'Luis Hernandez',
       address_billing: 'Calle 23 # 54 - 10',
       type_doc_billing: 'CC',
       number_doc_billing: '1239075396',
@@ -55,7 +55,7 @@ export const Payments=()=> {
   console.log(process.env.REACT_APP_EPAYCO_PUBLIC_KEY)
   return (
     <div className="App">
-      <button class="waves-effect waves-pink pink btn-flat text-white" type="button" onClick={handlePayment}>Pagar
+      <button class="waves-effect waves-pink pink btn-flat text-white" type="button" onClick={handlePayment}>Pay
         <i class="material-icons left">payment</i>
       </button>
     </div>
