@@ -90,6 +90,14 @@ function filterPostReducer(state = initialState, action) {
         selectedDays: [],
       };
     }
+    case FILTER_LOADING: {
+      return {
+        ...state,
+        filterLoading: true,
+        city: "",
+        selectedDays: [],
+      };
+    }
     case FILTER_CHANGES_SELECTED_DAYS: {
       return {
         ...state,
