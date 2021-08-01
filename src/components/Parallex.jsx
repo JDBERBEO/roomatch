@@ -16,8 +16,8 @@ export const Parallax=() =>{
 								<img src="../../fondo1.jpg"/>
 						</div>
 						<div className="section white">
-							<h2 className="header">¡Bienvenidos!</h2>
-							<h4 className="grey-text text-darken-3 lighten-3">Empieza a vivir la experiencia de encontrar hospdaje seguro</h4>
+							<h2 className="header"> Welcome!</h2>
+							<h4 className="grey-text text-darken-3 lighten-3">Start living the experience of finding safe accommodation</h4>
 						<div/>   
           </div>
         </div>

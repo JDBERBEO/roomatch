@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { getReservations } from "../store/getReservationsReducer";
 import { ReservationsList } from '../components/ReservationsList'
 import { imgAdds } from "../Mock_data/imgsAdd";
+import { Col, Container, Row, Button } from "react-bootstrap";
 
 export const Reservations = () => {
   const history = useHistory()
@@ -30,7 +31,8 @@ export const Reservations = () => {
   if (error) return <p>Oops Something went wrong</p>;
   return (
     <main>
-      <h1>My Reservations</h1>
+      <h2>My Reservations</h2>
+      <br></br>
       {reservations.map((el) => (
         <ReservationsList
           reservations={reservations}
@@ -43,6 +45,7 @@ export const Reservations = () => {
           handleSelect={handleSelect}
         />
       ))}
+      <Row className="container pink"><p></p></Row>
     </main>
   );
 }

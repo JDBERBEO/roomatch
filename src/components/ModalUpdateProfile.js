@@ -33,7 +33,7 @@ function ModalUpdateProfile() {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)}>
+      <Button variant="danger" className="waves-effect waves-white text-white" onClick={() => setShow(true)}>
         Edit Profile
       </Button>
       <Modal
@@ -107,12 +107,13 @@ function ModalUpdateProfile() {
                 name="description"
               />
             </Form.Group>
-            <Button type="submit">Save</Button>
+            <Button variant="danger" className="waves-effect waves-white text-white" type="submit">Save</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button
-            variant="secondary"
+            variant="danger"
+            className="waves-effect waves-white text-white"
             onClick={() => {
               setShow(false);
             }}

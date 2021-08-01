@@ -56,7 +56,7 @@ export const Advertisement = () => {
   if (error) return <p>oops, something went wrong </p>;
   return (
     <div class="container">
-          <h1>¡Reserva Ahora!</h1>
+          <h1> Book Now!</h1>
           <br></br>
           <div class="divider"></div>
           <br></br>
@@ -94,7 +94,7 @@ export const Advertisement = () => {
                           )
                         }
                       />
-                      <Button type="submit">Match Host!</Button>
+                      <Button variant="danger"  type="submit">Match Host!</Button>
                     </Form>
                   </Card.Body>
                 </Card>

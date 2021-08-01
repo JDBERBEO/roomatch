@@ -108,7 +108,7 @@ export const Home = () => {
                 <Link
                   to={`/advertisements/?city=${city}&selectedDays=${selectedDays}`}
                 >
-                  <Button className="waves-effect waves-white orange bt-flat text-white" type="submit">Search
+                  <Button variant="warning" className="waves-effect waves-white text-white" type="submit">Search
                    <i class="material-icons left">search</i>
                   </Button>
                 </Link>
