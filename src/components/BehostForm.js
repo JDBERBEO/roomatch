@@ -24,13 +24,8 @@ let schema = Yup.object().shape({
   age: Yup.number().required().positive().integer(),
   description: Yup.string()
     .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    .max(200, "Too Long!")
     .required("Description is required"),
-  profilePhoto: Yup.string()
-    .min(2, "Your Pic!")
-    .max(50, "Too Long!")
-    .required("Photo is required"),
-  accepTerms: Yup.bool().oneOf([true, "Accept Terms is required"]),
 });
 
 function Hostform() {
@@ -165,16 +160,6 @@ function Hostform() {
                 required
               />
               <p>{!!errors.description && errors.description.message}</p>
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="accept terms"
-                className={`form-check-input ${
-                  errors.acceptTerms ? "is-invalid" : ""
-                }`}
-                required
-              />
             </Form.Group>
             <Button variant="danger" type="submit">
               Submit

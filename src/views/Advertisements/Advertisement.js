@@ -1,19 +1,15 @@
 import { React, useEffect } from "react";
 import { Carouselph } from "../../components/Carousel";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { ListGroup, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { BreadCrumb } from "../../components/BreadCrumb";
-import { imgAdds } from "../../Mock_data/imgsAdd";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import { reserve, handleDayClick } from "../../store/ReservationReducer";
 import { getAd } from "../../store/getOneAdsReducer";
-import { CardBody } from "../../components/CardBody";
 import { Card } from "react-bootstrap";
 
 export const Advertisement = () => {
@@ -42,9 +38,19 @@ export const Advertisement = () => {
       .flat();
   }
 
+  let totalPrice = ad.price * selectedDays.length;
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
+
+  let totalPriceFormat = formatter.format(totalPrice);
+
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(reserve(ad.living_space, ad._id, selectedDays, ad.price));
+    dispatch(reserve(ad.living_space, ad._id, selectedDays, totalPrice));
   }
 
   const modifiers = {
@@ -54,9 +60,10 @@ export const Advertisement = () => {
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>oops, something went wrong </p>;
+
   return (
     <div class="container">
-      <h1>¡Reserva Ahora!</h1>
+      <h1>¡Book now!</h1>
       <br></br>
       <div class="divider"></div>
       <br></br>
@@ -79,8 +86,16 @@ export const Advertisement = () => {
                       <ListGroup.Item className="pink" as="li" active>
                         {ad.living_space}
                       </ListGroup.Item>
-                      <ListGroup.Item as="li">{ad.price}</ListGroup.Item>
                       <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
+                    </ListGroup>
+                    <hi>PRICE: </hi>
+                    <ListGroup as="ul" key={ad._id}>
+                      <ListGroup.Item as="li" active className="pink">
+                        Price per day: {formatter.format(ad.price)}
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        Total Price: {totalPriceFormat}
+                      </ListGroup.Item>
                     </ListGroup>
                     <Form
                       onSubmit={selectedDays.length !== 0 ? handleSubmit : null}
