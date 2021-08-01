@@ -4,9 +4,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { filterPost } from "../../store/FilterReducer";
 import { Advertisements } from "./Advertisements";
 import queryString from "query-string";
-import swal from "sweetalert";
-import { Card } from "react-bootstrap";
-import { NoCoindencies } from "./NoCoindencies";
 
 function AdvertisementsMain() {
   const location = useLocation();
