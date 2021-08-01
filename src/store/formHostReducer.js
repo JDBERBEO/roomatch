@@ -78,7 +78,7 @@ export function registerHost(
       });
       localStorage.setItem("token", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
-      history.push("/");
+      history.push("/host/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error });
     } finally {
