@@ -211,7 +211,7 @@ export const HostProfileTab = () => {
               </Form.Group>
 
               <Form.Group controlId="price">
-                <Form.Label>price</Form.Label>
+                <Form.Label>price per day</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter price of to rent"

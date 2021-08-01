@@ -47,7 +47,6 @@ function AdvertisementsMain() {
     history.push(`/advertisement/${id}`);
   };
 
-  console.log("ads", ads);
   return (
     <main>
       {!!ads && ads.length > 0 ? (
