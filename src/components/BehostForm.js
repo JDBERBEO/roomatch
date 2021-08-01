@@ -41,29 +41,19 @@ function Hostform() {
     resolver: yupResolver(schema),
   });
 
-  const {
-    loading,
-    error,
-    name,
-    lastName,
-    email,
-    password,
-    age,
-    description,
-    profilePhoto,
-  } = useSelector(({ formHostReducer }) => {
-    return {
-      loading: formHostReducer.loading,
-      error: formHostReducer.error,
-      name: formHostReducer.name,
-      lastName: formHostReducer.lastName,
-      email: formHostReducer.email,
-      password: formHostReducer.password,
-      age: formHostReducer.age,
-      description: formHostReducer.description,
-      profilePhoto: formHostReducer.profilePhoto,
-    };
-  });
+  const { loading, error, name, lastName, email, password, age, description } =
+    useSelector(({ formHostReducer }) => {
+      return {
+        loading: formHostReducer.loading,
+        error: formHostReducer.error,
+        name: formHostReducer.name,
+        lastName: formHostReducer.lastName,
+        email: formHostReducer.email,
+        password: formHostReducer.password,
+        age: formHostReducer.age,
+        description: formHostReducer.description,
+      };
+    });
   function createHost(data) {
     dispatch(
       registerHost(
@@ -73,7 +63,6 @@ function Hostform() {
         data.password,
         data.age,
         data.description,
-        data.profilePhoto,
         history
       )
     );
