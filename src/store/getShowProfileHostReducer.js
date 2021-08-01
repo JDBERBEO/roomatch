@@ -19,7 +19,6 @@ export function getProfileHost() {
           Authorization: `Bearer ${token}`,
         },
       });
-      
 
       dispatch({ type: PROFILE_SUCCESS, payload: data });
     } catch (error) {
@@ -30,27 +29,28 @@ export function getProfileHost() {
   };
 }
 
-export function updateProfileHost(profile) {
+export function updateProfileHost(dataForm) {
   return async function (dispatch) {
     try {
       // dispatch({ type: PROFILE_LOADING })
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const { data } = await axios({
-        method: 'PUT',
-        baseURL: 'http://localhost:8000',
-        url: '/host/profile/',
-        data: profile,
+        method: "PUT",
+        baseURL: "http://localhost:8000",
+        url: "/host/profile/",
+        data: dataForm,
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      dispatch({ type: PROFILE_SUCCESS, payload: data })
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      dispatch({ type: PROFILE_SUCCESS, payload: data });
     } catch (error) {
       //        dispatch({ type: PROFILE_ERROR, payload: error.response.data.message })
     } finally {
       //       dispatch({ type: PROFILE_FINISHED })
     }
-  }
+  };
 }
 
 const initialState = {

@@ -35,6 +35,7 @@ export const ShowHostProfile = () => {
           age={profile.age}
           email={profile.email}
           description={profile.description}
+          profilePhoto={[profile.photos]}
         />
       }
     </main>
