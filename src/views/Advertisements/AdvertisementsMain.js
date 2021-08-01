@@ -52,11 +52,7 @@ function AdvertisementsMain() {
   console.log("ads", ads);
   return (
     <main>
-      {!!ads && ads.length > 0 ? (
-        <Advertisements ads={ads} handleSelect={handleSelect} />
-      ) : (
-        <NoCoindencies />
-      )}
+      <Advertisements ads={ads} handleSelect={handleSelect} />
     </main>
   );
 }

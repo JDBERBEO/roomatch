@@ -44,7 +44,6 @@ export function filterPost(city, selectedDays, history) {
         params: { selectedDays: selectedDaysString, city },
       });
       dispatch({ type: FILTER_SUCCESS, payload: data });
-      console.log("data", data);
     } catch (error) {
       dispatch({ type: FILTER_ERROR, payload: error });
     } finally {
