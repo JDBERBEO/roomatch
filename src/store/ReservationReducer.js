@@ -58,9 +58,10 @@ export function reserve(
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
       
-      swal("Reservation Created","","success")
-      const history = useHistory();
-      history.push("/");
+      swal("Reservation Created","","success").then(() => {
+        history.push("/");
+      });
+      
       
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });

@@ -5,13 +5,14 @@ import { filterPost } from "../../store/FilterReducer";
 import { Advertisements } from "./Advertisements";
 import queryString from "query-string";
 import swal from "sweetalert";
+import { NoCoindencies } from "./NoCoinciden";
 
 function AdvertisementsMain() {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { loading, error, ads } = useSelector((state) => {
+  const { filterError, ads, filterLoading } = useSelector((state) => {
     return {
       loading: state.getAdsReducer.loading,
       error: state.getAdsReducer.error,
@@ -40,8 +41,8 @@ function AdvertisementsMain() {
     dispatch(filterPost(city, selectedDays, history));
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Oops Something went wrong</p>;
+  if (filterLoading) return <p>Loading...</p>;
+  if (filterError) return <p>Oops Something went wrong</p>;
 
   const handleSelect = (id) => {
     
@@ -57,7 +58,11 @@ function AdvertisementsMain() {
 
   return (
     <main>
-      <Advertisements ads={ads} handleSelect={handleSelect} />
+      {!!ads && ads.length > 0 ? (
+        <Advertisements ads={ads} handleSelect={handleSelect} />
+      ) : (
+        <NoCoindencies />
+      )}
     </main>
   );
 }

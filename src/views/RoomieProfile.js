@@ -45,6 +45,7 @@ export const RoomieProfile = () => {
           age={profile.age}
           email={profile.email}
           description={profile.description}
+          photos={profile.photos}
         />
       </div>
     </div>
