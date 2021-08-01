@@ -15,6 +15,7 @@ import { reserve, handleDayClick } from "../../store/ReservationReducer";
 import { getAd } from "../../store/getOneAdsReducer";
 import { CardBody } from "../../components/CardBody";
 import { Card } from "react-bootstrap";
+import swal from 'sweetalert'
 
 export const Advertisement = () => {
   const dispatch = useDispatch();

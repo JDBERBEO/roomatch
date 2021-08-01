@@ -1,5 +1,7 @@
 import axios from "axios";
 import { DateUtils } from "react-day-picker";
+import swal from 'sweetalert'
+import { useHistory } from "react-router-dom";
 export const RESERVATION_LOADING = "RESERVATION_LOADING ";
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS";
 export const RESERVATION_ERROR = "RESERVATION_ERROR";
@@ -7,9 +9,10 @@ export const RESERVATION_FINISHED = "RESERVATION_FINISHED";
 export const CHANGE_RANGEDATE = "CHANGE_RANGEDATE";
 export const CHANGE_ENDDATE = "CHANGE_ENDDATE";
 
+
 export function handleDayClick(day, selectedDays, selected, disabled) {
   if (disabled) {
-    window.alert("days already booked");
+    swal("days already booked","","warning");
     return { type: "default" };
   }
   const selectedDaysOne = selectedDays.concat();
@@ -35,6 +38,7 @@ export function reserve(
   paidReservation,
   history
 ) {
+
   return async function (dispatch) {
     try {
       dispatch({ type: RESERVATION_LOADING });
@@ -53,8 +57,11 @@ export function reserve(
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
-      window.alert("Reservation Created");
-      history.push("/advertisements");
+      
+      swal("Reservation Created","","success")
+      const history = useHistory();
+      history.push("/");
+      
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
     } finally {
