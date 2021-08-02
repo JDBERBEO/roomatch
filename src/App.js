@@ -9,9 +9,9 @@ import AdvertisementsMain from "./views/Advertisements/AdvertisementsMain";
 import { Advertisement } from "./views/Advertisements/Advertisement";
 import BeHost from "./views/BeHost";
 import { HostProfile } from "./views/HostProfile";
-import { PrivateRouter } from "./router/PrivateRouter"
+import { PrivateRouter } from "./router/PrivateRouter";
+import { HostPrivateRouter } from "./router/HostPrivateRouter";
 import { Response } from "./components/Response";
-
 
 function App() {
   return (
@@ -34,10 +34,14 @@ function App() {
           />
           <Route exact path="/behost" component={BeHost} />
           <Route exact path="/response">
-            <Response  />
+            <Response />
           </Route>
 
-          <PrivateRouter exact path="/host/profile" component={HostProfile} />
+          <HostPrivateRouter
+            exact
+            path="/host/profile"
+            component={HostProfile}
+          />
           <PrivateRouter
             exact
             path={`/advertisement/:id`}

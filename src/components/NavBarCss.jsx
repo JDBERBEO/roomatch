@@ -27,6 +27,7 @@ export const NavBarCss = () => {
   const [activeButton, setActive] = useState(false);
   const handleClick = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem('tokenHost')
     setActive(!activeButton);
     history.push("/");
   };
@@ -66,7 +67,7 @@ export const NavBarCss = () => {
               <li>
                 <Link>
                   {" "}
-                  {!activeButton && localStorage.getItem("token") && (
+                  {(!activeButton && (localStorage.getItem('token') || localStorage.getItem('tokenHost'))) && (
                     <Button
                       variant="outline-light"
                       type="button"
@@ -81,24 +82,6 @@ export const NavBarCss = () => {
           </div>
         </nav>
       </div>
-      {/* <ul class="sidenav red accent-3" id="mobile-demo">
-        <li><div class="section white">
-            <div class="background" >
-              <img class="responsive-img" src="../../RoomiesNavBar.jpg"/>
-            </div>
-        </div></li>
-      
-        <li><br></br></li>
-        <li><ModalHome/></li>
-        <li><BeHost/></li>
-        <li><SignUp/></li>
-        <li><Button
-            variant={localStorage.token?"dark":"outline-dark"}
-            type="button"
-            onClick={Logout}
-            disabled={!localStorage.token}
-            >Logout</Button></li>
-      </ul> */}
     </div>
   );
 };

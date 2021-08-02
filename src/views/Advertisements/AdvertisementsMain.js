@@ -45,15 +45,15 @@ function AdvertisementsMain() {
   if (filterError) return <p>Oops Something went wrong</p>;
 
   const handleSelect = (id) => {
-    
-    if (localStorage.getItem("token")){
-      history.push(`/advertisement/${id}`)
+    if (localStorage.getItem("token")) {
+      history.push(`/advertisement/${id}`);
+    } else {
+      swal(
+        "Please Login as a Roomie",
+        "If you don't have an user, please sign up",
+        "error"
+      );
     }
-    else
-    {
-      swal("Please Login","If you don't have an user, please sign up","error")
-    }
-  
   };
 
   return (
