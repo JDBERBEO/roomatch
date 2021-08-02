@@ -45,7 +45,7 @@ export function reserve(
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "POST",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/reservations",
 
         data: {
@@ -57,12 +57,9 @@ export function reserve(
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });
-      
       swal("Reservation Created","","success").then(() => {
         history.push("/");
       });
-      
-      
     } catch (error) {
       dispatch({ type: RESERVATION_ERROR, payload: error });
     } finally {

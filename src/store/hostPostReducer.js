@@ -100,7 +100,7 @@ export function hostPostAdv(datas, history) {
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "POST",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/advertisements/",
         data: datas,
         headers: {

@@ -65,7 +65,7 @@ export function registerHost(
       dispatch({ type: REGISTER_LOADING });
       const { data } = await axios({
         method: "POST",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/host/signup",
         data: {
           name,

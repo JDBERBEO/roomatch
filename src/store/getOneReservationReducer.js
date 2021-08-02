@@ -12,7 +12,7 @@ export function getReservation(id) {
 
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: `/reservations/${id}`,
       });
       dispatch({ type: RESERVATION_SUCCESS, payload: data });

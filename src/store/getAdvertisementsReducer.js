@@ -17,7 +17,7 @@ export function getAdvertisements() {
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: `/advertisements/hostAd/`,
         headers: {
           Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ export function deleteAdvertisement(adverId){
       const token = localStorage.getItem("token");
       await axios ({
         method:"DELETE",
-        baseURL:"http://localhost:8000",
+        baseURL:process.env.REACT_APP_SERVER_URL,
         url:`/advertisements/${adverId}`,
         headers: {
           Authorization: `Bearer ${token}`,
