@@ -9,9 +9,10 @@ import React from "react";
 
 export const NavBar = () => {
   const history = useHistory();
-  function Logout(){
-    localStorage.removeItem('token')
-    
+  function Logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("tokenHost");
+
     history.push("/");
   }
   return (
@@ -36,7 +37,7 @@ export const NavBar = () => {
 
               <SignUp />
               <Button
-                variant={localStorage.token?"dark":"outline-dark"}
+                variant={localStorage.token ? "dark" : "outline-dark"}
                 type="button"
                 onClick={Logout}
                 disabled={!localStorage.token}

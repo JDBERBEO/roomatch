@@ -10,7 +10,7 @@ export function getProfileHost() {
     try {
       dispatch({ type: PROFILE_LOADING });
 
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("tokenHost");
       const { data } = await axios({
         method: "GET",
         baseURL: process.env.REACT_APP_SERVER_URL,
@@ -33,7 +33,7 @@ export function updateProfileHost(dataForm) {
   return async function (dispatch) {
     try {
       // dispatch({ type: PROFILE_LOADING })
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("tokenHost");
       const { data } = await axios({
         method: "PUT",
         baseURL: process.env.REACT_APP_SERVER_URL,

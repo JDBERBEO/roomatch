@@ -71,7 +71,7 @@ export function loginHost(
           disabledHost,
         },
       });
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("tokenHost", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
