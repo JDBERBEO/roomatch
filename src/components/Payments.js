@@ -14,7 +14,8 @@ import { getProfile } from "../store/profileReducer";
 
 
 
-export const Payments=()=> {
+export const Payments=({totalPrice,living_space_type })=> {
+  console.log(totalPrice)
   const handler = window.ePayco.checkout.configure({
     key: process.env.REACT_APP_EPAYCO_PUBLIC_KEY,
     test: true,
@@ -27,9 +28,9 @@ export const Payments=()=> {
     const data = {
       tax: 0,
       tax_base: 0,
-      amount: 20000,
+      amount: totalPrice,
       name: 'Roomatch',
-      description: '1 month room: best house',
+      description: living_space_type ,
 
       currency: 'cop',
       country: 'CO',
@@ -62,6 +63,3 @@ export const Payments=()=> {
   );
 }
 
-
-
-export default Payments;
