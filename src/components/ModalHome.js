@@ -75,7 +75,6 @@ function ModalHome() {
   }
 
   if (loading) return <p>loading...</p>;
-  // if (error) return <p>{error}</p>;
 
   return (
     <div>
@@ -113,7 +112,7 @@ function ModalHome() {
             As a host
           </Button>
           <Form onSubmit={switch_rol ? handleSubmitRoomie : handleSubmitHost}>
-            <FormLabel style={{ color: "red" }}>{error}!</FormLabel>
+            {error && <FormLabel style={{ color: "red" }}>{error}!!</FormLabel>}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -123,7 +122,6 @@ function ModalHome() {
                 value={email}
                 onChange={(e) => dispatch(changeEmail(e.target.value))}
               />
-              {/* <Form.Text class="text-red">{error}</Form.Text> */}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">

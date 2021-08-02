@@ -76,7 +76,6 @@ export function loginHost(
       history.push("/host/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error.response.data.message });
-      console.log("error", error.response.data.message);
     } finally {
       dispatch({ type: REGISTER_FINISHED });
     }
@@ -113,7 +112,6 @@ export function loginRoomie(
       history.push("/roomie/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error.response.data.message });
-      console.log("error", error.response.data.message);
     } finally {
       dispatch({ type: REGISTER_FINISHED });
     }
