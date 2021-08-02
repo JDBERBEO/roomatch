@@ -3,6 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { Carouselph } from "./Carousel";
 import { Card } from "react-bootstrap";
+import { Payments } from "./Payments";
 
 export const ReservationsList = ({
   reservations,
@@ -19,7 +20,7 @@ export const ReservationsList = ({
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "COP",
     minimumFractionDigits: 0,
   });
 
@@ -70,6 +71,12 @@ export const ReservationsList = ({
                             <strong>City:</strong>
                           </p>
                           {city}
+                        </ListGroup.Item>
+                        <ListGroup.Item as="li">
+                         <Payments
+                         living_space_type={living_space_type}
+                         totalPrice={price}
+                         />
                         </ListGroup.Item>
                       </ListGroup>
                       <br></br>
