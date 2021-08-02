@@ -13,7 +13,7 @@ export function getProfileHost() {
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/host/profile",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ export function updateProfileHost(dataForm) {
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "PUT",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/host/profile/",
         data: dataForm,
         headers: {
