@@ -14,10 +14,10 @@ export function getAdvertisements() {
     try {
       dispatch({ type: ADVERTISEMENTS_LOADING });
 
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("tokenHost");
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: `/advertisements/hostAd/`,
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,25 +33,25 @@ export function getAdvertisements() {
   };
 }
 
-export function deleteAdvertisement(adverId){
-  return async function(dispatch){
-    try{
-      const token = localStorage.getItem("token");
-      await axios ({
-        method:"DELETE",
-        baseURL:"http://localhost:8000",
-        url:`/advertisements/${adverId}`,
+export function deleteAdvertisement(adverId) {
+  return async function (dispatch) {
+    try {
+      const token = localStorage.getItem("tokenHost");
+      await axios({
+        method: "DELETE",
+        baseURL: process.env.REACT_APP_SERVER_URL,
+        url: `/advertisements/${adverId}`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      dispatch({type: DELETE_ADVERTISEMENTS_SUCCESS, payload: adverId})
-    }catch(error){
-      dispatch({type: DELETE_ADVERTISEMENTS_ERROR, payload: error})
-    }finally{
-      dispatch({type: DELETE_ADVERTISEMENTS_FINISHED})
+      });
+      dispatch({ type: DELETE_ADVERTISEMENTS_SUCCESS, payload: adverId });
+    } catch (error) {
+      dispatch({ type: DELETE_ADVERTISEMENTS_ERROR, payload: error });
+    } finally {
+      dispatch({ type: DELETE_ADVERTISEMENTS_FINISHED });
     }
-}
+  };
 }
 
 const initialState = {
@@ -95,8 +95,8 @@ const getAdvertisementsReducer = (state = initialState, action) => {
     case DELETE_ADVERTISEMENTS_SUCCESS: {
       return {
         ...state,
-        hostAdvertisements: state.hostAdvertisements.filter((adver)=>{
-          return adver._id!==action.payload
+        hostAdvertisements: state.hostAdvertisements.filter((adver) => {
+          return adver._id !== action.payload;
         }),
       };
     }
@@ -110,7 +110,7 @@ const getAdvertisementsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-      }
+      };
     }
     default: {
       return state;

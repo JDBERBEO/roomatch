@@ -60,7 +60,7 @@ export function loginHost(
       dispatch({ type: REGISTER_LOADING });
       const { data } = await axios({
         method: "POST",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/host/signin",
         data: {
           email,
@@ -71,11 +71,11 @@ export function loginHost(
           disabledHost,
         },
       });
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("tokenHost", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/host/profile");
     } catch (error) {
-      dispatch({ type: REGISTER_ERROR, payload: error });
+      dispatch({ type: REGISTER_ERROR, payload: error.response.data.message });
     } finally {
       dispatch({ type: REGISTER_FINISHED });
     }
@@ -111,7 +111,7 @@ export function loginRoomie(
       dispatch({ type: REGISTER_SUCCESS, payload: data });
       history.push("/roomie/profile");
     } catch (error) {
-      dispatch({ type: REGISTER_ERROR, payload: error });
+      dispatch({ type: REGISTER_ERROR, payload: error.response.data.message });
     } finally {
       dispatch({ type: REGISTER_FINISHED });
     }
@@ -190,7 +190,7 @@ function reducer(state = initialState, action) {
     case REGISTER_ERROR: {
       return {
         ...state,
-        error: false,
+        error: action.payload,
       };
     }
     case REGISTER_FINISHED: {

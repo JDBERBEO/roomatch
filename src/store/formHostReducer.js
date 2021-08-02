@@ -65,7 +65,7 @@ export function registerHost(
       dispatch({ type: REGISTER_LOADING });
       const { data } = await axios({
         method: "POST",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/host/signup",
         data: {
           name,
@@ -76,9 +76,9 @@ export function registerHost(
           description,
         },
       });
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("tokenHost", data.token);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
-      history.push("/");
+      history.push("/host/profile");
     } catch (error) {
       dispatch({ type: REGISTER_ERROR, payload: error });
     } finally {

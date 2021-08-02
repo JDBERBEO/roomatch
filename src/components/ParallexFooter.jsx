@@ -18,15 +18,16 @@ export const ParallaxFooter=() =>{
 								<img src="../../fondo2.jpg"/>
 						</div>
 						<div className="section white">
-							<h3 className="header">CONTÁCTANOS</h3>
-							<p className="grey-text text-darken-3 lighten-3">¿Aún tienes dudas? Al igual que muchos viajeros del mundos,
-							nuestro equipo se visto en vuelto en problemáticas de encontrar un hospedaje donde puedan salir
-							y dejar sus pertenencias sin miedo a no encontrarlas. Por lo mismo, sabemos que la seguridad y 
-							el comfort es uno de los principales pilares para pasar una instancia agradable. 
-							Es por ello que decidimos crear una app donde puedas encontrar hospedajes que cumplan con tus necesidades,
-							que puedas compartir y leer la experiencia de los demás usuarios. Y no solo eso, en caso de querer roomies,
-							usted podrá ver la evaluación asiganda a su proximo compañero de cuarto así como podrá conocer los gustos y
-							costumbres de su futuro compañero de cuarto</p>
+							<h3 className="header">GET IN TOUCH</h3>
+							<p className="grey-text text-darken-3 lighten-3">
+							Do you still have doubts? Like many travelers around the world, 
+							our team has found the issues about finding a place where
+							they can stay and leave their baggage without fear of not finding them.
+							 For this reason, we know that safety and comfort are one of the main pillars
+							  to have a pleasant time. For that reason, we developed an app where you can find 
+							  accommodations that meet your needs. You could share and read the experience of other users. 
+							  Last but not least, you will be able to know the ranking assigned to your next roommate
+							</p>
 						<div/>   
 					</div>
 				</div>

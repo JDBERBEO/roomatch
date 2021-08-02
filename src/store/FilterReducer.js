@@ -39,7 +39,7 @@ export function filterPost(city, selectedDays, history) {
       dispatch({ type: FILTER_LOADING });
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: `/advertisements/`,
         params: { selectedDays: selectedDaysString, city },
       });
@@ -86,6 +86,14 @@ function filterPostReducer(state = initialState, action) {
       return {
         ...state,
         filterLoading: false,
+        city: "",
+        selectedDays: [],
+      };
+    }
+    case FILTER_LOADING: {
+      return {
+        ...state,
+        filterLoading: true,
         city: "",
         selectedDays: [],
       };

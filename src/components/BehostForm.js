@@ -24,13 +24,8 @@ let schema = Yup.object().shape({
   age: Yup.number().required().positive().integer(),
   description: Yup.string()
     .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    .max(200, "Too Long!")
     .required("Description is required"),
-  profilePhoto: Yup.string()
-    .min(2, "Your Pic!")
-    .max(50, "Too Long!")
-    .required("Photo is required"),
-  accepTerms: Yup.bool().oneOf([true, "Accept Terms is required"]),
 });
 
 function Hostform() {
@@ -46,29 +41,19 @@ function Hostform() {
     resolver: yupResolver(schema),
   });
 
-  const {
-    loading,
-    error,
-    name,
-    lastName,
-    email,
-    password,
-    age,
-    description,
-    profilePhoto,
-  } = useSelector(({ formHostReducer }) => {
-    return {
-      loading: formHostReducer.loading,
-      error: formHostReducer.error,
-      name: formHostReducer.name,
-      lastName: formHostReducer.lastName,
-      email: formHostReducer.email,
-      password: formHostReducer.password,
-      age: formHostReducer.age,
-      description: formHostReducer.description,
-      profilePhoto: formHostReducer.profilePhoto,
-    };
-  });
+  const { loading, error, name, lastName, email, password, age, description } =
+    useSelector(({ formHostReducer }) => {
+      return {
+        loading: formHostReducer.loading,
+        error: formHostReducer.error,
+        name: formHostReducer.name,
+        lastName: formHostReducer.lastName,
+        email: formHostReducer.email,
+        password: formHostReducer.password,
+        age: formHostReducer.age,
+        description: formHostReducer.description,
+      };
+    });
   function createHost(data) {
     dispatch(
       registerHost(
@@ -78,7 +63,6 @@ function Hostform() {
         data.password,
         data.age,
         data.description,
-        data.profilePhoto,
         history
       )
     );
@@ -165,16 +149,6 @@ function Hostform() {
                 required
               />
               <p>{!!errors.description && errors.description.message}</p>
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="accept terms"
-                className={`form-check-input ${
-                  errors.acceptTerms ? "is-invalid" : ""
-                }`}
-                required
-              />
             </Form.Group>
             <Button variant="danger" type="submit">
               Submit

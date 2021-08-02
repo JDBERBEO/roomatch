@@ -97,10 +97,10 @@ export function hostPostAdv(datas, history) {
   return async function (dispatch) {
     try {
       dispatch({ type: HOSTPOST_LOADING });
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("tokenHost");
       const { data } = await axios({
         method: "POST",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/advertisements/",
         data: datas,
         headers: {

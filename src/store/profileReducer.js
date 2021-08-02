@@ -13,7 +13,7 @@ export function getProfile() {
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/roomie/profile",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ export function updateProfile(profile) {
       const token = localStorage.getItem("token");
       const { data } = await axios({
         method: "PUT",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/roomie/profile/",
         data: profile,
         headers: {
@@ -64,7 +64,7 @@ export function updateProfilePhoto(file) {
       const token = localStorage.getItem("token");
       const response = await axios({
         method: "PUT",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "/roomie/updatePhoto",
         data,
         headers: {

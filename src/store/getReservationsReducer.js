@@ -12,7 +12,7 @@ export function getReservations() {
       const token = localStorage.getItem('token')
       const { data } = await axios({
         method: "GET",
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: "reservations",
         headers: {
           'Authorization': `Bearer ${token}`
