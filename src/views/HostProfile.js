@@ -12,7 +12,7 @@ export const HostProfile = () => {
       <div class="container">
         <br></br>
         <div>
-          <h3>Welcome</h3>
+          <h1>Welcome</h1>
         </div>
       </div>
 
