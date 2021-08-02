@@ -17,6 +17,7 @@ import {
   changeClose,
 } from "../store/hostSignInReducer";
 import { useHistory } from "react-router-dom";
+import { FormLabel } from "react-bootstrap";
 
 function ModalHome() {
   const dispatch = useDispatch();
@@ -74,7 +75,6 @@ function ModalHome() {
   }
 
   if (loading) return <p>loading...</p>;
-  if (error) return <p>user can't be created</p>;
 
   return (
     <div>
@@ -112,6 +112,7 @@ function ModalHome() {
             As a host
           </Button>
           <Form onSubmit={switch_rol ? handleSubmitRoomie : handleSubmitHost}>
+            {error && <FormLabel style={{ color: "red" }}>{error}!!</FormLabel>}
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -121,9 +122,6 @@ function ModalHome() {
                 value={email}
                 onChange={(e) => dispatch(changeEmail(e.target.value))}
               />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -141,7 +139,6 @@ function ModalHome() {
               <br></br>
               <div class="divider"></div>
             </Form.Group>
-            {/* <Button variant="danger" type="submit">Sign In</Button> */}
             <div class="row">
               <div class="col">
                 <Button variant="danger" type="submit">
