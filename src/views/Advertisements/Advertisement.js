@@ -92,7 +92,13 @@ export const Advertisement = () => {
                         {ad.living_space}
                       </ListGroup.Item>
                       <ListGroup.Item as="li">{ad.description}</ListGroup.Item>
+                      <ListGroup.Item as="li">{ad.bathroom}</ListGroup.Item>
+                      <ListGroup.Item as="li">{ad.facilities}</ListGroup.Item>
+                      <ListGroup.Item as="li">{ad.house_rules}</ListGroup.Item>
+                      <ListGroup.Item as="li">{ad.private_bathroom}</ListGroup.Item>
+                      <ListGroup.Item as="li">{ad.public_services}</ListGroup.Item>
                     </ListGroup>
+                    
                     <hi>PRICE: </hi>
                     <ListGroup as="ul" key={ad._id}>
                       <ListGroup.Item as="li" active className="pink">
