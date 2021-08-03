@@ -130,27 +130,5 @@ export const AdsListsHost = ({
         </Row>
       </Container>
     </div>
-    
-    // <div>
-    //   <Container>
-    //     <Row>
-    //       <Col className="col-4">
-    //         <Carouselph array={photos} />
-    //       </Col>
-    //       <Col className="col-4">
-    //         <ListGroup as="ul" key={id}>
-    //           <ListGroup.Item as="li" active>
-    //             {living_space}
-    //           </ListGroup.Item>
-    //           <ListGroup.Item as="li">{price}</ListGroup.Item>
-    //           <ListGroup.Item as="li">{description}</ListGroup.Item>
-    //         </ListGroup>
-    //         <Button variant="danger" onClick={() => handleDelete(id)}>
-    //           Delete this space
-    //         </Button>
-    //       </Col>
-    //     </Row>
-    //   </Container>
-    // </div>
   );
 };
