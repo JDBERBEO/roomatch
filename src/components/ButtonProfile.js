@@ -10,12 +10,10 @@ export const GoProfile = () => {
 
   return (
     <div>
-      <Link to="/roomie/profile">
-        {!activeButton && localStorage.getItem("token") && <Button variant="outline-light"
-          type="button"
-          onClick={handleClick}
-        >Go Profile</Button>}
-      </Link>
+      {!activeButton && localStorage.getItem("token") && <Link to="/roomie/profile"> <Button variant="outline-light" type="button" onClick={handleClick}>Go Profile</Button>
+      </Link>}
+      {!activeButton && localStorage.getItem("tokenHost") && <Link to="/Host/profile"> <Button variant="outline-light" type="button" onClick={handleClick}>Go Profile</Button>
+      </Link>}
     </div>
   );
 };
