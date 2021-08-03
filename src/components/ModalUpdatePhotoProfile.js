@@ -34,7 +34,7 @@ export const RoomieProfilePictureEdit = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="danger" className="waves-effect waves-white text-white" onClick={handleShow}>
         Edit Photo
       </Button>
 
@@ -53,10 +53,10 @@ export const RoomieProfilePictureEdit = () => {
               accept="image/*"
             />
           </Form.Group>
-          <Button type="submit">Save</Button>
+          <Button variant="danger" className="waves-effect waves-white text-white" type="submit">Save</Button>
         </Form>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" className="waves-effect waves-white text-white"  onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
