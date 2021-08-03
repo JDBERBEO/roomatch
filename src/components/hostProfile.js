@@ -143,7 +143,6 @@ export const HostProfileTab = () => {
                   value={living_space}
                 />
               </Form.Group>
-
               <Form.Group controlId="description">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
