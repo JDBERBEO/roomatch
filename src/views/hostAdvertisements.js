@@ -24,13 +24,15 @@ export function MyAdvertisements() {
   useEffect(() => {
     dispatch(getAdvertisements());
   }, []);
+
+  console.log('hostAdvertisements', hostAdvertisements )
   if (loading_ad) return <p>Loading...</p>;
   if (error_ad) return <p>Oops Something went wrong</p>;
 
   return (
     <div>
       <h1>My Advertisements</h1>
-      {hostAdvertisements.map((el) => (
+      {!!hostAdvertisements && hostAdvertisements.length > 0 && hostAdvertisements.map((el) => (
         <AdsListsHost
           hostAdvertisements={hostAdvertisements}
           key={el._id}
@@ -38,7 +40,14 @@ export function MyAdvertisements() {
           living_space={el.living_space}
           price={el.price}
           description={el.description}
-          array={imgAdds}
+          photos={el.photos}
+          city={el.city}
+          bathroom={el.bathroom}
+          facilities={el.facilities}
+          house_rules={el.house_rules}
+          parking={el.parking}
+          private_bathroom={el.private_bathroom}
+          rooms={el.rooms}
           handleDelete={handleDelete}
         />
       ))}
