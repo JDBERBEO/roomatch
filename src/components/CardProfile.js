@@ -34,7 +34,7 @@ export const CardProfile = ({
           <Card className="text-center z-depth-0" border="light">
             <Card.Body>
               <Row className="container">
-                <Col>
+                <Col className="col-4">
                   <Card className="z-depth-5">
                     <Card.Img variant="top" src={[photos]} />
                     <Card.Body key={id}>
@@ -46,7 +46,7 @@ export const CardProfile = ({
                 </Col>
                 <Col className="container">
                   <Card className="z-depth-5">
-                    <Card.Header>Preferences</Card.Header>
+                    <Card.Header className="pink">Preferences</Card.Header>
                     <ListGroup variant="flush">
                       <ListGroup.Item>{email}</ListGroup.Item>
                     </ListGroup>

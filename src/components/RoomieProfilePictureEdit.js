@@ -55,7 +55,7 @@ export const RoomieProfilePictureEdit = () => {
           accept="image/*"
         />
       </Form.Group>
-      <Button type="submit">Save photo</Button>
+      <Button variant="danger" className="waves-effect waves-white text-white" type="submit">Save photo</Button>
     </Form>
   );
 };

@@ -50,7 +50,7 @@ export const Home = () => {
       <div class="divider"></div>
 
       <ParallaxFooter />
-      <Payments />
+      <br></br>
 
       <FooterCss />
     </div>

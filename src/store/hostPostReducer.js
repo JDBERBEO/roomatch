@@ -110,7 +110,7 @@ export function hostPostAdv(datas, history) {
       });
       dispatch({ type: HOSTPOST_SUCCESS, payload: data });
       if (data) {
-        swal("Your space has been created");
+        swal("Your space has been created","","success");
       }
       history.push("/host/profile");
     } catch (error) {
