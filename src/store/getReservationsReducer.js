@@ -13,7 +13,7 @@ export function getReservations() {
       const { data } = await axios({
         method: "GET",
         baseURL: process.env.REACT_APP_SERVER_URL,
-        url: "reservations",
+        url: "/reservations",
         headers: {
           'Authorization': `Bearer ${token}`
         }
