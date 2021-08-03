@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Tabs, Tab, Form, Container, Col, Button } from "react-bootstrap";
+import { Tabs, Tab, Form, Container, Col, Button, Row} from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { MyAdvertisements } from "../views/hostAdvertisements";
 import { ShowHostProfile } from "../views/showHostProfile";
@@ -108,6 +108,8 @@ export const HostProfileTab = () => {
         <Tab eventKey="profile" title="Publish your space">
           <div class="section">
             <br></br>
+            <Row className="justify-content-center">
+            <Col className="col-6">
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="public_services">
                 <Form.Label>Public Services</Form.Label>
@@ -141,7 +143,6 @@ export const HostProfileTab = () => {
                   value={living_space}
                 />
               </Form.Group>
-
               <Form.Group controlId="description">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
@@ -259,6 +260,8 @@ export const HostProfileTab = () => {
                 <Button type="submit">Submit</Button>
               </Col>
             </Form>
+            </Col>
+            </Row>
           </div>
         </Tab>
         <Tab eventKey="posts" title="Posts">
