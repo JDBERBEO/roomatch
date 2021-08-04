@@ -6,6 +6,7 @@ import { getReservations } from "../store/getReservationsReducer";
 import { ReservationsList } from "../components/ReservationsList";
 import { imgAdds } from "../Mock_data/imgsAdd";
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { Spinner} from "react-bootstrap";
 
 export const Reservations = () => {
   const history = useHistory();
@@ -28,7 +29,7 @@ export const Reservations = () => {
   }, []);
 
   console.log("reservations", reservations);
-  if (loading) return <p>Loading algooo...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>Oops Something went wrong</p>;
   return (
     <main>

@@ -5,6 +5,7 @@ import DayPicker from "react-day-picker";
 import { Link } from "react-router-dom";
 import { handleFilterCity } from "../store/FilterReducer";
 import { handleDayClick } from "../store/FilterReducer";
+import { Spinner} from "react-bootstrap";
 
 export const FilterComponent = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const FilterComponent = () => {
     selected: selectedDays,
   };
 
-  if (filterLoading) return <p>Loading...</p>;
+  if (filterLoading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (filterError) return <p>Oops Something went wrong</p>;
   return (
     <Card className="text-center">

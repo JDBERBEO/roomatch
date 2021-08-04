@@ -6,6 +6,7 @@ import { Advertisements } from "./Advertisements";
 import queryString from "query-string";
 import swal from "sweetalert";
 import { NoCoindencies } from "./NoCoinciden";
+import { Spinner} from "react-bootstrap";
 
 function AdvertisementsMain() {
   const location = useLocation();
@@ -41,7 +42,7 @@ function AdvertisementsMain() {
     dispatch(filterPost(city, selectedDays, history));
   }, []);
 
-  if (filterLoading) return <p>Loading...</p>;
+  if (filterLoading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (filterError) return <p>Oops Something went wrong</p>;
 
   const handleSelect = (id) => {

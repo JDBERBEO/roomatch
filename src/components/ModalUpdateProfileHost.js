@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Spinner} from "react-bootstrap";
 
 import { Form, Button, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,7 +61,7 @@ function ModalUpdateProfile() {
     setShow(false);
   }
 
-  if (loading) return <p>loading...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>user can not be created</p>;
 
   return (

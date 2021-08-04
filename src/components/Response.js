@@ -56,7 +56,7 @@ export const Response=()=> {
 						</div>
 						<div class="card-content">
 							<p>The roomatch team wishes you a good rest.
-								We hope to see you soon
+								We hope to see you soon!
 							</p>
 						</div>
 						<div class="card-action red accent-2 ">

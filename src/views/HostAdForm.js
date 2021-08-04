@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button, Container, Row, Col, Tabs, Tab } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { Spinner} from "react-bootstrap";
 import {
   hostPostAdv,
   changePublicServices,
@@ -75,7 +76,7 @@ function HostAdForm() {
       )
     );
   }
-  if (loading) return <p>loading...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>user can't be created</p>;
   return (
     <div>

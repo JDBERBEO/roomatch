@@ -20,7 +20,7 @@ export const ShowRoomieProfile = () => {
   useEffect(() => {
     dispatch(getProfile());
   }, []);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>Oops Something went wrong</p>;
   return (
     <main>
