@@ -35,7 +35,7 @@ export const AdsLists = ({
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col class="col s12 m12 l6">
+                <Col>
                   <Card className="text-center z-depth-5" border="light">
                     <Card.Body>
                       <ListGroup as="ul" key={id}>
