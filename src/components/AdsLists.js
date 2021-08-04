@@ -28,14 +28,14 @@ export const AdsLists = ({
           <Card className="container z-depth-0" border="light">
             <Card.Body clasName="container">
               <Row>
-                <Col xs={12} md={12} l={6}>
+                <Col xs={12} md={12} lg={6}>
                   <Card className="z-depth-5">
                     <Card.Body>
                       <Carouselph array={array} />
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col xs={12} md={12} l={6}>
+                <Col xs={12} md={12} lg={6}>
                   <Card className="text-center z-depth-5" border="light">
                     <Card.Body>
                       <ListGroup as="ul" key={id}>
