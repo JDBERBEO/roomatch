@@ -18,7 +18,7 @@ export const Payments=({totalPrice,living_space_type })=> {
   console.log(totalPrice)
   const handler = window.ePayco.checkout.configure({
     key: process.env.REACT_APP_EPAYCO_PUBLIC_KEY,
-    test: true,
+    test: false,
     external: false,
     autoclick: false,
     lang: 'es',
