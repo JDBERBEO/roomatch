@@ -28,7 +28,7 @@ export const AdsLists = ({
           <Card className="container z-depth-0" border="light">
             <Card.Body clasName="container">
               <Row>
-                <Col class="col s12 m12 l6">
+                <Col>
                   <Card className="z-depth-5">
                     <Card.Body>
                       <Carouselph array={array} />
