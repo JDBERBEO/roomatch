@@ -21,7 +21,7 @@ import {
   changePrice,
   changeHouseRules,
   changeCity,
-} from "../store/hostPostReducer";
+} from "../store/getAdvertisementsReducer";
 
 export const HostProfileTab = () => {
   const dispatch = useDispatch();

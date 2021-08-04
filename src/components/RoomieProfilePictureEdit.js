@@ -32,7 +32,7 @@ export const RoomieProfilePictureEdit = () => {
     const token = localStorage.getItem("token");
     const response = axios({
       method: "PUT",
-      baseURL: "http://localhost:8000",
+      baseURL: process.env.REACT_APP_SERVER_URL,
       url: "/profilePic",
       data,
       headers: {
