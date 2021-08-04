@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { SignUp } from "./SignUp";
 import { SignUp2 } from "./SignUp2";
 import { useEffect } from "react";
+import { Spinner} from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import {
   loginHost,
@@ -74,7 +75,7 @@ function ModalHome() {
     );
   }
 
-  if (loading) return <p>loading...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
 
   return (
     <div>

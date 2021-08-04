@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/js/parallax";
+import "materialize-css/js/sidenav";
 
 export const NavBarCss = () => {
   const history = useHistory();
@@ -82,6 +82,39 @@ export const NavBarCss = () => {
           </div>
         </nav>
       </div>
+      <ul class="sidenav" id="mobile-demo">
+        <li><div class="user-view">
+              <div class="background">
+                <img className="responsive-img" src="../../background3.jpg"/>
+              </div>
+              <a href="/"><img class="circle" src="../../logo.ico"/></a>
+              <a href="#"><span class="white-text name">Roomatch</span></a>
+              <a href="#"><span class="white-text name">Your best option</span></a>
+              <br></br>
+          </div></li>
+          <li class=" container pink accent-3"><ModalHome /></li>
+          <br></br>
+          <li class="red accent-3"><BeHost /></li>
+          <br></br>
+          <li class="red accent-2"><SignUp /></li>
+          <br></br>
+          <li class="red accent-1"><GoProfile /></li>
+          <br></br>
+          <li class="red accent-1">              
+            <Link>
+              {" "}
+              {(!activeButton && (localStorage.getItem('token') || localStorage.getItem('tokenHost'))) && (
+                <Button
+                  variant="outline-light"
+                  type="button"
+                  onClick={handleClick}
+                >
+                  Logout
+                </Button>
+              )}{" "}
+            </Link>
+          </li>
+        </ul>
     </div>
   );
 };

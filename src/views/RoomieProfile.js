@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { getProfile } from "../store/profileReducer";
 import { CardProfile } from "../components/CardProfile";
 import { NavBarCss } from "../components/NavBarCss";
+import { Spinner} from "react-bootstrap";
 
 export const RoomieProfile = () => {
   const history = useHistory();
@@ -22,7 +23,7 @@ export const RoomieProfile = () => {
     dispatch(getProfile());
   }, []);
 
-  if (loading) return <p>Loading lo mas rapidooo...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>Oops Something went wrong</p>;
   return (
     <div>

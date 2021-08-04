@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { Spinner} from "react-bootstrap";
 
 let schema = Yup.object().shape({
   name: Yup.string()
@@ -64,7 +65,7 @@ function SignUpRoomie() {
     reset();
   }
 
-  if (loading) return <p>loding...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>user can not be created</p>;
 
   return (
@@ -137,7 +138,8 @@ function SignUpRoomie() {
                 }`}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <br></br>
+            <Button variant="danger" type="submit">
               Register
             </Button>
           </Form>

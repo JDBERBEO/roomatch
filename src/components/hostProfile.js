@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { MyAdvertisements } from "../views/hostAdvertisements";
 import { ShowHostProfile } from "../views/showHostProfile";
 import { useState } from "react";
+import { Spinner} from "react-bootstrap";
 
 import {
   hostPostAdv,
@@ -91,7 +92,7 @@ export const HostProfileTab = () => {
     dispatch(hostPostAdv(data, history));
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (<div><Spinner animation="border" variant="danger" /> <h1 className="text-pink">Loading so Fast</h1></div>);
   if (error) return <p>Oops Something went wrong</p>;
 
   return (
@@ -257,7 +258,7 @@ export const HostProfileTab = () => {
                 <option value={"Ibagué"}>Ibagué</option>
               </Form.Control>
               <Col>
-                <Button type="submit">Submit</Button>
+                <Button variant="danger" type="submit">Submit</Button>
               </Col>
             </Form>
             </Col>

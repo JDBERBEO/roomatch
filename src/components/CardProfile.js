@@ -32,9 +32,9 @@ export const CardProfile = ({
         <Row className="justify-content-center">
           <Col>
           <Card className="text-center z-depth-0" border="light">
-            <Card.Body>
+            <Card.Body className="justify-content-center">
               <Row className="container">
-                <Col className="col-4">
+                <Col className="col s12 m6 l6">
                   <Card className="z-depth-5">
                     <Card.Img variant="top" src={[photos]} />
                     <Card.Body key={id}>
@@ -44,9 +44,9 @@ export const CardProfile = ({
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col className="container">
+                <Col className="col s12 m6 l6">
                   <Card className="z-depth-5">
-                    <Card.Header className="pink">Preferences</Card.Header>
+                    <Card.Header className="pink text-white"><h5>Preferences</h5></Card.Header>
                     <ListGroup variant="flush">
                       <ListGroup.Item>{email}</ListGroup.Item>
                     </ListGroup>
@@ -64,9 +64,6 @@ export const CardProfile = ({
           <ListGroup variant="flush">
             <ListGroup.Item>
               <ModalUpdateProfile />
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Button variant="danger" className="waves-effect waves-white text-white"> Delete Profile </Button>
             </ListGroup.Item>
           </ListGroup>
         </Row>
